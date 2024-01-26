@@ -1,5 +1,7 @@
 module.exports = { handleApi }
 
+
+
 async function handleApi(req, res) {
   const path = req.url.slice(1)
   const [endpoint, query] = path.split('?')
@@ -10,16 +12,37 @@ async function handleApi(req, res) {
 
   console.log({ path, method, endpoint, params })
 
+  // db.collection('products').insertMany(JSON.parse(fs.readFileSync('data.json', 'utf-8'))) // put products from the file into a db
 
   if (method == 'GET') {
     if (endpoint == 'products') {
       const products = await db.collection('products').find().toArray()
       const from = params.offset || 0
-      res.end(JSON.stringify(products.slice(+from, +from + (+params.count || 20))))
+      res.end(JSON.stringify(products.slice(+from, +from + (+params.count || 12))))
     } else if (endpoint == 'product') {
-      const product = await db.collection('products').find({article: params.article}).toArray()
+      const product = await db.collection('products').findOne({ article: params.article })
       res.end(JSON.stringify(product))
+    } else if (endpoint == 'search') {
+      const { query, min, max, ...props } = params
+      let filter = query ? {
+        $or: [
+          { name: { $regex: query, $options: "i" } },
+          { category: { $regex: query, $options: "i" } },
+          { color: { $regex: query, $options: "i" } }
+        ]
+      } : props
+      if (min && max) {
+        filter = {
+          $and: [
+            filter,
+            { price: { $gte: minPrice, $lte: maxPrice } }
+          ]
+        }
+      }
+      const products = await db.collection('products').find(filter).toArray()
+      res.end(JSON.stringify(products))
     }
+
 
   } else if (method == 'POST') {
     res.end('Not ready yet')

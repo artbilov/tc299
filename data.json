@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Mulled Cider Candle",
+    "category": "Candles",
+    "color": "Cinnamon",
+    "quantity": "99",
+    "price": "19",
+    "image": "https://www.hyggecandle.ca/shop/p/mulled-cider",
+    "article": "Ca001"
+  },
+  {
+    "name": "Vanilla Cashmere Candle",
+    "category": "Candles",
+    "color": "White",
+    "quantity": "99",
+    "price": "19",
+    "image": "https://www.hyggecandle.ca/shop/p/vanilla-cashmere",
+    "article": "Ca002"
+  },
+  {
+    "name": "Honey Bourbon Candle",
+    "category": "Candles",
+    "color": "White",
+    "quantity": "99",
+    "price": "19",
+    "image": "https://www.hyggecandle.ca/shop/p/honey-bourbon",
+    "article": "Ca003"
+  },
+  {
+    "name": "Frasier Fir Candle",
+    "category": "Candles",
+    "color": "Green",
+    "quantity": "99",
+    "price": "19",
+    "image": "https://www.hyggecandle.ca/shop/p/frasier-fir",
+    "article": "Ca004"
+  },
+  {
+    "name": "Sweater Weather Candle",
+    "category": "Candles",
+    "color": "Falu Red",
+    "quantity": "99",
+    "price": "19",
+    "image": "https://www.hyggecandle.ca/shop/p/sweater-weather",
+    "article": "Ca005"
+  },
+  {
+    "name": "Sweet Citrus Candle",
+    "category": "Candles",
+    "color": "White",
+    "quantity": "99",
+    "price": "19",
+    "image": "https://www.hyggecandle.ca/shop/p/sweet-citrus",
+    "article": "Ca006"
+  },
+  {
+    "name": "Bestie Candle Set",
+    "category": "Gift sets, Candles",
+    "color": "Pink",
+    "quantity": "99",
+    "price": "45",
+    "image": "https://www.hyggecandle.ca/shop/p/kelsi-kendel-x-hygge-candle-co-bestie-candle-set",
+    "article": "Gi001"
+  },
+  {
+    "name": "Cozy Cups 5 Piace Set",
+    "category": "Gift sets, Get warm ",
+    "color": "-",
+    "quantity": "20",
+    "price": "99",
+    "image": "https://www.etsy.com/de-en/listing/1593779008/retro-ceramic-porcelain-heat-resistant?gpla=1&gao=1&&utm_source=google&utm_medium=cpc&utm_campaign=shopping_pl_en_pl_-home_and_living_megafeed&utm_custom1=_k_CjwKCAiA1-6sBhAoEiwArqlGPqxMH1d3U7wj1nu1ZePy6cN4kefpVN-4ofeKjW2ZiofouT3uRB_9HBoCQHUQAvD_BwE_k_&utm_content=go_20050906256_151556177674_656775411512_pla-303628061699_c__1593779008ende_704667981&utm_custom2=20050906256&gad_source=4&gclid=CjwKCAiA1-6sBhAoEiwArqlGPqxMH1d3U7wj1nu1ZePy6cN4kefpVN-4ofeKjW2ZiofouT3uRB_9HBoCQHUQAvD_BwE",
+    "article": "Gi002"
+  },
+  {
+    "name": "Hygge Cups 4 Piece Set",
+    "category": "Gift sets, Get warm ",
+    "color": "-",
+    "quantity": "20",
+    "price": "79",
+    "image": "https://home-you.com/pl/p/komplet-kubkow-morwena-1000018733",
+    "article": "Gi003"
+  },
+  {
+    "name": "\"Let's HYGGE\" Mug",
+    "category": "Get warm",
+    "color": "-",
+    "quantity": "99",
+    "price": "10",
+    "image": "https://www.etsy.com/de-en/listing/1571378672/lets-hygge-cute-cozy-winter-mugs-on?gpla=1&gao=1&&utm_source=google&utm_medium=cpc&utm_campaign=shopping_pl_en_pl_-home_and_living_megafeed&utm_custom1=_k_CjwKCAiA1-6sBhAoEiwArqlGPkILjVzW-9YHAbuX_S9b60kPgw7FL5HIRkUqzN7LhrnAoy_pUVbkHRoCra0QAvD_BwE_k_&utm_content=go_20050906256_151556177674_656775411512_pla-303628061699_c__1571378672ende_704667981&utm_custom2=20050906256&gad_source=4&gclid=CjwKCAiA1-6sBhAoEiwArqlGPkILjVzW-9YHAbuX_S9b60kPgw7FL5HIRkUqzN7LhrnAoy_pUVbkHRoCra0QAvD_BwE",
+    "article": "Ge001"
+  },
+  {
+    "name": "Ceramic Cum",
+    "category": "Get warm",
+    "color": "-",
+    "quantity": "99",
+    "price": "25",
+    "image": "https://besontique.com/products/aesthetic-vintage-coffee-mug-cup-ceramic-high-temperature-resistance-big-belly-cup-kitchenware?srsltid=AfmBOopEkGXuv5CBYDXhyA63uSojBYR8hr4nNh3lGfWhFlDtJxaRS6L-T4c&utm_campaign=sag_organic&utm_content=sag_organic&utm_medium=product_sync&utm_source=google&variant=47048587280723",
+    "article": "Ge002"
+  },
+  {
+    "name": "Hygge Doodle Heart Mug",
+    "category": "Get warm",
+    "color": "-",
+    "quantity": "99",
+    "price": "10",
+    "image": "https://www.redbubble.com/i/mug/Hygge-Doodle-Heart-Cozy-Palette-and-Snow-White-by-EcoElsa/93201698.9Q0AD?country_code=GB&utm_source=google&utm_medium=organic-shopping&utm_campaign=organic+shopping",
+    "article": "Ge003"
+  },
+  {
+    "name": "\"Cozy Queen\" Mug",
+    "category": "Get warm",
+    "color": "-",
+    "quantity": "99",
+    "price": "10",
+    "image": "https://www.ebay.com/itm/333261978630",
+    "article": "Ge004"
+  },
+  {
+    "name": "\"Hug Your Mug\" Sleeve",
+    "category": "Get warm",
+    "color": "-",
+    "quantity": "99",
+    "price": "10",
+    "image": "https://bigamart.com/product/hug-your-mug-cup-cozy-reusable-coffee-sleeve-hand-protector-drink-grip-for-paper-cups/",
+    "article": "Ge005"
+  },
+  {
+    "name": "\"Angel\" Led Lamp",
+    "category": "Lighting Decor",
+    "color": "-",
+    "quantity": "99",
+    "price": "15",
+    "image": "https://www.mediaexpert.pl/dom/oswietlenie/neony-led/neon-led-manta-aniol-bialy-stojacy",
+    "article": "Ld001"
+  },
+  {
+    "name": "\"LOVE\" Led Lamp",
+    "category": "Lighting Decor",
+    "color": "-",
+    "quantity": "99",
+    "price": "15",
+    "image": "https://www.mediaexpert.pl/dom/oswietlenie/neony-led/neon-led-manta-love-bialy-stojacy",
+    "article": "Ld002"
+  },
+  {
+    "name": "\"Note\" Led Lamp",
+    "category": "Lighting Decor",
+    "color": "-",
+    "quantity": "99",
+    "price": "15",
+    "image": "https://www.mediaexpert.pl/dom/oswietlenie/neony-led/neon-led-manta-nutka-bialy-stojacy",
+    "article": "Ld003"
+  },
+  {
+    "name": "Patchwork (edycja polska)",
+    "category": "Table games",
+    "color": "-",
+    "quantity": "20",
+    "price": "20",
+    "image": "https://www.rebel.pl/gry-planszowe/patchwork-edycja-polska-99279.html",
+    "article": "Tg001"
+  },
+  {
+    "name": "\"My Hygge Home\" book",
+    "category": "Books&Journals",
+    "color": "-",
+    "quantity": "20",
+    "price": "20",
+    "image": "https://www.empik.com/my-hygge-home-wiking-meik,p1348456238,ksiazka-p?gad_source=1&gclid=CjwKCAiA1-6sBhAoEiwArqlGPsSBkdNi-Z11Qur3cqyOS7idXlR55joE27RZ-Pap50jxwK69vKo_5RoCukEQAvD_BwE&gclsrc=aw.ds",
+    "article": "Bj001"
+  },
+  {
+    "name": "\"Hygge. Klucz do szczacia\" book",
+    "category": "Books&Journals",
+    "color": "-",
+    "quantity": "20",
+    "price": "20",
+    "image": "https://bonito.pl/produkt/hygge-klucz-do-szczescia?gad_source=1&gclid=CjwKCAiA1-6sBhAoEiwArqlGPo0WMpxUFq2KbiwtC56oDFKSvCAd7aybHpXB1GSDWgUlSqe9UemH5xoCbeAQAvD_BwE",
+    "article": "Bj002"
+  }
+]

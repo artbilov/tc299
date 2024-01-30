@@ -13,11 +13,18 @@ async function handleApi(req, res) {
   console.log({ path, method, endpoint, params })
 
   // db.collection('products').insertMany(JSON.parse(fs.readFileSync('data.json', 'utf-8'))) // put products from the file into a db
-
+  
+  res.setHeader('Content-Type', 'application/json; charset=utf-8')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Headers', 'POST, GET, DELETE, OPTIONS, key')
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS')
+  
   if (method == 'GET') {
+    
     if (endpoint == 'products') {
       const products = await db.collection('products').find().toArray()
       const from = params.offset || 0
+      
       res.end(JSON.stringify(products.slice(+from, +from + (+params.count || 12))))
     } else if (endpoint == 'product') {
       const product = await db.collection('products').findOne({ article: params.article })

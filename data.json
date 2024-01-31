@@ -201,3 +201,31 @@
     "article": "Bj002"
   }
 ]
+
+
+[
+  {
+    "_id": "65b95052e0ab34eeefae8a33",
+    "name": "Ivan Ivanov",
+    "login": "ivanovIvan",
+    "hash": "asdfaskdjfkl;ajsdf34t56756yhbv",
+    "phone": "+380672901380",
+    "address": "Vyazov street, 13",
+    "town": "Kyiv",
+    "country": "Ukraine",
+    "shipAddress": "Vyazov street, 13",
+    "email": "test@test.com.ua"
+  },
+  {
+    "_id": "65b9521ae0ab34eeefae8a34",
+    "name": "Vasya Pupkin",
+    "login": "vasvas",
+    "hash": "23456uyjhgfdserhjk5435tyhgvfd789",
+    "phone": "=380970356015",
+    "address": "Elm street, 1",
+    "town": "Odesa",
+    "country": "Ukraine",
+    "shipAddress": "Elm street, 1",
+    "email": "test1@test.com.ua"
+  }
+]

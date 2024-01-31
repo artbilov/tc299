@@ -56,14 +56,11 @@ async function handleApi(req, res) {
         const users = await db.collection('users').find().toArray()
         const from = params.offset || 0
         res.end(JSON.stringify(users.slice(+from, +from + (+params.count || 20))))
-      } else if (endpoint == 'user') {
-        const user = await db.collection('users').findOne({ login: params.login })
-        
-        res.end(JSON.stringify(user))
       }
-
     } else if (endpoint == 'user') {
-      
+      const user = await db.collection('users').findOne({ login: params.login })
+
+      res.end(JSON.stringify(user))
 
     }
 

@@ -85,7 +85,7 @@ async function handleApi(req, res) {
         res.writeHead(400).end(JSON.stringify({ error: "login, password and email are required" }))
         return
       }
-      const user = { name, login, hash : hashed, phone, address, town, country, shipAddress, email }
+      const user = { name, login, hash: hashed, phone, address, town, country, shipAddress, email }
       const result = await db.collection('users').insertOne(user).catch(err => {
         if (err.code == 11000) return { insertedId: null }
       })
@@ -102,9 +102,10 @@ async function handleApi(req, res) {
         res.writeHead(400).end(JSON.stringify({ error: "Login or password are incorrect" }))
         return
       }
-      const user = await db.collection('users').findOne({ login })
+      const user = await db.collection('users').findOne({ login }, { projection: { _id: 0 } })
 
-      if (user && await verify(password, user.hash)) {
+      if (user && await verify(password, user.hash).catch(_ => false)) {
+        delete user.hash
         res.end(JSON.stringify(user))
       } else {
         res.writeHead(400).end(JSON.stringify({ error: "Login or password is incorrect" }))

@@ -2,6 +2,7 @@ module.exports = { connectMongo }
 
 async function connectMongo() {
   await client.connect()
+  console.log('Connected to MongoDB')
   return client.db(dbName)
 }
 

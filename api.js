@@ -79,13 +79,13 @@ async function handleApi(req, res) {
       }
     } else if (endpoint == 'user') {
       const { name, login, password, phone, address, town, country, shipAddress, email } = payload
-      const hash = await hash(password)
+      const hashed = await hash(password)
 
       if (!login || !password || !email) {
         res.writeHead(400).end(JSON.stringify({ error: "login, password and email are required" }))
         return
       }
-      const user = { name, login, hash, phone, address, town, country, shipAddress, email }
+      const user = { name, login, hash : hashed, phone, address, town, country, shipAddress, email }
       const result = await db.collection('users').insertOne(user).catch(err => {
         if (err.code == 11000) return { insertedId: null }
       })

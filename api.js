@@ -57,7 +57,7 @@ async function handleApi(req, res) {
         const from = params.offset || 0
         res.end(JSON.stringify(users.slice(+from, +from + (+params.count || 20))))
       }
-    } 
+    }
 
   } else if (method == 'POST') {
     if (endpoint == 'product') {
@@ -79,7 +79,7 @@ async function handleApi(req, res) {
       }
     } else if (endpoint == 'user') {
       const { name, login, password, phone, address, town, country, shipAddress, email } = payload
-      const hash = encryptPassword(payload.password)
+      const hash = await hash(password)
 
       if (!login || !password || !email) {
         res.writeHead(400).end(JSON.stringify({ error: "login, password and email are required" }))
@@ -94,20 +94,21 @@ async function handleApi(req, res) {
       } else {
         res.writeHead(400).end(JSON.stringify({ error: "email or login are already in use" }))
       }
+
     } else if (endpoint == 'login') {
       const { login, password } = payload
+
       if (!login || !password) {
-        res.writeHead(400).end(JSON.stringify({ error: "login and password are required" }))
+        res.writeHead(400).end(JSON.stringify({ error: "Login or password are incorrect" }))
         return
       }
-      const hash = encryptPassword(password)
-      const user = await db.collection('users').findOne({ login, hash }).catch(err => {
-        if (err.code == 11000) return { insertedId: null }
-      })
-      
-      res.end(JSON.stringify(user))
-    } else {
-      res.end('Unsupported endpoint')
+      const user = await db.collection('users').findOne({ login })
+
+      if (user && await verify(password, user.hash)) {
+        res.end(JSON.stringify(user))
+      } else {
+        res.writeHead(400).end(JSON.stringify({ error: "Login or password is incorrect" }))
+      }
     }
 
   } else if (method == 'PUT') {
@@ -131,7 +132,7 @@ const { decode } = require('querystring');
 const { connectMongo } = require('./mongo.js')
 const fs = require('fs')
 const { isAdmin } = require('./check-admin.js')
-const { encryptPassword } = require('./encrypt-password.js')
+const { hash, verify } = require('./encrypt-password.js')
 
 let db = connectMongo().then(_db => db = _db)
 

@@ -58,10 +58,18 @@ async function handleApi(req, res) {
         res.end(JSON.stringify(users.slice(+from, +from + (+params.count || 20))))
       }
     } else if (endpoint == 'user') {
+      const { login, password, email } = payload
+      if (!login || !password) {
+        res.writeHead(400).end(JSON.stringify({ error: "login and password are required" }))
+        return
+      }
+      const hash = encryptPassword(password)
       const user = await db.collection('users').findOne({ login: params.login })
-
+      if (user.hash != hash) {
+        res.writeHead(401).end(JSON.stringify({ error: "wrong password" }))
+        return
+      }
       res.end(JSON.stringify(user))
-
     }
 
 

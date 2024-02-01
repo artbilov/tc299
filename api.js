@@ -26,7 +26,7 @@ async function handleApi(req, res) {
     if (endpoint == 'products') {
       const products = await db.collection('products').find().toArray()
       const from = params.offset || 0
-      res.end(JSON.stringify(products.slice(+from, +from + (+params.count || 12))))
+      res.end(JSON.stringify(products.slice(+from, +from + (+params.count || 9))))
 
     } else if (endpoint == 'product') {
       const product = await db.collection('products').findOne({ article: params.article })
@@ -57,21 +57,7 @@ async function handleApi(req, res) {
         const from = params.offset || 0
         res.end(JSON.stringify(users.slice(+from, +from + (+params.count || 20))))
       }
-    } else if (endpoint == 'user') {
-      const { login, password, email } = payload
-      if (!login || !password) {
-        res.writeHead(400).end(JSON.stringify({ error: "login and password are required" }))
-        return
-      }
-      const hash = encryptPassword(password)
-      const user = await db.collection('users').findOne({ login: params.login })
-      if (user.hash != hash) {
-        res.writeHead(401).end(JSON.stringify({ error: "wrong password" }))
-        return
-      }
-      res.end(JSON.stringify(user))
-    }
-
+    } 
 
   } else if (method == 'POST') {
     if (endpoint == 'product') {
@@ -108,7 +94,23 @@ async function handleApi(req, res) {
       } else {
         res.writeHead(400).end(JSON.stringify({ error: "email or login are already in use" }))
       }
+    } else if (endpoint == 'login') {
+      const { login, password } = params
+      if (!login || !password) {
+        res.writeHead(400).end(JSON.stringify({ error: "login and password are required" }))
+        return
+      }
+      const hash = encryptPassword(password)
+      const user = await db.collection('users').findOne({ login: params.login })
+      if (user.hash != hash) {
+        res.writeHead(401).end(JSON.stringify({ error: "wrong password" }))
+        return
+      }
+      res.end(JSON.stringify(user))
+    } else {
+      res.end('Unsupported endpoint')
     }
+
   } else if (method == 'PUT') {
     res.end('Not ready yet')
   } else if (method == 'DELETE') {

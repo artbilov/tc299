@@ -1,3 +1,4 @@
+Products API:
 GET /products - get all products
 GET /products?ofset={number}&count={number} - pagination parameters
 GET /product?article={product_article} - get specific product by article
@@ -8,7 +9,8 @@ GET /search?prop1={exact_value}[&prop2={exact_value}&...] - search by any combin
 GET /serach?min={number}&max={number} - filtering by price from min price to max price
   min&max could be combined with query or props
 
+Users API:
 POST /user - add new user (login, password, email should be nessessary parameters)
 GET /users - temporary API-call to get all users ans see how the objects looks like. To be able to use it in the GET /user call for tests.
-GET /user - get specific user by login (for Login purposes, there is a password check to get user) 
+POST /login - get specific user by login (for Login purposes, there is a password check to get user) User will come from DB as is (*testing version, not for production)
 

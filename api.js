@@ -95,17 +95,16 @@ async function handleApi(req, res) {
         res.writeHead(400).end(JSON.stringify({ error: "email or login are already in use" }))
       }
     } else if (endpoint == 'login') {
-      const { login, password } = params
+      const { login, password } = payload
       if (!login || !password) {
         res.writeHead(400).end(JSON.stringify({ error: "login and password are required" }))
         return
       }
       const hash = encryptPassword(password)
-      const user = await db.collection('users').findOne({ login: params.login })
-      if (user.hash != hash) {
-        res.writeHead(401).end(JSON.stringify({ error: "wrong password" }))
-        return
-      }
+      const user = await db.collection('users').findOne({ login, hash }).catch(err => {
+        if (err.code == 11000) return { insertedId: null }
+      })
+      
       res.end(JSON.stringify(user))
     } else {
       res.end('Unsupported endpoint')

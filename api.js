@@ -78,14 +78,16 @@ async function handleApi(req, res) {
         }
       }
     } else if (endpoint == 'user') {
-      const { name, login, password, phone, address, town, country, shipAddress, email } = payload
+      const { first, last, email, password, promo } = payload
       const hashed = await hash(password)
 
-      if (!login || !password || !email) {
-        res.writeHead(400).end(JSON.stringify({ error: "login, password and email are required" }))
+      if (!first || !last || !email || !password) {
+        res.writeHead(400).end(JSON.stringify({ error: "There are required to fill all fields to register user!" }))
         return
       }
-      const user = { name, login, hash: hashed, phone, address, town, country, shipAddress, email }
+
+      if (!promo) promo = false
+      const user = { first, last, email, hash: hashed, promo }
       const result = await db.collection('users').insertOne(user).catch(err => {
         if (err.code == 11000) return { insertedId: null }
       })
@@ -96,13 +98,13 @@ async function handleApi(req, res) {
       }
 
     } else if (endpoint == 'login') {
-      const { login, password } = payload
+      const { email, password } = payload
 
-      if (!login || !password) {
-        res.writeHead(400).end(JSON.stringify({ error: "Login or password are incorrect" }))
+      if (!email || !password) {
+        res.writeHead(400).end(JSON.stringify({ error: "Email or password are incorrect" }))
         return
       }
-      const user = await db.collection('users').findOne({ login }, { projection: { _id: 0 } })
+      const user = await db.collection('users').findOne({ email }, { projection: { _id: 0 } })
 
       if (user && await verify(password, user.hash).catch(_ => false)) {
         delete user.hash

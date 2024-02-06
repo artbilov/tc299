@@ -10,7 +10,7 @@ async function handleApi(req, res) {
   const body = await getBody(req)
   const payload = JSON.parse(body || '{}')
 
-  console.log({ path, method, endpoint, params })
+  // console.log({ path, method, endpoint, params })
 
   // db.collection('products').insertMany(JSON.parse(fs.readFileSync('data.json', 'utf-8'))) // put products from the file into a db
   // db.collection('users').createIndex({ email: 1 }, { unique: true })
@@ -45,7 +45,7 @@ async function handleApi(req, res) {
         filter = {
           $and: [
             filter,
-            { price: { $gte: minPrice, $lte: maxPrice } }
+            { price: { $gte: min, $lte: max } }
           ]
         }
       }
@@ -82,7 +82,7 @@ async function handleApi(req, res) {
       const hashed = await hash(password)
 
       if (!first || !last || !email || !password) {
-        res.writeHead(400).end(JSON.stringify({ error: "There are required to fill all fields to register user!" }))
+        res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))
         return
       }
 
@@ -94,7 +94,7 @@ async function handleApi(req, res) {
       if (result.insertedId) {
         res.end(JSON.stringify({ _id: result.insertedId }))
       } else {
-        res.writeHead(400).end(JSON.stringify({ error: "email or login are already in use" }))
+        res.writeHead(400).end(JSON.stringify({ error: "Email is occupied" }))
       }
 
     } else if (endpoint == 'login') {

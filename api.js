@@ -34,11 +34,12 @@ async function handleApi(req, res) {
 
     } else if (endpoint == 'search') {
       const { query, min, max, ...props } = params
+      const $regex = new RegExp(query)
       let filter = query ? {
         $or: [
-          { name: { $regex: query, $options: "i" } },
-          { category: { $regex: query, $options: "i" } },
-          { color: { $regex: query, $options: "i" } }
+          { name: { $regex, $options: "i" } },
+          { category: { $regex, $options: "i" } },
+          { color: { $regex, $options: "i" } }
         ]
       } : props
       if (min && max) {

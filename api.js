@@ -34,7 +34,7 @@ async function handleApi(req, res) {
 
     } else if (endpoint == 'search') {
       const { query, min, max, ...props } = params
-      const $regex = new RegExp(query.replace(/([^a-zA-Z0-9])/g, "\\$1"))
+      const $regex = !min && !max ? new RegExp(query.replace(/([^a-zA-Z0-9])/g, "\\$1")) : new RegExp(query)
       let filter = query ?
         // { $or: [
         { name: { $regex, $options: "i" } }

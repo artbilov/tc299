@@ -38,8 +38,8 @@ async function handleApi(req, res) {
       let filter = query ? {
         $or: [
           { name: { $regex, $options: "i" } },
-          { category: { $regex, $options: "i" } },
-          { color: { $regex, $options: "i" } }
+          // { category: { $regex, $options: "i" } },
+          // { color: { $regex, $options: "i" } }
         ]
       } : props
       if (min && max) {

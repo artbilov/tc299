@@ -15,11 +15,23 @@ async function handleApi(req, res) {
   // db.collection('products').insertMany(JSON.parse(fs.readFileSync('data.json', 'utf-8'))) // put products from the file into a db
   // db.collection('users').createIndex({ email: 1 }, { unique: true })
   // db.collection('users').createIndex({ login: 1 }, { unique: true })
-
+  // res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Headers', 'POST, GET, DELETE, OPTIONS, key')
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS')
+
+  // // Разрешить доступ с определенных доменов
+  // res.setHeader('Access-Control-Allow-Origin', 'http://example.com');
+
+  // // Разрешить определенные методы запросов
+  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
+  // // Разрешить определенные заголовки
+  // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // // Разрешить отправку куки вместе с запросом
+  // res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   if (method == 'GET') {
 

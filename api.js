@@ -17,9 +17,10 @@ async function handleApi(req, res) {
   // db.collection('users').createIndex({ login: 1 }, { unique: true })
 
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
+  res.setHeader('Access-Control-Request-Method', '*');
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Headers', 'POST, GET, DELETE, OPTIONS, key')
-  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'POST, GET, DELETE, PUT, OPTIONS, key, Content-Type')
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT, OPTIONS')
 
   if (method == 'GET') {
 

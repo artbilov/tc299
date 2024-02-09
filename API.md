@@ -14,3 +14,25 @@ POST /user - add new user (email, password, first, last should be nessessary par
 GET /users - temporary API-call to get all users ans see how the objects looks like. To be able to use it in the GET /user call for tests.
 POST /login - get specific user by login (for Login purposes, there is a password check to get user) User will come from DB as is (*testing version, not for production)
 
+
+
+await fetch('https://tc299.onrender.com/user', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({first: "artbilov9", last: "ssssss", password: "111", email: "asd@asd.ci"})
+})
+
+
+await fetch('http://localhost:1234/user', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({first: "artbilov9", last: "ssssss", password: "111", email: "asd@asd.ci"})
+})
+
+
+
+

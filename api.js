@@ -15,12 +15,24 @@ async function handleApi(req, res) {
   // db.collection('products').insertMany(JSON.parse(fs.readFileSync('data.json', 'utf-8'))) // put products from the file into a db
   // db.collection('users').createIndex({ email: 1 }, { unique: true })
   // db.collection('users').createIndex({ login: 1 }, { unique: true })
-
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
   res.setHeader('Access-Control-Request-Method', '*');
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Headers', 'POST, GET, DELETE, PUT, OPTIONS, key, Content-Type')
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT, OPTIONS')
+
+  // // Разрешить доступ с определенных доменов
+  // res.setHeader('Access-Control-Allow-Origin', 'http://example.com');
+
+  // // Разрешить определенные методы запросов
+  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
+  // // Разрешить определенные заголовки
+  // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // // Разрешить отправку куки вместе с запросом
+  // res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   if (method == 'GET') {
 
@@ -80,7 +92,8 @@ async function handleApi(req, res) {
         }
       }
     } else if (endpoint == 'user') {
-      const { first, last, email, password, promo } = payload
+      const { first, last, email, password } = payload
+      let { promo } = payload
       const hashed = await hash(password)
 
       if (!first || !last || !email || !password) {

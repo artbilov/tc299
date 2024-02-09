@@ -15,7 +15,7 @@ async function handleApi(req, res) {
   // db.collection('products').insertMany(JSON.parse(fs.readFileSync('data.json', 'utf-8'))) // put products from the file into a db
   // db.collection('users').createIndex({ email: 1 }, { unique: true })
   // db.collection('users').createIndex({ login: 1 }, { unique: true })
-  // res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Headers', 'POST, GET, DELETE, OPTIONS, key')

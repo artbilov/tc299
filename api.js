@@ -79,7 +79,8 @@ async function handleApi(req, res) {
         }
       }
     } else if (endpoint == 'user') {
-      const { first, last, email, password, promo } = payload
+      const { first, last, email, password } = payload
+      let { promo } = payload
       const hashed = await hash(password)
 
       if (!first || !last || !email || !password) {

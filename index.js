@@ -2,12 +2,17 @@ require('dotenv').config()
 const { createServer } = require('http')
 const fs = require('fs')
 const port = process.env.PORT
-const { handleApi } = require('./api.js')
+const { makeApiHandler } = require('./api.js')
+const { connectMongo } = require('./mongo.js')
 
 
-const server = createServer(handleApi)
+connectMongo().then(db => {
+  const handleApi = makeApiHandler(db)
+  const server = createServer(handleApi)
 
-server.listen(port, () => {
-  console.log('Server started on http://localhost:' + port)
+  server.listen(port, () => {
+    console.log('Server started on http://localhost:' + port)
+  })
 })
+
 

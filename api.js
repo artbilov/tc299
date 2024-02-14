@@ -27,9 +27,11 @@ function makeApiHandler(db) {
     if (method == 'GET') {
 
       if (endpoint == 'products') {
-        const products = await db.collection('products').find().toArray()
-        const from = params.offset || 0
-        res.end(JSON.stringify(products.slice(+from, +from + (+params.count || 9))))
+
+        const page = +params.page || 1
+        const pageSize = 9
+        const data = await getProducts(db, pageSize, page)
+        res.end(JSON.stringify(data))
 
       } else if (endpoint == 'product') {
         const product = await db.collection('products').findOne({ article: params.article })
@@ -37,11 +39,11 @@ function makeApiHandler(db) {
 
       } else if (endpoint == 'search') {
         const { query, min, max, ...props } = params
-        const $regex = !min && !max ? new RegExp(query.replace(/([^a-zA-Z0-9])/g, "\\$1")) : new RegExp(query)
+        const $regex = new RegExp(query?.replace(/([^a-zA-Z0-9])/g, "\\$1"))
         let filter = query ?
           // { $or: [
           { name: { $regex, $options: "i" } }
-          // { category: { $regex, $options: "i" } },
+          // { category: { $regex, $options: "i" }},
           // { color: { $regex, $options: "i" } }
           // ] }
           : props
@@ -135,6 +137,31 @@ async function getBody(req) {
   let body = ''
   for await (const chunk of req) body += chunk
   return body
+}
+
+async function getProducts(db, pageSize, page) {
+  const skip = (page - 1) * pageSize;
+
+  const pipeline = [
+    {
+      $facet: {
+        totalProducts: [
+          { $count: 'amount' },
+
+        ],
+        products: [
+          { $skip: skip },
+          { $limit: pageSize }
+        ]
+      }
+    }
+  ]
+
+  const [result] = await db.collection('products').aggregate(pipeline).toArray()
+  const { products, totalProducts: [{ amount }] } = result
+  const data = { page, totalProducts: amount, totalPages: Math.ceil(amount / pageSize), results: products }
+  console.log(data)
+  return data
 }
 
 const { decode } = require('querystring');

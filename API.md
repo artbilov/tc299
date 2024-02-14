@@ -1,6 +1,5 @@
 Products API:
-GET /products - get all products
-GET /products?ofset={number}&count={number} - pagination parameters
+GET /products[?page={number}] - products page by page, response body like {page, totalProducts, totalPages, results[]}
 GET /product?article={product_article} - get specific product by article
 POST /product - add new product (for Admin user only, *now this check is switched off, so everybody could add product into the database. *property "article" should be unique)
 

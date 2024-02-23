@@ -10,10 +10,11 @@ function makeApiHandler(db) {
     const method = req.method
     const body = await getBody(req)
     const payload = JSON.parse(body || '{}')
+    const pageSize = 9
 
     // console.log({ path, method, endpoint, params })
 
-    // db.collection('products').insertMany(JSON.parse(fs.readFileSync('data.json', 'utf-8'))) // put products from the file into a db
+    // db.collection('products').insertMany(JSON.parse(fs.readFileSync('products.json', 'utf-8'))) // put products from the file into a db
     // db.collection('users').createIndex({ email: 1 }, { unique: true })
     // db.collection('users').createIndex({ login: 1 }, { unique: true })
 
@@ -29,7 +30,6 @@ function makeApiHandler(db) {
       if (endpoint == 'products') {
 
         const page = +params.page || 1
-        const pageSize = 9
         const data = await getProducts(db, pageSize, page)
         res.end(JSON.stringify(data))
 
@@ -63,17 +63,46 @@ function makeApiHandler(db) {
           const from = params.offset || 0
           res.end(JSON.stringify(users.slice(+from, +from + (+params.count || 20))))
         }
+      } else if (endpoint == 'candles') {
+        const category = 'Candles'
+        const page = +params.page || 1
+        const data = await getProducts(db, pageSize, page, category)
+        res.end(JSON.stringify(data))
+      } else if (endpoint == 'lighting-decor') {
+        const category = 'Lighting Decor'
+        const page = +params.page || 1
+        const data = await getProducts(db, pageSize, page, category)
+        res.end(JSON.stringify(data))
+      } else if (endpoint == 'gift-sets') {
+        const category = 'Gift Sets'
+        const page = +params.page || 1
+        const data = await getProducts(db, pageSize, page, category)
+        res.end(JSON.stringify(data))
+      } else if (endpoint == 'get-warm') {
+        const category = 'Get Warm'
+        const page = +params.page || 1
+        const data = await getProducts(db, pageSize, page, category)
+        res.end(JSON.stringify(data))
+      } else if (endpoint == 'table-games') {
+        const category = 'Table Games'
+        const page = +params.page || 1
+        const data = await getProducts(db, pageSize, page, category)
+      } else if (endpoint == 'books-and-journals') {
+        const category = 'Books & Journals'
+        const page = +params.page || 1
+        const data = await getProducts(db, pageSize, page, category)
+        res.end(JSON.stringify(data))
       }
 
     } else if (method == 'POST') {
       if (endpoint == 'product') {
         if (isAdmin(req)) {
-          const { name, category, color, quantity, article, price, image, picture, otherpics = [] } = payload
-          if (!name || !category || !article) {
+          const { _id, name, category, description = '', aboutProduct = '', color = '', quantity = 0, price = null, image = [], picture = '', reviews = [], questions = [], createdAt = '', updatedAt = '' } = payload
+          if (!name || !category) {
             res.writeHead(400).end(JSON.stringify({ error: "name, category and article are required" }))
             return
           }
-          const product = { name, category, color, quantity, price, image, picture, otherpics, article }
+          const product = { ..._id && {_id}, name, category, description, aboutProduct, color, quantity, price, image, picture, reviews, questions, createdAt, updatedAt }
           const result = await db.collection('products').insertOne(product).catch(err => {
             if (err.code == 11000) return { insertedId: null }
           })
@@ -139,15 +168,24 @@ async function getBody(req) {
   return body
 }
 
-async function getProducts(db, pageSize, page) {
+async function getProducts(db, pageSize, page, category) {
   const skip = (page - 1) * pageSize;
 
   const pipeline = [
+    ...category ? [{ $match: { category } }] : [],
     {
       $facet: {
         totalProducts: [
           { $count: 'amount' },
-
+        ],
+        prices: [
+          {
+            $group: {
+              _id: null,
+              minPrice: { $min: '$price' },
+              maxPrice: { $max: '$price' }
+            }
+          },
         ],
         products: [
           { $skip: skip },
@@ -158,8 +196,8 @@ async function getProducts(db, pageSize, page) {
   ]
 
   const [result] = await db.collection('products').aggregate(pipeline).toArray()
-  const { products, totalProducts: [{ amount }] } = result
-  const data = { page, totalProducts: amount, totalPages: Math.ceil(amount / pageSize), results: products }
+  const { products, totalProducts: [{ amount }], prices: [{ minPrice, maxPrice }] } = result
+  const data = { page, totalProducts: amount, totalPages: Math.ceil(amount / pageSize), minPrice, maxPrice, results: products }
   console.log(data)
   return data
 }
@@ -168,4 +206,5 @@ const { decode } = require('querystring');
 const fs = require('fs')
 const { isAdmin } = require('./check-admin.js')
 const { hash, verify } = require('./encrypt-password.js')
+
 

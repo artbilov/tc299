@@ -4,6 +4,13 @@ module.exports = { makeApiHandler }
 
 function makeApiHandler(db) {
   return async function handleApi(req, res) {
+    if (req.url === '/') {
+      res.writeHead(302, {
+        'Location': 'https://hygge-home.vercel.app/'
+      });
+      res.end()
+      return
+    }
     const path = req.url.slice(1)
     const [endpoint, query] = path.split('?')
     const params = decode(query)
@@ -102,7 +109,7 @@ function makeApiHandler(db) {
             res.writeHead(400).end(JSON.stringify({ error: "name, category and article are required" }))
             return
           }
-          const product = { ..._id && {_id}, name, category, description, aboutProduct, color, quantity, price, image, picture, reviews, questions, createdAt, updatedAt }
+          const product = { ..._id && { _id }, name, category, description, aboutProduct, color, quantity, price, image, picture, reviews, questions, createdAt, updatedAt }
           const result = await db.collection('products').insertOne(product).catch(err => {
             if (err.code == 11000) return { insertedId: null }
           })

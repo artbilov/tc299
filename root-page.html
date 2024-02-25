@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test API page</title>
+</head>
+<body>
+  <h1>Test API page</h1>
+  <form action="javascript:">
+    <input type="text">
+    <button>Try</button>
+  </form>
+  <p>Put your API-route in the Input field above. Forexemple: 'candles' or 'gift-sets'</p>
+
+  <script>
+    const form = document.querySelector('form')
+    const input = document.querySelector('input')
+    
+    const testApi = async (e) => {
+      e.preventDefault()
+      const url = `https://tc299.vercel.app/${input.value}`
+      const result = await fetch(url)
+      const data = await result.json()
+      render(data)
+    }
+
+    const render = (data) => {
+      const payload = [data]
+      console.log(data)
+      const ul = document.createElement('ul')
+      payload.forEach(item => {
+        const li = document.createElement('li')
+        li.textContent = item
+        ul.append(li)
+      })
+      document.body.append(ul)
+    }
+
+    form.addEventListener('submit', testApi)
+
+  </script>
+</body>
+</html>

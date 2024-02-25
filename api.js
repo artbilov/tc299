@@ -4,13 +4,14 @@ module.exports = { makeApiHandler }
 
 function makeApiHandler(db) {
   return async function handleApi(req, res) {
-    if (req.url === '/') {
-      res.writeHead(302, {
-        'Location': 'https://hygge-home.vercel.app/'
-      });
-      res.end()
-      return
-    }
+    // if (req.url === '/') {
+    //   res.writeHead(302, {
+    //     'Location': 'https://hygge-home.vercel.app/'
+    //   });
+    //   res.end()
+    //   return
+    // }
+
     const path = req.url.slice(1)
     const [endpoint, query] = path.split('?')
     const params = decode(query)
@@ -18,6 +19,7 @@ function makeApiHandler(db) {
     const body = await getBody(req)
     const payload = JSON.parse(body || '{}')
     const pageSize = 9
+    const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
     // console.log({ path, method, endpoint, params })
 
@@ -31,6 +33,7 @@ function makeApiHandler(db) {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Access-Control-Allow-Headers', 'POST, GET, DELETE, PUT, OPTIONS, key, Content-Type')
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT, OPTIONS')
+
 
     if (method == 'GET') {
 
@@ -70,36 +73,43 @@ function makeApiHandler(db) {
           const from = params.offset || 0
           res.end(JSON.stringify(users.slice(+from, +from + (+params.count || 20))))
         }
-      } else if (endpoint == 'candles') {
-        const category = 'Candles'
+      } else if (categoryEndpoints[endpoint]) {
+        const category = categoryEndpoints[endpoint]
         const page = +params.page || 1
         const data = await getProducts(db, pageSize, page, category)
         res.end(JSON.stringify(data))
-      } else if (endpoint == 'lighting-decor') {
-        const category = 'Lighting Decor'
-        const page = +params.page || 1
-        const data = await getProducts(db, pageSize, page, category)
-        res.end(JSON.stringify(data))
-      } else if (endpoint == 'gift-sets') {
-        const category = 'Gift Sets'
-        const page = +params.page || 1
-        const data = await getProducts(db, pageSize, page, category)
-        res.end(JSON.stringify(data))
-      } else if (endpoint == 'get-warm') {
-        const category = 'Get Warm'
-        const page = +params.page || 1
-        const data = await getProducts(db, pageSize, page, category)
-        res.end(JSON.stringify(data))
-      } else if (endpoint == 'table-games') {
-        const category = 'Table Games'
-        const page = +params.page || 1
-        const data = await getProducts(db, pageSize, page, category)
-      } else if (endpoint == 'books-and-journals') {
-        const category = 'Books & Journals'
-        const page = +params.page || 1
-        const data = await getProducts(db, pageSize, page, category)
-        res.end(JSON.stringify(data))
+      } else if (req.url === '/') {
+        res.setHeader('Content-Type', 'text/html; charset=utf-8')
+        res.end(fs.readFileSync('./root-page.html', 'utf-8')) || res.end('wellcome to the hygge api server')
+      } else {
+        res.end(JSON.stringify({ error: 'not found' }))
       }
+      // else if (endpoint == 'lighting-decor') {
+      //   const category = 'Lighting Decor'
+      //   const page = +params.page || 1
+      //   const data = await getProducts(db, pageSize, page, category)
+      //   res.end(JSON.stringify(data))
+      // } else if (endpoint == 'gift-sets') {
+      //   const category = 'Gift Sets'
+      //   const page = +params.page || 1
+      //   const data = await getProducts(db, pageSize, page, category)
+      //   res.end(JSON.stringify(data))
+      // } else if (endpoint == 'get-warm') {
+      //   const category = 'Get Warm'
+      //   const page = +params.page || 1
+      //   const data = await getProducts(db, pageSize, page, category)
+      //   res.end(JSON.stringify(data))
+      // } else if (endpoint == 'table-games') {
+      //   const category = 'Table Games'
+      //   const page = +params.page || 1
+      //   const data = await getProducts(db, pageSize, page, category)
+      //   res.end(JSON.stringify(data))
+      // } else if (endpoint == 'books-and-journals') {
+      //   const category = 'Books & Journals'
+      //   const page = +params.page || 1
+      //   const data = await getProducts(db, pageSize, page, category)
+      //   res.end(JSON.stringify(data))
+      // }
 
     } else if (method == 'POST') {
       if (endpoint == 'product') {
@@ -120,17 +130,17 @@ function makeApiHandler(db) {
           }
         }
       } else if (endpoint == 'user') {
-        const { first, last, email, password } = payload
+        const { fullName, email, password } = payload
         let { promo } = payload
         const hashed = await hash(password)
 
-        if (!first || !last || !email || !password) {
+        if (!fullName || !email || !password) {
           res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))
           return
         }
 
         if (!promo) promo = false
-        const user = { first, last, email, hash: hashed, promo }
+        const user = { fullName, email, hash: hashed, promo }
         const result = await db.collection('users').insertOne(user).catch(err => {
           if (err.code == 11000) return { insertedId: null }
         })

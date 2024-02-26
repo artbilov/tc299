@@ -22,20 +22,20 @@
       const url = `https://tc299.vercel.app/${input.value}`
       const result = await fetch(url)
       const data = result.json()
-      //render(data)
+      render(data)
       console.log(data)
     }
 
     const render = (data) => {
-      const payload = [data]
+      //const payload = [data]
       console.log(data)
-      const ul = document.createElement('ul')
-      payload.forEach(item => {
-        const li = document.createElement('li')
-        li.textContent = item
-        ul.append(li)
-      })
-      document.body.append(ul)
+      //const ul = document.createElement('ul')
+      //payload.forEach(item => {
+      //  const li = document.createElement('li')
+      //  li.textContent = item
+      //  ul.append(li)
+      //})
+      //document.body.append(ul)
     }
 
     //form.addEventListener('submit', testApi)

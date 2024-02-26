@@ -21,8 +21,8 @@
       e.preventDefault()
       const url = `https://tc299.vercel.app/${input.value}`
       const result = await fetch(url)
-      const data = await result.json()
-      //render(data)
+      const data = result.json()
+      render(data)
       console.log(data)
     }
 

@@ -1,47 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test API page</title>
-</head>
-<body>
-  <h1>Test API page</h1>
-  <form action="javascript:">
-    <input type="text">
-    <button>Try</button>
-  </form>
-  <p>Put your API-route in the Input field above. Forexemple: 'candles' or 'gift-sets'</p>
 
-<!--
   <script>
-    const form = document.querySelector('form')
-    const input = document.querySelector('input')
-    
+    onload = () => form.addEventListener('submit', testApi)
+
     const testApi = async (e) => {
       e.preventDefault()
-      const url = `https://tc299.vercel.app/${input.value}`
+      if (!input.value) return
+      ul.innerHTML = ''
+      const url = `http://localhost:1234/${input.value}`
+      // const url = `https://tc299.vercel.app/${input.value}`
       const result = await fetch(url)
-      const data = result.json()
+      const data = await result.json()
+
       render(data)
       console.log(data)
     }
 
     const render = (data) => {
-      //const payload = [data]
-      console.log(data)
-      //const ul = document.createElement('ul')
-      //payload.forEach(item => {
-      //  const li = document.createElement('li')
-      //  li.textContent = item
-      //  ul.append(li)
-      //})
-      //document.body.append(ul)
+      if (input.value == 'products') {
+        data.results.forEach(item => {
+          const li = document.createElement('li')
+          li.innerHTML = `
+            <h3>${item.name}</h3>
+            <img src="${item.image[0]}">
+            <p>${item.price}</p>
+          `
+          ul.append(li)
+        })
+      } else {
+        data.results.forEach(({_id, hash, ...item}) => {
+          const tr = document.createElement('tr')
+          let html = ''
+          for (const key in item) {
+            html += `<td title="${key}">${item[key]}</td>`
+          }
+          tr.innerHTML = html
+          table.append(tr)
+        })
+      }
+    }
+  </script>
+
+  <style>
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
 
-    //form.addEventListener('submit', testApi)
+    li {
+      width: 32%;
+      overflow: hidden;
+    }
 
-  </script>
--->
+    img {
+      width: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>Test API page</h1>
+  <form id="form">
+    <input id="input" type="text">
+    <button>Try</button>
+  </form>
+  <p>Put your API-route in the Input field above. For example: 'candles' or 'gift-sets'</p>
+  <ul id="ul"></ul>
+  <table id="table"></table>
+
 </body>
+
 </html>

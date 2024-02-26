@@ -69,9 +69,9 @@ function makeApiHandler(db) {
         res.end(JSON.stringify(products))
       } else if (endpoint == 'users') {
         if (isAdmin(req)) {
-          const users = await db.collection('users').find().toArray()
-          const from = params.offset || 0
-          res.end(JSON.stringify(users.slice(+from, +from + (+params.count || 20))))
+          const page = +params.page || 1
+          const data = await getUsers(db, pageSize, page)
+          res.end(JSON.stringify(data))
         }
       } else if (categoryEndpoints[endpoint]) {
         const category = categoryEndpoints[endpoint]
@@ -84,32 +84,6 @@ function makeApiHandler(db) {
       } else {
         res.end(JSON.stringify({ error: 'not found' }))
       }
-      // else if (endpoint == 'lighting-decor') {
-      //   const category = 'Lighting Decor'
-      //   const page = +params.page || 1
-      //   const data = await getProducts(db, pageSize, page, category)
-      //   res.end(JSON.stringify(data))
-      // } else if (endpoint == 'gift-sets') {
-      //   const category = 'Gift Sets'
-      //   const page = +params.page || 1
-      //   const data = await getProducts(db, pageSize, page, category)
-      //   res.end(JSON.stringify(data))
-      // } else if (endpoint == 'get-warm') {
-      //   const category = 'Get Warm'
-      //   const page = +params.page || 1
-      //   const data = await getProducts(db, pageSize, page, category)
-      //   res.end(JSON.stringify(data))
-      // } else if (endpoint == 'table-games') {
-      //   const category = 'Table Games'
-      //   const page = +params.page || 1
-      //   const data = await getProducts(db, pageSize, page, category)
-      //   res.end(JSON.stringify(data))
-      // } else if (endpoint == 'books-and-journals') {
-      //   const category = 'Books & Journals'
-      //   const page = +params.page || 1
-      //   const data = await getProducts(db, pageSize, page, category)
-      //   res.end(JSON.stringify(data))
-      // }
 
     } else if (method == 'POST') {
       if (endpoint == 'product') {
@@ -215,6 +189,31 @@ async function getProducts(db, pageSize, page, category) {
   const [result] = await db.collection('products').aggregate(pipeline).toArray()
   const { products, totalProducts: [{ amount }], prices: [{ minPrice, maxPrice }] } = result
   const data = { page, totalProducts: amount, totalPages: Math.ceil(amount / pageSize), minPrice, maxPrice, results: products }
+  console.log(data)
+  return data
+}
+
+async function getUsers(db, pageSize, page) {
+  const skip = (page - 1) * pageSize;
+
+  const pipeline = [
+    {
+      $facet: {
+        totalUsers: [
+          { $count: 'amount' },
+        ],
+
+        users: [
+          { $skip: skip },
+          { $limit: pageSize }
+        ]
+      }
+    }
+  ]
+
+  const [result] = await db.collection('users').aggregate(pipeline).toArray()
+  const { users, totalUsers: [{ amount }] } = result
+  const data = { page, totalPages: Math.ceil(amount / pageSize), totalUsers: amount, results: users }
   console.log(data)
   return data
 }

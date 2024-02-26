@@ -4,13 +4,13 @@ module.exports = { makeApiHandler }
 
 function makeApiHandler(db) {
   return async function handleApi(req, res) {
-    // if (req.url === '/') {
-    //   res.writeHead(302, {
-    //     'Location': 'https://hygge-home.vercel.app/'
-    //   });
-    //   res.end()
-    //   return
-    // }
+    if (req.url === '/') {
+      res.writeHead(302, {
+        'Location': 'https://tc299.vercel.app/root-page.html'
+      });
+      res.end()
+      return
+    }
 
     const path = req.url.slice(1)
     const [endpoint, query] = path.split('?')
@@ -78,7 +78,7 @@ function makeApiHandler(db) {
         const page = +params.page || 1
         const data = await getProducts(db, pageSize, page, category)
         res.end(JSON.stringify(data))
-      } else if (endpoint === '') {
+      } else if (endpoint === 'root-page.html') {
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
         res.end(fs.readFileSync('./root-page.html', 'utf-8')) || res.end('wellcome to the hygge api server')
       } else {

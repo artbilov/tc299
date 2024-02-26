@@ -78,7 +78,7 @@ function makeApiHandler(db) {
         const page = +params.page || 1
         const data = await getProducts(db, pageSize, page, category)
         res.end(JSON.stringify(data))
-      } else if (req.url === '/') {
+      } else if (endpoint === '') {
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
         res.end(fs.readFileSync('./root-page.html', 'utf-8')) || res.end('wellcome to the hygge api server')
       } else {

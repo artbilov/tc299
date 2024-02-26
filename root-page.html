@@ -22,7 +22,8 @@
       const url = `https://tc299.vercel.app/${input.value}`
       const result = await fetch(url)
       const data = await result.json()
-      render(data)
+      //render(data)
+      console.log(data)
     }
 
     const render = (data) => {

@@ -13,8 +13,8 @@
       e.preventDefault()
       if (!input.value) return
       ul.innerHTML = ''
-      const url = `http://localhost:1234/${input.value}`
-      // const url = `https://tc299.vercel.app/${input.value}`
+      // const url = `http://localhost:1234/${input.value}`
+      const url = `https://tc299.vercel.app/${input.value}`
       const result = await fetch(url)
       const data = await result.json()
 

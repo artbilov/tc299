@@ -84,8 +84,8 @@ function makeApiHandler(db) {
       } else if (endpoint === 'art-page.html') {
         console.log(fs.readdirSync('.'))
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
-        res.end( artPage, 'utf-8')
-        // res.end(fs.readFileSync('art-page.html', 'utf-8'))
+        // res.end( artPage, 'utf-8')
+        res.end(fs.readFileSync('art-page.html', 'utf-8'))
       } else {
         res.statusCode = 404
         res.end(JSON.stringify({ error: 'not found' }))

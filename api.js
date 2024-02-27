@@ -80,7 +80,7 @@ function makeApiHandler(db) {
         res.end(JSON.stringify(data))
       } else if (endpoint === 'art-page.html') {
         console.log(fs.readdirSync('.'))
-        const html = ``
+        const html = `hello`
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
         res.end( html, 'utf-8')
         // res.end(fs.readFileSync('art-page.html', 'utf-8'))

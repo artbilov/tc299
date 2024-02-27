@@ -80,8 +80,91 @@ function makeApiHandler(db) {
         res.end(JSON.stringify(data))
       } else if (endpoint === 'art-page.html') {
         console.log(fs.readdirSync('.'))
+        const html = "<!DOCTYPE html>
+        <html lang="en">
+        
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Test API page</title>
+          <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' style=' background:black'><text y='16' font-family='Trebuchet MS' font-weight='900' fill='orange'>AB</text></svg>">
+          <script>
+            onload = () => form.addEventListener('submit', testApi)
+        
+            const testApi = async (e) => {
+              e.preventDefault()
+              if (!input.value) return
+              ul.innerHTML = ''
+              // const url = `http://localhost:1234/${input.value}`
+              const url = `https://tc299.vercel.app/${input.value}`
+              const result = await fetch(url)
+              const data = await result.json()
+        
+              render(data)
+              console.log(data)
+            }
+        
+            const render = (data) => {
+              if (input.value == 'products') {
+                data.results.forEach(item => {
+                  const li = document.createElement('li')
+                  li.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <img src="${item.image[0]}">
+                    <p>${item.price}</p>
+                  `
+                  ul.append(li)
+                })
+              } else {
+                data.results.forEach(({_id, hash, ...item}) => {
+                  const tr = document.createElement('tr')
+                  let html = ''
+                  for (const key in item) {
+                    html += `<td title="${key}">${item[key]}</td>`
+                  }
+                  tr.innerHTML = html
+                  table.append(tr)
+                })
+              }
+            }
+          </script>
+        
+          <style>
+            ul {
+              list-style: none;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+            }
+        
+            li {
+              width: 32%;
+              overflow: hidden;
+            }
+        
+            img {
+              width: 100%;
+            }
+          </style>
+        
+        </head>
+        
+        <body>
+          <h1>Test API page</h1>
+          <form id="form">
+            <input id="input" type="text">
+            <button>Try</button>
+          </form>
+          <p>Put your API-route in the Input field above. For example: 'candles' or 'gift-sets'</p>
+          <ul id="ul"></ul>
+          <table id="table"></table>
+        
+        </body>
+        
+        </html>"
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
-        // res.end(fs.readFileSync('', 'utf-8'))
+         
+        res.end( html, 'utf-8'))
         res.end(fs.readFileSync('art-page.html', 'utf-8'))
       } else {
         res.statusCode = 404

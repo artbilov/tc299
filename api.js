@@ -4,15 +4,15 @@ module.exports = { makeApiHandler }
 
 function makeApiHandler(db) {
   return async function handleApi(req, res) {
-    if (req.url === '/') {
-      res.writeHead(302, {
-        'Location': 'https://tc299.vercel.app/root-page.html'
-      });
-      res.end()
-      return
-    }
+    // if (req.url === '/') {
+    //   res.writeHead(302, {
+    //     'Location': 'https://tc299.vercel.app/root-page.html'
+    //   });
+    //   res.end()
+    //   return
+    // }
 
-    const path = req.url.slice(1)
+    const path = req.url.slice(1) || 'root-page.html'
     const [endpoint, query] = path.split('?')
     const params = decode(query)
     const method = req.method
@@ -80,8 +80,9 @@ function makeApiHandler(db) {
         res.end(JSON.stringify(data))
       } else if (endpoint === 'root-page.html') {
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
-        res.end(fs.readFileSync('./root-page.html', 'utf-8')) || res.end('wellcome to the hygge api server')
+        res.end(fs.readFileSync('./root-page.html', 'utf-8'))
       } else {
+        res.statusCode = 404
         res.end(JSON.stringify({ error: 'not found' }))
       }
 

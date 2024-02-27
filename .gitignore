@@ -1,3 +1,4 @@
 .env
 node_modules
 endpoint-list.txt
+data.json

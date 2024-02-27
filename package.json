@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vercel/speed-insights": "^1.0.10",
     "dotenv": "^16.3.1",
     "mongodb": "^6.3.0"
   },

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test API page</title>
-
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' style=' background:black'><text y='16' font-family='Trebuchet MS' font-weight='900' fill='orange'>AB</text></svg>">
   <script>
     onload = () => form.addEventListener('submit', testApi)
 
@@ -13,8 +13,8 @@
       e.preventDefault()
       if (!input.value) return
       ul.innerHTML = ''
-      const url = `http://localhost:1234/${input.value}`
-      // const url = `https://tc299.vercel.app/${input.value}`
+      // const url = `http://localhost:1234/${input.value}`
+      const url = `https://tc299.vercel.app/${input.value}`
       const result = await fetch(url)
       const data = await result.json()
 

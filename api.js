@@ -79,6 +79,7 @@ function makeApiHandler(db) {
         const data = await getProducts(db, pageSize, page, category)
         res.end(JSON.stringify(data))
       } else if (endpoint === 'root-page.html') {
+        console.log(fs.readdirSync('.'))
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
         res.end(fs.readFileSync('./root-page.html', 'utf-8'))
       } else {

@@ -3,8 +3,6 @@ module.exports = { makeApiHandler }
 
 const artPage = `<h1>Hello Art</h1>`
 
-
-
 function makeApiHandler(db) {
   return async function handleApi(req, res) {
    

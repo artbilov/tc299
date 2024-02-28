@@ -5,7 +5,7 @@ const artPage = `<h1>Hello Art</h1>`
 
 function makeApiHandler(db) {
   return async function handleApi(req, res) {
-   
+
     const path = req.url.slice(1) || 'art-page.html'
     const [endpoint, query] = path.split('?')
     const params = decode(query)
@@ -70,13 +70,17 @@ function makeApiHandler(db) {
       } else if (categoryEndpoints[endpoint]) {
         const category = categoryEndpoints[endpoint]
         const page = +params.page || 1
-        const data = await getProducts(db, pageSize, page, category)
+        const color = params.color || ''
+        const min = +params.min || 0
+        const max = +params.max || Infinity
+        const data = await getProducts(db, pageSize, page, category, color, min, max)
         res.end(JSON.stringify(data))
       } else if (endpoint === 'art-page.html') {
         console.log(fs.readdirSync('.'))
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
         // res.end( artPage, 'utf-8')
-        res.end(fs.readFileSync('art-page.html', 'utf-8'))
+        // res.end(fs.readFileSync('art-page.html', 'utf-8'))
+        res.end(fs.readFileSync(artPage, 'utf-8'))
       } else {
         res.statusCode = 404
         res.end(JSON.stringify({ error: 'not found' }))
@@ -156,11 +160,17 @@ async function getBody(req) {
   return body
 }
 
-async function getProducts(db, pageSize, page, category) {
+async function getProducts(db, pageSize, page, category, color, min, max) {
   const skip = (page - 1) * pageSize;
 
   const pipeline = [
-    ...category ? [{ $match: { category } }] : [],
+    ...category ? [{
+      $match:
+      {
+        category, ...color ? { color } : {},
+        price: { $lte: max, $gte: min }
+      }
+    }] : [],
     {
       $facet: {
         totalProducts: [
@@ -184,7 +194,7 @@ async function getProducts(db, pageSize, page, category) {
   ]
 
   const [result] = await db.collection('products').aggregate(pipeline).toArray()
-  const { products, totalProducts: [{ amount }], prices: [{ minPrice, maxPrice }] } = result
+  const { products, totalProducts: [{ amount } = {}], prices: [{ minPrice, maxPrice } = {}] } = result
   const data = { page, totalProducts: amount, totalPages: Math.ceil(amount / pageSize), minPrice, maxPrice, results: products }
   console.log(data)
   return data

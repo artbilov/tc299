@@ -4,13 +4,13 @@ GET /product?article={product_article} - get specific product by article
 POST /product - add new product (for Admin user only, *now this check is switched off, so everybody could add product into the database.)
 
 Products by Category - API:
-NOTE: Response comes as an object with number of all products from specific category, numbers with a min and a max prices of all products in this category, and results with 9 products, number of pages, current page number (page=1 set by default) 
-GET /candles[?page={number}] - all products from the category "candles"
-GET /lighting-decor[?page={number}] - all products from the category "Lighting Decor"
-GET /gift-sets[?page={number}] - all products from the category "Gift Sets"
-GET /get-warm[?page={number}] - all products from the category "Get Warm"
-GET /table-games[?page={number}] - all products from the category "Table Games"
-GET /books-and-journals[?page={number}] - all products from the category "Books & Journals"
+NOTE: Response comes as an object with number of all products from specific category, numbers with a min and a max prices of all products in this category (or min and max of filtered products), and results with 9 products, number of pages, current page number (page=1 set by default). 
+GET /candles[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "candles" or with specific params of filtering.
+GET /lighting-decor[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Lighting Decor" or with specific params of filtering.
+GET /gift-sets[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Gift Sets" or with specific params of filtering.
+GET /get-warm[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Get Warm" or with specific params of filtering.
+GET /table-games[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Table Games" or with specific params of filtering.
+GET /books-and-journals[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Books & Journals" or with specific params of filtering.
 
 
 GET /search?query={partial_characters} - partial search in text fields

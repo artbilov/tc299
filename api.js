@@ -7,14 +7,7 @@ const artPage = `<h1>Hello Art</h1>`
 
 function makeApiHandler(db) {
   return async function handleApi(req, res) {
-    // if (req.url === '/') {
-    //   res.writeHead(302, {
-    //     'Location': 'https://tc299.vercel.app/art-page.html'
-    //   });
-    //   res.end()
-    //   return
-    // }
-
+   
     const path = req.url.slice(1) || 'art-page.html'
     const [endpoint, query] = path.split('?')
     const params = decode(query)

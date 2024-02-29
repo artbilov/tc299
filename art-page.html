@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test API page</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' style=' background:black'><text y='16' font-family='Trebuchet MS' font-weight='900' fill='orange'>AB</text></svg>">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' style=' background:black'><text y='16' font-family='Trebuchet MS' font-weight='900' fill='orange'>AB</text></svg>">
   <script>
     onload = () => form.addEventListener('submit', testApi)
 
@@ -23,10 +24,10 @@
     }
 
     const render = (data) => {
-    const categoryEndpoints = [ 'candles', 'lighting-decor', 'gift-sets', 'get-warm', 'table-games', 'books-and-journals' ]
+      const categoryEndpoints = ['candles', 'lighting-decor', 'gift-sets', 'get-warm', 'table-games', 'books-and-journals']
 
       let lishki = ''
-      if (input.value == 'products' || input.value == categoryEndpoints[input.value] ) {
+      if (input.value == 'products' || input.value == categoryEndpoints[input.value]) {
         data.results.forEach(item => {
           lishki += `
             <li>
@@ -39,7 +40,7 @@
         ul.innerHTML = ''
         ul.innerHTML = lishki
       } else {
-        data.results.forEach(({_id, hash, ...item}) => {
+        data.results.forEach(({ _id, hash, ...item }) => {
           const tr = document.createElement('tr')
           let html = ''
           for (const key in item) {

@@ -23,8 +23,10 @@
     }
 
     const render = (data) => {
+    const categoryEndpoints = [ 'candles', 'lighting-decor', 'gift-sets', 'get-warm', 'table-games', 'books-and-journals' ]
+
       let lishki = ''
-      if (input.value == 'products') {
+      if (input.value == 'products' || input.value == categoryEndpoints[input.value] ) {
         data.results.forEach(item => {
           lishki += `
             <li>

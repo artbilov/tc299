@@ -24,8 +24,8 @@
     }
 
     const render = (data) => {
-      let lishki = ''
       if (input.value == 'products') {
+        let lishki = ''
         data.results.forEach(item => {
           lishki += `
             <li>
@@ -35,7 +35,7 @@
             </li>
           `
         })
-        ul.innerHTML = ''
+        location.href = 'https://tc299.onrender.com/'
         ul.innerHTML = lishki
       } else {
         data.results.forEach(({ _id, hash, ...item }) => {
@@ -44,9 +44,10 @@
           for (const key in item) {
             html += `<td title="${key}">${item[key]}</td>`
           }
+        })
+          location.href = 'https://tc299.onrender.com/'
           tr.innerHTML = html
           table.append(tr)
-        })
       }
     }
   </script>

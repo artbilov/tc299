@@ -23,16 +23,17 @@
     }
 
     const render = (data) => {
+      let lishki = ''
       if (input.value == 'products') {
         data.results.forEach(item => {
-          const li = document.createElement('li')
-          li.innerHTML = `
+          lishki += `
             <h3>${item.name}</h3>
             <img src="${item.image[0]}">
             <p>${item.price}</p>
           `
-          ul.append(li)
         })
+        ul.innerHTML = ''
+        ul.innerHTML = lishki
       } else {
         data.results.forEach(({_id, hash, ...item}) => {
           const tr = document.createElement('tr')

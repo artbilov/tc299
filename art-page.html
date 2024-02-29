@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test API page</title>
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' style=' background:black'><text y='16' font-family='Trebuchet MS' font-weight='900' fill='orange'>AB</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' style=' background:black'><text y='16' font-family='Trebuchet MS' font-weight='900' fill='orange'>AB</text></svg>">
   <script>
     onload = () => form.addEventListener('submit', testApi)
+    const category = ['candles', 'lighting-decor', 'gift-sets', 'get-warm', 'table-games', 'books-and-journals']
 
     const testApi = async (e) => {
       e.preventDefault()
@@ -24,30 +24,30 @@
     }
 
     const render = (data) => {
-      if (input.value == 'products') {
-        let lishki = ''
+      if (category.some(name => input.value.startsWith(name))) {
+        ul.innerHTML = ''
         data.results.forEach(item => {
-          lishki += `
-            <li>
-              <h3>${item.name}</h3>
-              <img src="${item.image[0]}">
-              <p>${item.price}</p>
-            </li>
+          const li = document.createElement('li')
+          li.innerHTML = `
+            <h3>${item.name}</h3>
+            <img src="${item.image[0]}">
+            <p>${item.price}</p>
           `
+          ul.append(li)
         })
-        location.href = 'https://tc299.onrender.com/'
-        ul.innerHTML = lishki
+        table.innerHTML = ''
       } else {
-        data.results.forEach(({ _id, hash, ...item }) => {
+        table.innerHTML = ''
+        data.results.forEach(({_id, hash, aboutProduct, description, ...item}) => {
           const tr = document.createElement('tr')
           let html = ''
           for (const key in item) {
             html += `<td title="${key}">${item[key]}</td>`
           }
-        })
-          location.href = 'https://tc299.onrender.com/'
           tr.innerHTML = html
           table.append(tr)
+        })
+        ul.innerHTML = ''
       }
     }
   </script>

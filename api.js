@@ -73,7 +73,9 @@ function makeApiHandler(db) {
         const color = params.color || ''
         const min = +params.min || 0
         const max = +params.max || Infinity
-        const data = await getProducts(db, pageSize, page, category, color, min, max)
+        const sort = params.sort
+        const dir = params.dir
+        const data = await getProducts(db, pageSize, page, category, color, min, max, sort, dir)
         res.end(JSON.stringify(data))
       } else if (endpoint === 'art-page.html') {
         console.log(fs.readdirSync('.'))
@@ -159,7 +161,7 @@ async function getBody(req) {
   return body
 }
 
-async function getProducts(db, pageSize, page, category, color, min, max) {
+async function getProducts(db, pageSize, page, category, color, min, max, sort, dir) {
   const skip = (page - 1) * pageSize;
 
   const pipeline = [
@@ -170,6 +172,7 @@ async function getProducts(db, pageSize, page, category, color, min, max) {
         price: { $lte: max, $gte: min }
       }
     }] : [],
+    ...sort ? [{ $sort: { [sort]: dir == 'desc' ? -1 : 1 } }] : [],
     {
       $facet: {
         totalProducts: [

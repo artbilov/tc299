@@ -169,13 +169,14 @@ async function getProducts(db, pageSize, page, category, color, min, max, sort, 
   const skip = (page - 1) * pageSize;
 
   const pipeline = [
-    ...category ? [{
+    {
       $match:
       {
-        category, ...color ? { color } : {},
-        price: { $lte: max, $gte: min }
+        ...category ? { category } : {},
+        ...color ? { color: Array.isArray(color) ? { $in: color } : color } : {},
+        price: { $gte: min, $lte: max }
       }
-    }] : [],
+    },
     ...sort ? [{ $sort: { [sort]: dir == 'desc' ? -1 : 1 } }] : [],
     {
       $facet: {

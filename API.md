@@ -1,16 +1,16 @@
 Products API:
-GET /products[?page={number}] - products page by page, response body like {page, totalProducts, totalPages, minPrice, maxPrice, results[]}
+GET /products[?page={number}][&min={number}][&max={number}][&color={value}][&color={value}]...[&sort={field}][&dir={asc|desc}] - products page by page, response body like {page, totalProducts, totalPages, minPrice, maxPrice, results[]}. Can be used with specific params of filtering and/or sorting, multiple colors allowed (separately).
 GET /product?article={product_article} - get specific product by article
 POST /product - add new product (for Admin user only, *now this check is switched off, so everybody could add product into the database.)
 
 Products by Category - API:
 NOTE: Response comes as an object with number of all products from specific category, numbers with a min and a max prices of all products in this category (or min and max of filtered products), and results with 9 products, number of pages, current page number (page=1 set by default). 
-GET /candles[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "candles" or with specific params of filtering.
-GET /lighting-decor[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Lighting Decor" or with specific params of filtering.
-GET /gift-sets[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Gift Sets" or with specific params of filtering.
-GET /get-warm[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Get Warm" or with specific params of filtering.
-GET /table-games[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Table Games" or with specific params of filtering.
-GET /books-and-journals[?page={number}][&min={number}][&max={number}][&color={value}] - all products from the category "Books & Journals" or with specific params of filtering.
+GET /candles[?page={number}][&min={number}][&max={number}][&color={value}][&color={value}]...[&sort={field}][&dir={asc|desc}] - all products from the category "candles" or with specific params of filtering and/or sorting, multiple colors allowed (separately).
+GET /lighting-decor[?page... same as above] - all products from the category "Lighting Decor" or with specific params.
+GET /gift-sets[?page... same as above] - all products from the category "Gift Sets" or with specific params.
+GET /get-warm[?page... same as above]- all products from the category "Get Warm" or with specific params.
+GET /table-games[?page... same as above] - all products from the category "Table Games" or with specific params.
+GET /books-and-journals[?page... same as above] - all products from the category "Books & Journals" or with specific params.
 
 
 GET /search?query={partial_characters} - partial search in text fields

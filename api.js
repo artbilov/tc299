@@ -32,9 +32,13 @@ function makeApiHandler(db) {
     if (method == 'GET') {
 
       if (endpoint == 'products') {
-
         const page = +params.page || 1
-        const data = await getProducts(db, pageSize, page)
+        const color = params.color || ''
+        const min = +params.min || 0
+        const max = +params.max || Infinity
+        const sort = params.sort
+        const dir = params.dir
+        const data = await getProducts(db, pageSize, page, '', color, min, max, sort, dir)
         res.end(JSON.stringify(data))
 
       } else if (endpoint == 'product') {

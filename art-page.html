@@ -27,9 +27,11 @@
       if (input.value == 'products') {
         data.results.forEach(item => {
           lishki += `
-            <h3>${item.name}</h3>
-            <img src="${item.image[0]}">
-            <p>${item.price}</p>
+            <li>
+              <h3>${item.name}</h3>
+              <img src="${item.image[0]}">
+              <p>${item.price}</p>
+            </li>
           `
         })
         ul.innerHTML = ''

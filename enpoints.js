@@ -1,10 +1,11 @@
 const fs = require('fs')
 const { getUsers } = require('./get-users.js')
 const { getProducts } = require('./get-products.js')
-const { genCookie } = require('./gen-cookie.js')
+const { getUserData } = require('./get-user-data.js')
 const { checkSession } = require('./check-session.js')
 const { hash, verify } = require('./encrypt-password.js')
 const { isAdmin } = require('./check-admin.js')
+const { setNewSession } = require('./set-new-session.js')
 
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
@@ -69,21 +70,29 @@ const endpoints = {
   },
 
   async 'GET:session'({ db, req, res }) {
-    const cookie = req.headers.cookie
-    if (cookie) {
-      const result = await checkSession(db, cookie)
-      if (result) res.end(JSON.stringify(getUserData(cookie)))
-      else {
-        const cookie = genCookie()
-        res.setHeader('Set-Cookie', cookie)
-        saveSession(db,)
-      }
+    const { cookie } = req.headers
+    const isValidSession =  cookie && await checkSession(db, cookie)
+
+    if (isValidSession) {
+      const userData = await getUserData(db, cookie)
+      res.setHeader('Content-Type', 'application/json; charset=utf-8')
+      res.end(JSON.stringify(userData, null, 2))
     } else {
-      session()
+      setNewSession(db, res)
     }
 
-    res.setHeader()
-    res.end(JSON.stringify({ error: 'not found' }))
+    // if (cookie) {
+    //   const result = await checkSession(db, cookie)
+    //   if (result) res.end(JSON.stringify(getUserData(cookie)))
+    //   else {
+    //     const token = genToken()
+    //     const cookie = genCookie('token', token, 7)
+    //     res.setHeader('Set-Cookie', cookie)
+    //     // saveSession(db,)
+    //   }
+    // } else {
+    //   setNewSession(db, res)
+    // }
   },
 
   async 'POST:product'({ db, req, res, payload }) {
@@ -142,6 +151,29 @@ const endpoints = {
     } else {
       res.writeHead(400).end(JSON.stringify({ error: "Login or password is incorrect" }))
     }
+  },
+
+  async 'PUT:toWishList'({db, req, res, payload}) {
+    const { id } = payload
+    const { cookie } = req.headers
+    if (!cookie || !cookie.includes('token=')) return
+    const { userId } = cookie.split('=')[1]
+
+    try {
+        const result = await db.collection('users').updateOne(
+            { _id: userId },
+            { $addToSet: { wishList: id } }
+        )
+
+        if (result.modifiedCount > 0) {
+            res.status(200).json({ message: 'Product added to wishlist' })
+        } else {
+            res.status(404).json({ error: 'User not found' })
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' })
+    }
   }
 
 }
@@ -149,7 +181,7 @@ const endpoints = {
 for (const cat in categoryEndpoints) endpoints['GET:' + cat] = category
 
 async function category({ db, params, pageSize, endpoint, res }) {
-  const category = categoryEndpoints[endpoint]
+  const category = categoryEndpoints[endpoint.replace('GET:', '')]
   const page = +params.page || 1
   const color = params.color || ''
   const min = +params.min || 0
@@ -161,3 +193,5 @@ async function category({ db, params, pageSize, endpoint, res }) {
 }
 
 module.exports = { endpoints }
+
+

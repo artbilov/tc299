@@ -81,18 +81,6 @@ const endpoints = {
       setNewSession(db, res)
     }
 
-    // if (cookie) {
-    //   const result = await checkSession(db, cookie)
-    //   if (result) res.end(JSON.stringify(getUserData(cookie)))
-    //   else {
-    //     const token = genToken()
-    //     const cookie = genCookie('token', token, 7)
-    //     res.setHeader('Set-Cookie', cookie)
-    //     // saveSession(db,)
-    //   }
-    // } else {
-    //   setNewSession(db, res)
-    // }
   },
 
   async 'POST:product'({ db, req, res, payload }) {

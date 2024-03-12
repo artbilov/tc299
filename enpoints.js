@@ -71,7 +71,7 @@ const endpoints = {
 
   async 'GET:session'({ db, req, res }) {
     const { cookie } = req.headers
-    const isValidSession =  cookie && await checkSession(db, cookie)
+    const isValidSession = cookie && await checkSession(db, cookie)
 
     if (isValidSession) {
       const userData = await getUserData(db, cookie)
@@ -80,7 +80,6 @@ const endpoints = {
     } else {
       setNewSession(db, res)
     }
-
   },
 
   async 'POST:product'({ db, req, res, payload }) {
@@ -141,27 +140,45 @@ const endpoints = {
     }
   },
 
-  async 'PUT:toWishList'({db, req, res, payload}) {
-    const { id } = payload
+  async 'PUT:to-wish-list'({ db, req, res, payload }) {
+    const { article } = payload
     const { cookie } = req.headers
-    if (!cookie || !cookie.includes('token=')) return
-    const { userId } = cookie.split('=')[1]
+    if (!await checkSession(db, cookie)) await setNewSession(db, res)
+    const token = cookie.split('=')[1]
+
 
     try {
-        const result = await db.collection('users').updateOne(
-            { _id: userId },
-            { $addToSet: { wishList: id } }
-        )
+      const result = await db.collection.updateOne(
+        { token },
+        [
+          {
+            $set: {
+              wishList: {
+                $cond: {
+                  if: { $in: [article, "$wishList"] },
+                  then: { $setDifference: ["$wishList", [article]] },
+                  else: { $concatArrays: ["$wishList", [article]] }
+                }
+              }
+            }
+          }
+        ],
+        { multi: false, upsert: false }
+      )
 
-        if (result.modifiedCount > 0) {
-            res.status(200).json({ message: 'Product added to wishlist' })
-        } else {
-            res.status(404).json({ error: 'User not found' })
-        }
+      if (result.modifiedCount > 0) {
+        res.writeHead(200).end(JSON.stringify({ result: 'Product added to wishlist' }))
+      } else {
+        res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
+      }
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Internal server error' })
+      console.error(err);
+      res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
     }
+  },
+
+  async 'PUT:to-cart'({ db, req, res, payload }) {
+
   }
 
 }

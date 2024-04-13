@@ -1,5 +1,7 @@
 module.exports = { makeApiHandler }
 
+const { ensureSession } = require('./sessions/sessions.js')
+
 function makeApiHandler(db) {
   return async function handleApi(req, res) {
 
@@ -20,8 +22,11 @@ function makeApiHandler(db) {
 
     setupCORS(res)
 
+    await ensureSession(req, res)
+
     try {
-      endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
+      if (endpoint.startsWith('OPTIONS:')) res.writeHead(200, { 'Allow': 'GET, POST, PUT, DELETE' }).end()
+      else endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
     } catch (error) {
       res.statusCode = 404
       res.end(JSON.stringify({ error: 'unsupported method' }))
@@ -35,6 +40,6 @@ const { decode } = require('querystring');
 const { endpoints } = require('./enpoints.js')
 const { getBody } = require('./get-body.js')
 const { setupCORS } = require('./setup-cors.js')
-
+const fs = require('fs')
 
 

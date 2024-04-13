@@ -6,6 +6,7 @@ const { checkSession } = require('./check-session.js')
 const { hash, verify } = require('./encrypt-password.js')
 const { isAdmin } = require('./check-admin.js')
 const { setNewSession } = require('./set-new-session.js')
+const { ensureSession, updateSession } = require('./sessions/sessions.js')
 
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
@@ -102,79 +103,81 @@ const endpoints = {
   },
 
   async 'POST:user'({ db, res, payload }) {
-    const { fullName, email, password } = payload
-    let { promo } = payload
-    const hashed = await hash(password)
+    const { regType } = payload
+    if (regType === 'google') {
+      const { name, email, picture } = payload
+      const user = { name, email, picture, regType, id }
+      const result = await db.collection('users').insertOne(user).catch(err => {
+        if (err.code == 11000) return { insertedId: null }
+      })
+      if (result.insertedId) {
+        res.end(JSON.stringify({ _id: result.insertedId }))
+      } else {
+        res.writeHead(400).end(JSON.stringify({ error: "Email is occupied" }))
+      }
+    } else if (regType === 'email') {
+      const { fullName, email, password, regType } = payload
+      let { promo } = payload
+      const hashed = await hash(password)
 
-    if (!fullName || !email || !password) {
-      res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))
-      return
-    }
+      if (!fullName || !email || !password) {
+        res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))
+        return
+      }
 
-    if (!promo) promo = false
-    const user = { fullName, email, hash: hashed, promo }
-    const result = await db.collection('users').insertOne(user).catch(err => {
-      if (err.code == 11000) return { insertedId: null }
-    })
-    if (result.insertedId) {
-      res.end(JSON.stringify({ _id: result.insertedId }))
-    } else {
-      res.writeHead(400).end(JSON.stringify({ error: "Email is occupied" }))
+      if (!promo) promo = false
+      const user = { fullName, email, hash: hashed, promo, regType }
+      const result = await db.collection('users').insertOne(user).catch(err => {
+        if (err.code == 11000) return { insertedId: null }
+      })
+      if (result.insertedId) {
+        res.end(JSON.stringify({ _id: result.insertedId }))
+      } else {
+        res.writeHead(400).end(JSON.stringify({ error: "Email is occupied" }))
+      }
     }
   },
 
   async 'POST:login'({ db, res, payload }) {
-    const { email, password } = payload
+    const { regType } = payload
+    if (regType === 'google') {
+      const { email } = payload
+      const result = await db.collection('users').findOne({ email }).catch(err => {
+        if (err.code == 11000) return { insertedId: null }
+      })
 
-    if (!email || !password) {
-      res.writeHead(400).end(JSON.stringify({ error: "Email or password are incorrect" }))
-      return
-    }
-    const user = await db.collection('users').findOne({ email }, { projection: { _id: 0 } })
+      if (result.insertedId) {
+        res.end(JSON.stringify({ _id: result.insertedId }))
+      }
 
-    if (user && await verify(password, user.hash).catch(_ => false)) {
-      delete user.hash
-      res.end(JSON.stringify(user))
-    } else {
-      res.writeHead(400).end(JSON.stringify({ error: "Login or password is incorrect" }))
+      updateSession
+
+    } else if (regType === 'email') {
+      const { email, password } = payload
+      if (!email || !password) {
+        res.writeHead(400).end(JSON.stringify({ error: "Email or password are incorrect" }))
+        return
+      }
+      const user = await db.collection('users').findOne({ email }, { projection: { _id: 0 } })
+
+      if (user && await verify(password, user.hash).catch(_ => false)) {
+        delete user.hash
+        res.end(JSON.stringify(user))
+      } else {
+        res.writeHead(400).end(JSON.stringify({ error: "Login or password is incorrect" }))
+      }
     }
   },
 
-  async 'PUT:to-wish-list'({ db, req, res, payload }) {
+  async 'PUT:to-wish-list'({ req, res, payload }) {
     const { article } = payload
-    const { cookie } = req.headers
-    if (!await checkSession(db, cookie)) await setNewSession(db, res)
-    const token = cookie.split('=')[1]
 
+    ensureSession(req, res)
 
-    try {
-      const result = await db.collection.updateOne(
-        { token },
-        [
-          {
-            $set: {
-              wishList: {
-                $cond: {
-                  if: { $in: [article, "$wishList"] },
-                  then: { $setDifference: ["$wishList", [article]] },
-                  else: { $concatArrays: ["$wishList", [article]] }
-                }
-              }
-            }
-          }
-        ],
-        { multi: false, upsert: false }
-      )
+    // const { cookie } = req.headers
+    // const token = cookie?.split('; ').find(token => token.startsWith('user_session='))?.split('=')[1]
 
-      if (result.modifiedCount > 0) {
-        res.writeHead(200).end(JSON.stringify({ result: 'Product added to wishlist' }))
-      } else {
-        res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
-      }
-    } catch (err) {
-      console.error(err);
-      res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
-    }
+    updateSession(req, res, article)
   },
 
   async 'PUT:to-cart'({ db, req, res, payload }) {

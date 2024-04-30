@@ -6,6 +6,7 @@ const { checkSession } = require('./check-session.js')
 const { hash, verify } = require('./encrypt-password.js')
 const { isAdmin } = require('./check-admin.js')
 const { setNewSession } = require('./set-new-session.js')
+const { ensureSession, updateSession, upgradeSession } = require('./sessions/sessions.js')
 
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
@@ -71,7 +72,7 @@ const endpoints = {
 
   async 'GET:session'({ db, req, res }) {
     const { cookie } = req.headers
-    const isValidSession =  cookie && await checkSession(db, cookie)
+    const isValidSession = cookie && await checkSession(db, cookie)
 
     if (isValidSession) {
       const userData = await getUserData(db, cookie)
@@ -80,19 +81,6 @@ const endpoints = {
     } else {
       setNewSession(db, res)
     }
-
-    // if (cookie) {
-    //   const result = await checkSession(db, cookie)
-    //   if (result) res.end(JSON.stringify(getUserData(cookie)))
-    //   else {
-    //     const token = genToken()
-    //     const cookie = genCookie('token', token, 7)
-    //     res.setHeader('Set-Cookie', cookie)
-    //     // saveSession(db,)
-    //   }
-    // } else {
-    //   setNewSession(db, res)
-    // }
   },
 
   async 'POST:product'({ db, req, res, payload }) {
@@ -114,66 +102,106 @@ const endpoints = {
     }
   },
 
-  async 'POST:user'({ db, res, payload }) {
-    const { fullName, email, password } = payload
-    let { promo } = payload
-    const hashed = await hash(password)
+  async 'POST:register'({ db,req, res, payload }) {
+    const { regType } = payload
+    if (regType === 'google') {
+      const { name, email, id } = payload
 
-    if (!fullName || !email || !password) {
-      res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))
-      return
-    }
+      if (!name || !email || !id) {
+        res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))
+        return
+      }
 
-    if (!promo) promo = false
-    const user = { fullName, email, hash: hashed, promo }
-    const result = await db.collection('users').insertOne(user).catch(err => {
-      if (err.code == 11000) return { insertedId: null }
-    })
-    if (result.insertedId) {
-      res.end(JSON.stringify({ _id: result.insertedId }))
-    } else {
-      res.writeHead(400).end(JSON.stringify({ error: "Email is occupied" }))
+      let { promo } = payload
+      
+      if (!promo) promo = false
+      
+      const user = { fullName: name, email, promo, regType, id, wishList: [], inCart: [] }
+      const result = await db.collection('users').insertOne(user).catch(err => {
+        if (err.code == 11000) return { insertedId: null }
+      })
+      if (result.insertedId) {
+        res.end(JSON.stringify({ _id: result.insertedId }))
+        upgradeSession(req, res, email)
+      } else {
+        res.writeHead(400).end(JSON.stringify({ error: "Email is occupied" }))
+      }
+    } else if (regType === 'email') {
+      const { fullName, email, password } = payload
+      
+      if (!fullName || !email || !password) {
+        res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))
+        return
+      }
+      const hashed = await hash(password)
+      let { promo } = payload
+      
+      if (!promo) promo = false
+      const user = { fullName, email, hash: hashed, promo, regType, wishList: [], inCart: [] }
+      const result = await db.collection('users').insertOne(user).catch(err => {
+        if (err.code == 11000) return { insertedId: null }
+      })
+      if (result.insertedId) {
+        res.end(JSON.stringify({ _id: result.insertedId }))
+        upgradeSession(req, res, email)
+      } else {
+        res.writeHead(400).end(JSON.stringify({ error: "Email is occupied" }))
+      }
     }
   },
 
-  async 'POST:login'({ db, res, payload }) {
-    const { email, password } = payload
+  async 'POST:login'({ db, req, res, payload }) {
 
-    if (!email || !password) {
-      res.writeHead(400).end(JSON.stringify({ error: "Email or password are incorrect" }))
-      return
-    }
-    const user = await db.collection('users').findOne({ email }, { projection: { _id: 0 } })
+    ensureSession(req, res)
 
-    if (user && await verify(password, user.hash).catch(_ => false)) {
-      delete user.hash
-      res.end(JSON.stringify(user))
-    } else {
-      res.writeHead(400).end(JSON.stringify({ error: "Login or password is incorrect" }))
+    const { regType, email } = payload
+
+    if (regType === 'google') {
+      const { id } = payload
+      const user = await db.collection('users').findOne({ email, id }).catch(err => {
+        if (err.code == 11000) return { insertedId: null }
+      })
+
+      // if (user.id) {
+      if (user) {
+        res.end(JSON.stringify({ _id: user.id }))
+        upgradeSession(req, res, email)
+      } else {
+        res.writeHead(400).end(JSON.stringify({ error: "User with this email not found" }))
+      }
+
+    } else if (regType === 'email') {
+      const { password } = payload
+
+      if (!email || !password) {
+        res.writeHead(400).end(JSON.stringify({ error: "Login or password are incorrect" }))
+        return
+      }
+      
+      const user = await db.collection('users').findOne({ email, hash }, { projection: { _id: 0 } })
+
+      if (user && await verify(password, user.hash).catch(_ => false)) {
+        delete user.hash
+        res.end(JSON.stringify(user))
+        upgradeSession(req, res, email)
+      } else {
+        res.writeHead(400).end(JSON.stringify({ error: "Login or password is incorrect" }))
+      }
     }
   },
 
-  async 'PUT:toWishList'({db, req, res, payload}) {
-    const { id } = payload
-    const { cookie } = req.headers
-    if (!cookie || !cookie.includes('token=')) return
-    const { userId } = cookie.split('=')[1]
+  'PUT:to-wish-list'({ req, res, payload }) {
+    const { article } = payload
 
-    try {
-        const result = await db.collection('users').updateOne(
-            { _id: userId },
-            { $addToSet: { wishList: id } }
-        )
+    ensureSession(req, res)
+    updateSession(req, res, article)
+  },
 
-        if (result.modifiedCount > 0) {
-            res.status(200).json({ message: 'Product added to wishlist' })
-        } else {
-            res.status(404).json({ error: 'User not found' })
-        }
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Internal server error' })
-    }
+  'PUT:to-cart'({ req, res, payload }) {
+    const { article } = payload
+
+    ensureSession(req, res)
+    updateSession(req, res, article)
   }
 
 }

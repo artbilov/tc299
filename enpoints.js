@@ -11,6 +11,7 @@ const { ensureSession, updateSession, upgradeSession } = require('./sessions/ses
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
 
+
 const endpoints = {
   async 'GET:products'({ db, params, pageSize, res }) {
 
@@ -112,20 +113,41 @@ const endpoints = {
         return
       }
 
+      
+
       let { promo } = payload
       
       if (!promo) promo = false
       
       const user = { fullName: name, email, promo, regType, id, wishList: [], inCart: [] }
-      const result = await db.collection('users').insertOne(user).catch(err => {
-        if (err.code == 11000) return { insertedId: null }
-      })
-      if (result.insertedId) {
-        res.end(JSON.stringify({ _id: result.insertedId }))
-        upgradeSession(req, res, email)
-      } else {
-        res.writeHead(400).end(JSON.stringify({ error: "Email is occupied" }))
+      
+      try {
+        const result = await db.collection('users').updateOne(
+          { email }, // Проверяем наличие документа с указанным email
+          { $setOnInsert: user }, // Добавляем новый документ user при отсутствии
+          { upsert: true, returnOriginal: false } // Создаем новый документ, если его нет
+        )
+      
+        if (result.upsertedId) {
+          res.statusCode = 201
+          res.end(JSON.stringify({ result: 'User created' }))
+          console.log('User created')
+          upgradeSession(req, res, email)
+        } else if (result.modifiedCount === 0) {
+          res.statusCode = 204
+          res.end(JSON.stringify({ result: 'User already exists' }))
+          console.log('User already exists')
+        } else {
+          res.statusCode = 404
+          res.end('Something went wrong, maybe session not found or ...')
+          console.log('Something went wrong, maybe session not found or ...')
+        }
+      } catch (err) {
+        res.statusCode = 500
+        res.end(JSON.stringify({ error: 'Internal server error' }))
+        console.log(err)
       }
+
     } else if (regType === 'email') {
       const { fullName, email, password } = payload
       
@@ -138,15 +160,34 @@ const endpoints = {
       
       if (!promo) promo = false
       const user = { fullName, email, hash: hashed, promo, regType, wishList: [], inCart: [] }
-      const result = await db.collection('users').insertOne(user).catch(err => {
-        if (err.code == 11000) return { insertedId: null }
-      })
-      if (result.insertedId) {
-        res.end(JSON.stringify({ _id: result.insertedId }))
-        upgradeSession(req, res, email)
-      } else {
-        res.writeHead(400).end(JSON.stringify({ error: "Email is occupied" }))
+
+      try {
+        const result = await db.collection('users').updateOne(
+          { email }, // Проверяем наличие документа с указанным email
+          { $setOnInsert: user }, // Добавляем новый документ user при отсутствии
+          { upsert: true, returnOriginal: false } // Создаем новый документ, если его нет
+        )
+      
+        if (result.upsertedId) {
+          res.statusCode = 201
+          res.end(JSON.stringify({ result: 'User created' }))
+          console.log('User created')
+          upgradeSession(req, res, email)
+        } else if (result.modifiedCount === 0) {
+          res.statusCode = 204
+          res.end(JSON.stringify('User already exists'))
+          console.log('User already exists')
+        } else {
+          res.statusCode = 404
+          res.end('Something went wrong, maybe session not found or ...')
+          console.log('Something went wrong, maybe session not found or ...')
+        }
+      } catch (err) {
+        res.statusCode = 500
+        res.end(JSON.stringify({ error: 'Internal server error' }))
+        console.log(err)
       }
+
     }
   },
 

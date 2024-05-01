@@ -14,6 +14,5 @@ connectMongo().then(async db => {
 
   server.listen(port, () => {
     console.log('Server started on http://localhost:' + port)
-
   })
 })

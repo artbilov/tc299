@@ -25,8 +25,9 @@ function makeApiHandler(db) {
     await ensureSession(req, res)
 
     try {
-      if (endpoint.startsWith('OPTIONS:')) res.writeHead(200, { 'Allow': 'GET, POST, PUT, DELETE' }).end()
-      else endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
+      // if (endpoint.startsWith('OPTIONS:')) res.writeHead(200, { 'Allow': 'GET, POST, PUT, DELETE' }).end()
+      // else endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
+      endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
     } catch (error) {
       res.statusCode = 404
       res.end(JSON.stringify({ error: 'unsupported method' }))

@@ -2,7 +2,7 @@ function setupCORS(req, res) {
 
   if (req.method === 'OPTIONS') {
     // Установка заголовков CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'https://www.google.com');
     res.setHeader('Access-Control-Allow-Methods', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.writeHead(200);

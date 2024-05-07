@@ -88,39 +88,41 @@ async function upgradeSession(req, res, email) {
 
   try {
     // Передающая коллекция - sessions, принимающая коллекция - users
-    const sessionCollection = db.collection('sessions');
-    const userCollection = db.collection('users');
+    const sessionsCollection = db.collection('sessions')
+    const usersCollection = db.collection('users')
 
     // Найти документ в коллекции sessions, имеющий поле token
-    const sessionDoc = await sessionCollection.findOne({ token });
+    const sessionDoc = sessions.find(session => session.token === token)
 
     if (sessionDoc) {
       // Найти документ в коллекции users, имеющий email, соответствующий email в sessionDoc
-      await sessionCollection.updateOne({ token }, { $set: { email } });
-      const userDoc = await userCollection.findOne({ email });
+      sessionDoc.email = email
+      // await sessionsCollection.updateOne({ token }, { $set: { email } })
+      const userDoc = await usersCollection.findOne({ email })
 
       if (userDoc) {
         // Найти элементы из массива wishList в sessionDoc, которых нет в массиве wishList userDoc
-        const uniqueWishListItems = sessionDoc.wishList.filter(item => !userDoc.wishList.includes(item));
+        const uniqueWishListItems = sessionDoc.wishList.filter(item => !userDoc.wishList.includes(item))
 
         // Найти элементы из массива inCart в sessionDoc, которых нет в массиве inCart userDoc
-        const uniqueInCartItems = sessionDoc.inCart.filter(({ article }) => !userDoc.inCart.includes({ article }));
+        const uniqueInCartItems = sessionDoc.inCart.filter(({ article }) => !userDoc.inCart.includes({ article }))
 
         // Добавить уникальные элементы в массив wishList и inCart userDoc
-        userDoc.wishList.push(...uniqueWishListItems);
-        userDoc.inCart.push(...uniqueInCartItems);
+        userDoc.wishList.push(...uniqueWishListItems)
+        userDoc.inCart.push(...uniqueInCartItems)
 
         // Обновить документ userDoc в коллекции users
-        await userCollection.updateOne({ email }, {
+        await usersCollection.updateOne({ email }, {
           $set: {
             wishList: userDoc.wishList,
             inCart: userDoc.inCart
           }
-        });
+        })
       }
 
       // Очистить массив wishList и inCart в sessionDoc
-      await sessionCollection.updateOne({ token }, {
+      sessions.map(session => session.token === token ? { ...session, wishList: [], inCart: [] } : session)
+      await sessionsCollection.updateOne({ token }, {
         $set: {
           wishList: [],
           inCart: []
@@ -136,7 +138,7 @@ async function upgradeSession(req, res, email) {
   // try {
   //   // Передающая коллекция - sessions, принимающая коллекция - users
   //   const sessionCollection = db.collection('sessions')
-  //   const userCollection = db.collection('users')
+  //   const usersCollection = db.collection('users')
 
   //   // Найти документ в коллекции sessions, имеющий поле token
   //   const sessionDoc = await sessionCollection.findOne({ token })
@@ -145,7 +147,7 @@ async function upgradeSession(req, res, email) {
   //     // Найти документ в коллекции users, имеющий email, соответствующий email в sessionDoc
   //     await sessionCollection.updateOne({ token }, { $set: { email } })
 
-  //     const userDoc = await userCollection.findOne({ email })
+  //     const userDoc = await usersCollection.findOne({ email })
 
   //     if (userDoc) {
   //       // Найти элементы из массива wishList в sessionDoc, которых нет в массиве wishList userDoc
@@ -155,7 +157,7 @@ async function upgradeSession(req, res, email) {
   //       userDoc.wishList.push(...uniqueWishListItems)
 
   //       // Обновить документ userDoc в коллекции users
-  //       await userCollection.updateOne({ _id: userDoc._id }, { $set: { wishList: userDoc.wishList } })
+  //       await usersCollection.updateOne({ _id: userDoc._id }, { $set: { wishList: userDoc.wishList } })
   //     }
 
   //     // Очистить массив wishList в sessionDoc

@@ -113,8 +113,6 @@ const endpoints = {
         return
       }
 
-      
-
       let { promo } = payload
       
       if (!promo) promo = false
@@ -130,9 +128,9 @@ const endpoints = {
       
         if (result.upsertedId) {
           res.statusCode = 201
-          res.end(JSON.stringify({ result: 'User created' }))
-          console.log('User created')
           upgradeSession(req, res, email)
+          console.log('User created')
+          res.end(JSON.stringify({ user }))
         } else if (result.modifiedCount === 0) {
           res.statusCode = 204
           res.end(JSON.stringify({ result: 'User already exists' }))
@@ -170,9 +168,10 @@ const endpoints = {
       
         if (result.upsertedId) {
           res.statusCode = 201
-          res.end(JSON.stringify({ result: 'User created' }))
-          console.log('User created')
           upgradeSession(req, res, email)
+          console.log('User created')
+          delete user.hash
+          res.end(JSON.stringify({ user }))
         } else if (result.modifiedCount === 0) {
           res.statusCode = 204
           res.end(JSON.stringify('User already exists'))

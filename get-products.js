@@ -36,7 +36,7 @@ async function getProducts(db, pageSize, page, category, color, min, max, sort, 
   const [result] = await db.collection('products').aggregate(pipeline).toArray();
   const { products, totalProducts: [{ amount } = {}], prices: [{ minPrice, maxPrice } = {}] } = result;
   const data = { page, totalProducts: amount, totalPages: Math.ceil(amount / pageSize), minPrice, maxPrice, results: products };
-  console.log(data);
+  // console.log(data);
   return data;
 }
 exports.getProducts = getProducts;

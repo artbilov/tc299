@@ -20,7 +20,7 @@ async function getUsers(db, pageSize, page) {
   const [result] = await db.collection('users').aggregate(pipeline).toArray();
   const { users, totalUsers: [{ amount }] } = result;
   const data = { page, totalPages: Math.ceil(amount / pageSize), totalUsers: amount, results: users };
-  console.log(data);
+  // console.log(data);
   return data;
 }
 exports.getUsers = getUsers;

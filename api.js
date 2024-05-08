@@ -8,7 +8,7 @@ function makeApiHandler(db) {
     const path = req.url.slice(1) || 'art-page.html'
     const [route, query] = path.split('?')
     const params = decode(query)
-    const method = req.method
+    const method = req.method.replace('HEAD', 'GET')
     const endpoint = method + ':' + route
     const body = await getBody(req)
     const payload = JSON.parse(body || '{}')
@@ -30,6 +30,7 @@ function makeApiHandler(db) {
     try {
       // if (endpoint.startsWith('OPTIONS:')) res.writeHead(200, { 'Allow': 'GET, POST, PUT, DELETE' }).end()
       // else endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
+      
       endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
     } catch (error) {
       console.log(endpoint)

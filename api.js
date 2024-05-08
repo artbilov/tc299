@@ -22,10 +22,8 @@ function makeApiHandler(db) {
 
     // setupCORS(req, res)
 
-    res.writeHead(200, {
-      'Content-Type': 'text/json',
-      'Access-Control-Allow-Origin': '*',
-    })
+    res.setHeader('Content-Type', 'text/json')
+    res.setHeader('Access-Control-Allow-Origin', '*')
 
     await ensureSession(req, res)
 

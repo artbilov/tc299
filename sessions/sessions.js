@@ -13,7 +13,7 @@ async function loadSessions(dbConnection) {
 
 async function ensureSession(req, res) {
   const { cookie } = req.headers
-  const token = cookie?.split('; ').find(token => token.startsWith('user_session='))?.split('=')[1]
+  const token = cookie?.split('; ').find(token => token.startsWith('hh_user_session='))?.split('=')[1]
 
   await deleteExpiredSessions()
 
@@ -28,7 +28,7 @@ async function ensureSession(req, res) {
 
 function createSession(res) {
   const token = genToken()
-  const { cookie, expire: end } = genCookie('user_session', token, 0, 0, 60)
+  const { cookie, expire: end } = genCookie('hh_user_session', token, 0, 0, 60)
   const email = ''
   const wishList = []
   const inCart = []
@@ -63,7 +63,7 @@ async function deleteExpiredSessions() {
 async function updateSession(req, res, article) {
   // Get session (token).
   const { cookie } = req.headers
-  const token = cookie?.split('; ').find(token => token.startsWith('user_session='))?.split('=')[1]
+  const token = cookie?.split('; ').find(token => token.startsWith('hh_user_session='))?.split('=')[1]
 
   if (!token) return
 
@@ -82,7 +82,7 @@ async function updateSession(req, res, article) {
 async function upgradeSession(req, res, email) {
 
   const { cookie } = req.headers
-  const token = cookie?.split('; ').find(token => token.startsWith('user_session='))?.split('=')[1]
+  const token = cookie?.split('; ').find(token => token.startsWith('hh_user_session='))?.split('=')[1]
 
   if (!token) return
 

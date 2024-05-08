@@ -32,6 +32,7 @@ function makeApiHandler(db) {
       // else endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
       endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
     } catch (error) {
+      console.log(endpoint)
       res.statusCode = 404
       res.end(JSON.stringify({ error: 'unsupported method' }))
       console.log(error)

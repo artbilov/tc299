@@ -20,7 +20,7 @@ function makeApiHandler(db) {
     // db.collection('users').createIndex({ email: 1 }, { unique: true })
     // db.collection('users').createIndex({ login: 1 }, { unique: true })
 
-    // setupCORS(req, res)
+    setupCORS(req, res)
 
     await ensureSession(req, res)
 

@@ -8,7 +8,7 @@ function makeApiHandler(db) {
     const path = req.url.slice(1) || 'art-page.html'
     const [route, query] = path.split('?')
     const params = decode(query)
-    const method = req.method.replace('HEAD', 'GET')
+    const method = req.method
     const endpoint = method + ':' + route
     const body = await getBody(req)
     const payload = JSON.parse(body || '{}')

@@ -1,8 +1,8 @@
 function setupCORS(req, res) {
   if (req.method === 'OPTIONS') {
     // Установка заголовков CORS
-    // res.setHeader('Access-Control-Allow-Origin', '*');
-    // res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT, OPTIONS');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', '*');
     // res.setHeader('Access-Control-Allow-Headers', 'origin, Content-Type, accept');
     
     res.writeHead(200).end('ok')

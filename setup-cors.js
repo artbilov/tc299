@@ -1,18 +1,19 @@
 function setupCORS(req, res) {
+  // Установка заголовков CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  res.setHeader('Content-Type', 'text/json')
+
   if (req.method === 'OPTIONS') {
-    // Установка заголовков CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', '*');
-    // res.setHeader('Access-Control-Allow-Headers', 'origin, Content-Type, accept');
-    
     res.writeHead(200).end('ok')
+    return
   }
 
-  res.setHeader('Content-Type', 'text/json')
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD')
-  res.setHeader('Access-Control-Allow-Methods', '*')
-  res.setHeader('Access-Control-Allow-Headers', '*')
+  // res.setHeader('Content-Type', 'text/json')
+  // res.setHeader('Access-Control-Allow-Origin', '*')
+  // res.setHeader('Access-Control-Allow-Methods', '*')
+  // res.setHeader('Access-Control-Allow-Headers', '*')
 
   // res.setHeader('Access-Control-Request-Method', 'POST, GET, DELETE, PUT, OPTIONS')
 }

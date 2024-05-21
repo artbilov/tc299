@@ -1,14 +1,20 @@
 function setupCORS(req, res) {
   // Установка заголовков CORS
+  
+  if (req.method === 'OPTIONS') {
+    res.writeHead(200, {
+      'Content-Type': 'text/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD',
+      'Access-Control-Allow-Headers': '*'
+    }).end()
+    return
+  }
+
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', '*');
   res.setHeader('Access-Control-Allow-Headers', '*');
   res.setHeader('Content-Type', 'text/json')
-
-  if (req.method === 'OPTIONS') {
-    res.writeHead(200).end('ok')
-    return
-  }
 
   // res.setHeader('Content-Type', 'text/json')
   // res.setHeader('Access-Control-Allow-Origin', '*')

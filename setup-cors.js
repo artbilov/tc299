@@ -1,19 +1,20 @@
 function setupCORS(req, res) {
-
   if (req.method === 'OPTIONS') {
     // Установка заголовков CORS
     // res.setHeader('Access-Control-Allow-Origin', '*');
     // res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT, OPTIONS');
     // res.setHeader('Access-Control-Allow-Headers', 'origin, Content-Type, accept');
-
-    res.writeHead(200);
-    res.end();
-    return;
+    
+    res.writeHead(200).end('ok')
   }
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Request-Method', 'POST, GET, DELETE, PUT, OPTIONS')
-  res.setHeader('Access-Control-Allow-Headers', 'origin, Content-Type, accept');
 
+  res.setHeader('Content-Type', 'text/json')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD')
+  res.setHeader('Access-Control-Allow-Methods', '*')
+  res.setHeader('Access-Control-Allow-Headers', '*')
+
+  // res.setHeader('Access-Control-Request-Method', 'POST, GET, DELETE, PUT, OPTIONS')
 }
 
 module.exports = { setupCORS }

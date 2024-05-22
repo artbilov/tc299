@@ -13,7 +13,7 @@ function makeApiHandler(db) {
     const body = await getBody(req)
     const payload = JSON.parse(body || '{}')
     const pageSize = 9
-    const origin = req.headers.origin || '*'
+    const origin = req.headers.origin || 'https://hygge-home.vercel.app/'
 
     // console.log({ path, method, endpoint, params })
 

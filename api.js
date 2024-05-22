@@ -13,6 +13,7 @@ function makeApiHandler(db) {
     const body = await getBody(req)
     const payload = JSON.parse(body || '{}')
     const pageSize = 9
+    const origin = req.headers.origin || '*'
 
     // console.log({ path, method, endpoint, params })
 
@@ -20,7 +21,18 @@ function makeApiHandler(db) {
     // db.collection('users').createIndex({ email: 1 }, { unique: true })
     // db.collection('users').createIndex({ login: 1 }, { unique: true })
 
-    setupCORS(req, res)
+    setupCORS(req, res, origin)
+
+    console.log(origin)
+
+    if (method === 'OPTIONS') return
+
+    // if (method === 'OPTIONS') res.writeHead(200, { 
+    //   'Access-Control-Allow-Origin': '*',
+    //   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+    //   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    //   'Access-Control-Max-Age': '86400',
+    // }).end()
 
     // res.setHeader('Content-Type', 'text/json')
     // res.setHeader('Access-Control-Allow-Origin', '*')

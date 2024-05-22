@@ -1,13 +1,16 @@
-function setupCORS(req, res) {
+function setupCORS(req, res, origin) {
   // Установка заголовков CORS
-  
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD');
-  res.setHeader('Access-Control-Allow-Headers', '*');
+  res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD')
+  res.setHeader('Access-Control-Allow-Headers', '*')
+  res.setHeader('Content-Type', 'application/json; charset=utf-8')
 
   if (req.method === 'OPTIONS') {
-    res.writeHead(200).end();
-    return;
+    res.statusCode = 200
+    res.setHeader('Access-Control-Allow-Origin', origin)
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD')
+    res.setHeader('Access-Control-Allow-Headers', '*')
+    res.end('Preflight request has succeeded.')
   }
 }
 

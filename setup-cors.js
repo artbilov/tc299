@@ -3,7 +3,7 @@ function setupCORS(req, res, origin) {
   res.setHeader('Access-Control-Allow-Origin', origin);
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD')
   res.setHeader('Access-Control-Allow-Headers', '*')
-  res.setHeader('Content-Type', 'application/json; charset=utf-8')
+  // res.setHeader('Content-Type', 'application/json; charset=utf-8')
 
   if (req.method === 'OPTIONS') {
     res.statusCode = 200

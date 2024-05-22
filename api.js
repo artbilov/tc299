@@ -27,16 +27,6 @@ function makeApiHandler(db) {
 
     if (method === 'OPTIONS') return
 
-    // if (method === 'OPTIONS') res.writeHead(200, { 
-    //   'Access-Control-Allow-Origin': '*',
-    //   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
-    //   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    //   'Access-Control-Max-Age': '86400',
-    // }).end()
-
-    // res.setHeader('Content-Type', 'text/json')
-    // res.setHeader('Access-Control-Allow-Origin', '*')
-
     await ensureSession(req, res)
 
     try {

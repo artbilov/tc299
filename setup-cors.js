@@ -10,7 +10,7 @@ function setupCORS(req, res, origin) {
 
   // general headers
   // res.setHeader('Access-Control-Allow-Headers', '*')
-  // res.setHeader('Content-Type', 'application/json; charset=utf-8')
+  res.setHeader('Content-Type', 'application/json')
 
 
   if (req.method === 'OPTIONS') {

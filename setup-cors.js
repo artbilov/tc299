@@ -6,7 +6,7 @@ function setupCORS(req, res, origin) {
   // for Cookies
   res.setHeader('Access-Control-Allow-Credentials', 'true')
   res.setHeader('Access-Control-Allow-Headers', 'Cookie, Content-Type')
-  res.setHeader('Content-Type', 'application/json; charset=utf-8')
+  res.setHeader('Content-Type', 'application/json')
 
 
   if (req.method === 'OPTIONS') {

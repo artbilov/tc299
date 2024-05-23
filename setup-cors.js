@@ -1,7 +1,7 @@
 function setupCORS(req, res, origin) {
   // Установка заголовков CORS
   res.setHeader('Access-Control-Allow-Origin', origin);
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD, key, Content-Type, Authorization, X-Requested-With');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD');
 
   // for Cookies
   res.setHeader('Access-Control-Allow-Credentials', 'true')

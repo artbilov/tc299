@@ -35,11 +35,13 @@ function createSession(res) {
   const start = Date.now()
 
   res.setHeader('Set-Cookie', cookie)
+  
 
   const session = { token, email, wishList, inCart, start, end }
   sessions.push(session)
 
   db.collection('sessions').insertOne(session)
+
 
   return cookie
 }

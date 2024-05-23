@@ -14,7 +14,7 @@ function setupCORS(req, res, origin) {
 
 
   if (req.method === 'OPTIONS') {
-    // res.setHeader('Access-Control-Allow-Credentials', 'true')
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
     res.statusCode = 200
     // res.setHeader('Access-Control-Allow-Origin', origin)
     // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD')

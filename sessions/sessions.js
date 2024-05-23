@@ -13,6 +13,9 @@ async function loadSessions(dbConnection) {
 
 async function ensureSession(req, res) {
   const { cookie } = req.headers
+
+  console.log(cookie)
+
   const token = cookie?.split('; ').find(token => token.startsWith('hh_user_session='))?.split('=')[1]
 
   await deleteExpiredSessions()
@@ -35,7 +38,7 @@ function createSession(res) {
   const start = Date.now()
 
   res.setHeader('Set-Cookie', cookie)
-  
+
 
   const session = { token, email, wishList, inCart, start, end }
   sessions.push(session)

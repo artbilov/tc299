@@ -14,7 +14,7 @@ async function loadSessions(dbConnection) {
 async function ensureSession(req, res) {
   const { cookie } = req.headers
 
-  console.log(cookie)
+  console.log("Cookie: " + cookie)
 
   const token = cookie?.split('; ').find(token => token.startsWith('hh_user_session='))?.split('=')[1]
 

@@ -71,18 +71,18 @@ const endpoints = {
     res.end(fs.readFileSync('art-page.html', 'utf-8'))
   },
 
-  async 'GET:session'({ db, req, res }) {
-    const { cookie } = req.headers
-    const isValidSession = cookie && await checkSession(db, cookie)
+  // async 'GET:session'({ db, req, res }) {
+  //   const { cookie } = req.headers
+  //   const isValidSession = cookie && await checkSession(db, cookie)
 
-    if (isValidSession) {
-      const userData = await getUserData(db, cookie)
-      res.setHeader('Content-Type', 'application/json; charset=utf-8')
-      res.end(JSON.stringify(userData, null, 2))
-    } else {
-      setNewSession(db, res)
-    }
-  },
+  //   if (isValidSession) {
+  //     const userData = await getUserData(db, cookie)
+  //     res.setHeader('Content-Type', 'application/json; charset=utf-8')
+  //     res.end(JSON.stringify(userData, null, 2))
+  //   } else {
+  //     setNewSession(db, res)
+  //   }
+  // },
 
   async 'POST:product'({ db, req, res, payload }) {
     if (isAdmin(req)) {

@@ -5,7 +5,7 @@ const { getUserData } = require('./get-user-data.js')
 const { checkSession } = require('./check-session.js')
 const { hash, verify } = require('./encrypt-password.js')
 const { isAdmin } = require('./check-admin.js')
-const { setNewSession } = require('./set-new-session.js')
+// const { setNewSession } = require('./set-new-session.js')
 const { ensureSession, updateSession, upgradeSession } = require('./sessions/sessions.js')
 
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
@@ -192,7 +192,7 @@ const endpoints = {
 
   async 'POST:login'({ db, req, res, payload }) {
 
-    ensureSession(req, res)
+    // ensureSession(req, res)
 
     const { regType, email } = payload
 
@@ -233,14 +233,14 @@ const endpoints = {
   'PUT:to-wish-list'({ req, res, payload }) {
     const { article } = payload
 
-    ensureSession(req, res)
+    // ensureSession(req, res)
     updateSession(req, res, article)
   },
 
   'PUT:to-cart'({ req, res, payload }) {
     const { article } = payload
 
-    ensureSession(req, res)
+    // ensureSession(req, res)
     updateSession(req, res, article)
   }
 

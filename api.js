@@ -27,7 +27,7 @@ function makeApiHandler(db) {
 
     if (method === 'OPTIONS') return
 
-    await ensureSession(req, res)
+    ensureSession(req, res)
 
     try {
       // if (endpoint.startsWith('OPTIONS:')) res.writeHead(200, { 'Allow': 'GET, POST, PUT, DELETE' }).end()

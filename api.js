@@ -14,7 +14,7 @@ function makeApiHandler(db) {
     const payload = JSON.parse(body || '{}')
     const pageSize = 9
 
-    console.log("Origin: " + res.headers.origin)
+    console.log("Origin: " + req.headers.origin)
 
 
     const origin = req.headers.origin || "*"

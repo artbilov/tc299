@@ -13,7 +13,11 @@ function makeApiHandler(db) {
     const body = await getBody(req)
     const payload = JSON.parse(body || '{}')
     const pageSize = 9
-    const origin = req.headers.origin
+
+    console.log("Origin: " + res.headers.origin)
+
+
+    const origin = req.headers.origin || "*"
 
     // console.log({ path, method, endpoint, params })
 
@@ -24,8 +28,6 @@ function makeApiHandler(db) {
     setupCORS(req, res, origin)
 
     // console.log("Request: " + req)
-
-    console.log("Origin: " + origin)
 
     if (method === 'OPTIONS') return
 

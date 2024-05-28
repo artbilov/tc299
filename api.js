@@ -24,6 +24,8 @@ function makeApiHandler(db) {
     // db.collection('products').insertMany(JSON.parse(fs.readFileSync('products.json', 'utf-8'))) // put products from the file into a db
     // db.collection('users').createIndex({ email: 1 }, { unique: true })
     // db.collection('users').createIndex({ login: 1 }, { unique: true })
+    
+    console.log("Cookie: " + cookie)
 
     setupCORS(req, res, origin)
 
@@ -34,7 +36,7 @@ function makeApiHandler(db) {
     try {
       // if (endpoint.startsWith('OPTIONS:')) res.writeHead(200, { 'Allow': 'GET, POST, PUT, DELETE' }).end()
       // else endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
-      
+
       endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
     } catch (error) {
       console.log(endpoint)

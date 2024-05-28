@@ -24,8 +24,8 @@ function makeApiHandler(db) {
     // db.collection('products').insertMany(JSON.parse(fs.readFileSync('products.json', 'utf-8'))) // put products from the file into a db
     // db.collection('users').createIndex({ email: 1 }, { unique: true })
     // db.collection('users').createIndex({ login: 1 }, { unique: true })
-    
-    console.log("Cookie: " + cookie)
+        
+    console.log("Cookie: " + req.headers.cookie)
 
     setupCORS(req, res, origin)
 

@@ -23,7 +23,7 @@ function makeApiHandler(db) {
 
     setupCORS(req, res, origin)
 
-    console.log("Request: " + req)
+    // console.log("Request: " + req)
 
     console.log("Origin: " + origin)
 

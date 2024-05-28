@@ -27,8 +27,6 @@ function makeApiHandler(db) {
 
     setupCORS(req, res, origin)
 
-    console.log("Request: " + JSON.stringify(req, null, 2))
-
     if (method === 'OPTIONS') return
 
     await ensureSession(req, res)

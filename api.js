@@ -13,7 +13,7 @@ function makeApiHandler(db) {
     const body = await getBody(req)
     const payload = JSON.parse(body || '{}')
     const pageSize = 9
-    const origin = req.headers.origin || '*'
+    const origin = req.headers.origin
 
     // console.log({ path, method, endpoint, params })
 
@@ -22,6 +22,8 @@ function makeApiHandler(db) {
     // db.collection('users').createIndex({ login: 1 }, { unique: true })
 
     setupCORS(req, res, origin)
+
+    console.log("Request: " + req)
 
     console.log("Origin: " + origin)
 

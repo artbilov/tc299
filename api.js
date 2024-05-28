@@ -27,7 +27,7 @@ function makeApiHandler(db) {
     // db.collection('users').createIndex({ email: 1 }, { unique: true })
     // db.collection('users').createIndex({ login: 1 }, { unique: true })
         
-    console.log("Cookie: " + req.headers.cookie)
+    console.log("Cookie-in: " + req.headers.cookie)
 
     setupCORS(req, res, origin)
 

@@ -6,5 +6,5 @@ function genCookie(name, value, days = 0, hours = 0, minutes = 0) {
   const expire = new Date(Date.now() + milliseconds)
   const cookie = name + '=' + value + '; SameSite=None; Secure; path=/; expires=' + expire.toUTCString()
   console.log("Cookie-NASH-TEST: " + cookie)
-  return cookie
+  return { cookie, expire }
 }

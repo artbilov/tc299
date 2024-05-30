@@ -13,7 +13,7 @@ function setupCORS(req, res, origin) {
 
     if (req.method === 'OPTIONS') {
       res.statusCode = 200
-      // res.setHeader('Access-Control-Allow-Credentials', 'true')
+      res.setHeader('Access-Control-Allow-Credentials', 'true')
       res.end('Preflight request has succeeded.')
     }
   }

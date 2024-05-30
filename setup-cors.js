@@ -15,6 +15,5 @@ function setupCORS(req, res, origin) {
     }
   }
 
-
   module.exports = { setupCORS }
 

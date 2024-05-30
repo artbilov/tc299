@@ -16,7 +16,7 @@ async function ensureSession(req, res) {
 
   // console.log("Cookie: " + cookie)
 
-  const token = cookie?.split('; ').find(token => token.startsWith('hh-user-session='))?.split('=')[1]
+  const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
 
   await deleteExpiredSessions()
 
@@ -68,7 +68,7 @@ async function deleteExpiredSessions() {
 async function updateSession(req, res, article) {
   // Get session (token).
   const { cookie } = req.headers
-  const token = cookie?.split('; ').find(token => token.startsWith('hh-user-session='))?.split('=')[1]
+  const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
 
   if (!token) return
 
@@ -87,7 +87,7 @@ async function updateSession(req, res, article) {
 async function upgradeSession(req, res, email) {
 
   const { cookie } = req.headers
-  const token = cookie?.split('; ').find(token => token.startsWith('hh-user-session='))?.split('=')[1]
+  const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
 
   if (!token) return
 

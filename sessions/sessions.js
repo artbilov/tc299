@@ -31,7 +31,7 @@ async function ensureSession(req, res) {
 
 function createSession(res) {
   const token = genToken()
-  const { cookie, expire: end } = genCookie('hh-user-session', token, 0, 0, 60)
+  const { cookie, expire: end } = genCookie('__Host-hh-user-session', token, 0, 0, 60)
   const email = ''
   const wishList = []
   const inCart = []

@@ -233,14 +233,12 @@ const endpoints = {
   'PUT:to-wish-list'({ req, res, payload }) {
     const { article } = payload
 
-    // ensureSession(req, res)
     updateSession(req, res, article)
   },
 
   'PUT:to-cart'({ req, res, payload }) {
     const { article } = payload
 
-    // ensureSession(req, res)
     updateSession(req, res, article)
   }
 

@@ -14,14 +14,14 @@ function makeApiHandler(db) {
     const payload = JSON.parse(body || '{}')
     const pageSize = 9
 
-    console.log("Origin-before: " + req.headers.origin)
+    // console.log("Origin-before: " + req.headers.origin)
 
 
     const origin = req.headers.origin || "*"
 
-    console.log("Origin-after: " + origin)
+    // console.log("Origin-after: " + origin)
 
-    // console.log({ path, method, endpoint, params })
+    console.log({ path, method, endpoint, params })
 
     // db.collection('products').insertMany(JSON.parse(fs.readFileSync('products.json', 'utf-8'))) // put products from the file into a db
     // db.collection('users').createIndex({ email: 1 }, { unique: true })

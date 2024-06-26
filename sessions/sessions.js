@@ -84,96 +84,84 @@ async function updateSession(req, res, article) {
 }
 
 
-async function upgradeSession(req, res, email) {
+async function upgradeSession(req, email) {
 
   const { cookie } = req.headers
   const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
 
   if (!token) return
 
+  const session = sessions.find(session => session.token === token)
+
+  if (!session) return
+
+  session.email = email
+  session.wishList = []
+  session.inCart = []
+
   try {
-    // Передающая коллекция - sessions, принимающая коллекция - users
-    const sessionsCollection = db.collection('sessions')
-    const usersCollection = db.collection('users')
-
-    // Найти документ в коллекции sessions, имеющий поле token
-    const sessionDoc = sessions.find(session => session.token === token)
-
-    if (sessionDoc) {
-      // Найти документ в коллекции users, имеющий email, соответствующий email в sessionDoc
-      sessionDoc.email = email
-      // await sessionsCollection.updateOne({ token }, { $set: { email } })
-      const userDoc = await usersCollection.findOne({ email })
-
-      if (userDoc) {
-        // Найти элементы из массива wishList в sessionDoc, которых нет в массиве wishList userDoc
-        const uniqueWishListItems = sessionDoc.wishList.filter(item => !userDoc.wishList.includes(item))
-
-        // Найти элементы из массива inCart в sessionDoc, которых нет в массиве inCart userDoc
-        const uniqueInCartItems = sessionDoc.inCart.filter(({ article }) => !userDoc.inCart.includes({ article }))
-
-        // Добавить уникальные элементы в массив wishList и inCart userDoc
-        userDoc.wishList.push(...uniqueWishListItems)
-        userDoc.inCart.push(...uniqueInCartItems)
-
-        // Обновить документ userDoc в коллекции users
-        await usersCollection.updateOne({ email }, {
-          $set: {
-            wishList: userDoc.wishList,
-            inCart: userDoc.inCart
-          }
-        })
-      }
-
-      // Очистить массив wishList и inCart в sessionDoc
-      sessions.map(session => session.token === token ? { ...session, wishList: [], inCart: [] } : session)
-      await sessionsCollection.updateOne({ token }, {
-        $set: {
-          wishList: [],
-          inCart: []
-        }
-      });
-
-      res.end(JSON.stringify({ result: 'Wishlist and Cart upgraded' }));
+    const result = await db.collection('sessions').updateOne({ token }, { $set: { email, wishList: [], inCart: [] } })
+    if (result.modifiedCount > 0) {
+      console.log('Session upgraded')
     }
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 
+  
+
+
+
+  // старая версия (когда сессия хранилась в базе данных, а не на фронте)
   // try {
   //   // Передающая коллекция - sessions, принимающая коллекция - users
-  //   const sessionCollection = db.collection('sessions')
+  //   const sessionsCollection = db.collection('sessions')
   //   const usersCollection = db.collection('users')
 
   //   // Найти документ в коллекции sessions, имеющий поле token
-  //   const sessionDoc = await sessionCollection.findOne({ token })
+  //   const sessionDoc = sessions.find(session => session.token === token)
 
   //   if (sessionDoc) {
   //     // Найти документ в коллекции users, имеющий email, соответствующий email в sessionDoc
-  //     await sessionCollection.updateOne({ token }, { $set: { email } })
-
+  //     sessionDoc.email = email
+  //     // await sessionsCollection.updateOne({ token }, { $set: { email } })
   //     const userDoc = await usersCollection.findOne({ email })
 
   //     if (userDoc) {
   //       // Найти элементы из массива wishList в sessionDoc, которых нет в массиве wishList userDoc
   //       const uniqueWishListItems = sessionDoc.wishList.filter(item => !userDoc.wishList.includes(item))
 
-  //       // Добавить уникальные элементы в массив wishList userDoc
+  //       // Найти элементы из массива inCart в sessionDoc, которых нет в массиве inCart userDoc
+  //       const uniqueInCartItems = sessionDoc.inCart.filter(({ article }) => !userDoc.inCart.includes({ article }))
+
+  //       // Добавить уникальные элементы в массив wishList и inCart userDoc
   //       userDoc.wishList.push(...uniqueWishListItems)
+  //       userDoc.inCart.push(...uniqueInCartItems)
 
   //       // Обновить документ userDoc в коллекции users
-  //       await usersCollection.updateOne({ _id: userDoc._id }, { $set: { wishList: userDoc.wishList } })
+  //       await usersCollection.updateOne({ email }, {
+  //         $set: {
+  //           wishList: userDoc.wishList,
+  //           inCart: userDoc.inCart
+  //         }
+  //       })
   //     }
 
-  //     // Очистить массив wishList в sessionDoc
-  //     await sessionCollection.updateOne({ _id: sessionDoc._id }, { $set: { wishList: [] } })
-  //     res.end(JSON.stringify({ result: 'Wishlist upgraded' }))
+  //     // Очистить массив wishList и inCart в sessionDoc
+  //     sessions.map(session => session.token === token ? { ...session, wishList: [], inCart: [] } : session)
+  //     await sessionsCollection.updateOne({ token }, {
+  //       $set: {
+  //         wishList: [],
+  //         inCart: []
+  //       }
+  //     });
+
+  //     res.end(JSON.stringify({ result: 'Wishlist and Cart upgraded' }));
   //   }
   // } catch (error) {
-  //   console.log(error)
+  //   console.log(error);
   // }
 }
-
 
 async function updateWishlist(res, session, token, article) {
   // Check if email is in session

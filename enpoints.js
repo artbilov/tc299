@@ -103,10 +103,10 @@ const endpoints = {
     }
   },
 
-  async 'POST:register'({ db,req, res, payload }) {
+  async 'POST:register'({ db, req, res, payload }) {
     const { regType } = payload
     if (regType === 'google') {
-      const { name, email, id } = payload
+      const { name, email, id, wishList = [], inCart = [] } = payload
 
       if (!name || !email || !id) {
         res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))
@@ -114,21 +114,23 @@ const endpoints = {
       }
 
       let { promo } = payload
-      
+
       if (!promo) promo = false
-      
-      const user = { fullName: name, email, promo, regType, id, wishList: [], inCart: [] }
-      
+
+      const user = { fullName: name, email, promo, regType, id, wishList, inCart, orders: [], reviews: [] }
+
+      // reviews: [{ article, stars, text, reviewDate }, { article, stars, text, reviewDate }]
+
       try {
         const result = await db.collection('users').updateOne(
           { email }, // Проверяем наличие документа с указанным email
           { $setOnInsert: user }, // Добавляем новый документ user при отсутствии
           { upsert: true, returnOriginal: false } // Создаем новый документ, если его нет
         )
-      
+
         if (result.upsertedId) {
           res.statusCode = 201
-          upgradeSession(req, res, email)
+          upgradeSession(req, email)
           console.log('User created')
           res.end(JSON.stringify({ user }))
         } else if (result.modifiedCount === 0) {
@@ -147,17 +149,17 @@ const endpoints = {
       }
 
     } else if (regType === 'email') {
-      const { fullName, email, password } = payload
-      
+      const { fullName, email, password, wishList = [], inCart = [] } = payload
+
       if (!fullName || !email || !password) {
         res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))
         return
       }
       const hashed = await hash(password)
       let { promo } = payload
-      
+
       if (!promo) promo = false
-      const user = { fullName, email, hash: hashed, promo, regType, wishList: [], inCart: [] }
+      const user = { fullName, email, hash: hashed, promo, regType, wishList, inCart, orders: [], reviews: [] }
 
       try {
         const result = await db.collection('users').updateOne(
@@ -165,10 +167,10 @@ const endpoints = {
           { $setOnInsert: user }, // Добавляем новый документ user при отсутствии
           { upsert: true, returnOriginal: false } // Создаем новый документ, если его нет
         )
-      
+
         if (result.upsertedId) {
           res.statusCode = 201
-          upgradeSession(req, res, email)
+          upgradeSession(req, email)
           console.log('User created')
           delete user.hash
           res.end(JSON.stringify({ user }))
@@ -192,8 +194,6 @@ const endpoints = {
 
   async 'POST:login'({ db, req, res, payload }) {
 
-    // ensureSession(req, res)
-
     const { regType, email } = payload
 
     if (regType === 'google') {
@@ -202,10 +202,10 @@ const endpoints = {
         if (err.code == 11000) return { insertedId: null }
       })
 
-      // if (user.id) {
       if (user) {
-        res.end(JSON.stringify({ _id: user.id }))
-        upgradeSession(req, res, email)
+        
+        upgradeSession(req, email)
+        res.end(JSON.stringify(user))
       } else {
         res.writeHead(400).end(JSON.stringify({ error: "User with this email not found" }))
       }
@@ -217,13 +217,13 @@ const endpoints = {
         res.writeHead(400).end(JSON.stringify({ error: "Login or password are incorrect" }))
         return
       }
-      
+
       const user = await db.collection('users').findOne({ email, hash }, { projection: { _id: 0 } })
 
       if (user && await verify(password, user.hash).catch(_ => false)) {
+        upgradeSession(req, res, email)
         delete user.hash
         res.end(JSON.stringify(user))
-        upgradeSession(req, res, email)
       } else {
         res.writeHead(400).end(JSON.stringify({ error: "Login or password is incorrect" }))
       }

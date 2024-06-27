@@ -64,7 +64,7 @@ async function deleteExpiredSessions() {
 }
 
 
-
+// ...
 async function updateSession(req, res, article) {
   // Get session (token).
   const { cookie } = req.headers
@@ -83,7 +83,7 @@ async function updateSession(req, res, article) {
   }
 }
 
-
+// Используем для регистрации пользователя
 async function upgradeSession(req, email) {
 
   const { cookie } = req.headers

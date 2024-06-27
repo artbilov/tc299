@@ -117,7 +117,7 @@ const endpoints = {
 
       if (!promo) promo = false
 
-      const user = { fullName: name, email, promo, regType, id, wishList, inCart, orders: [], reviews: [] }
+      const user = { fullName: name, email, promo, regType, _id: id, wishList, inCart, orders: [], reviews: [] }
 
       // reviews: [{ article, stars, text, reviewDate }, { article, stars, text, reviewDate }]
 
@@ -132,6 +132,7 @@ const endpoints = {
           res.statusCode = 201
           upgradeSession(req, email)
           console.log('User created')
+          delete user._id
           res.end(JSON.stringify({ user }))
         } else if (result.modifiedCount === 0) {
           res.statusCode = 204
@@ -203,7 +204,7 @@ const endpoints = {
       })
 
       if (user) {
-        
+        mergeUserData(user, payload)
         upgradeSession(req, email)
         res.end(JSON.stringify(user))
       } else {

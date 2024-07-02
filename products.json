@@ -1,712 +1,625 @@
 [
-  {
-    "_id": "65d689e04df5ea3cd77bb295",
-    "name": "The Little Book of Hygge",
-    "category": "Books & Journals",
-    "description": "The New York Times Bestseller The Little Book of Hygge introduces you to hygge, the cornerstone of Danish life, and offers advice and ideas on incorporating it into your own life. ",
-    "aboutProduct": "Embrace Hygge and become happier with this definitive guide to the Danish philosophy of comfort, togetherness, and well-being.\n\nMeik Wiking (yes that's his real name) is CEO of The Happiness Research Institute. He has written several books and reports on happiness, subjective well-being and quality of life and is often used as a public speaker around the world.",
-    "color": "Blue",
-    "quantity": "20",
-    "price": 20,
-    "image": [
-      "https://cphagen.com/cdn/shop/products/9780241283912_800x.jpg?v=1527204508",
-      "https://www.oliverbonas.com/static/media/catalog/product/1/0/1083163_1_.jpg",
-      "https://www.armatuer.com/cdn/shop/products/hyggehome.jpg?v=1670250637"
-    ],
-    "picture": "https://www.armatuer.com/cdn/shop/products/hyggehome.jpg?v=1670250637",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-21T23:40:16.773Z",
-    "updatedAt": "2024-02-21T23:40:16.773Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d68b5a6f369042f3425b1d",
-    "name": "My Hygge Home",
-    "category": "Books & Journals",
-    "description": "A gorgeous guide to the Danish art of creating a cosy, happy home from the internationally bestselling author, Meik Wiking.",
-    "aboutProduct": "\"We can utilize the idea of hygge to transform our living and working spaces into spaces where we count our wealth by the depth of our bonds and the absence of our wants. And, most importantly, to create a space that encourages us to find time to do what matters most.\" - Meik Wiking (Author of My Hygge Home)\nOur homes should be a place of comfort, a place to feel safe when we shut the door. Somewhere to be ourselves, to unwind and create special memories. Inspired by Danish design and traditions, this beautiful new book from Meik Wiking shares how to turn your home into a sanctuary and live like the happiest people in the world.\n\nWith simple tips based on new research from The Happiness Institute in Copenhagen, this book reveals what makes a happy home tick. No matter how much space you have or what your budget is, Meik shows how you can use colour, light and space to create your happy place and celebrate cosiness the Danish way.",
-    "color": "Blue",
-    "quantity": "19",
-    "price": 25,
-    "image": [
-      "https://www.illumsbolighus.com/dw/image/v2/BGKQ_PRD/on/demandware.static/-/Sites-sfcc-master-catalogue/default/dw4495ec57/images/hi-res/902519410.jpg?sw=600&sh=600",
-      "https://cdn11.bigcommerce.com/s-g62km8uew2/product_images/uploaded_images/c0431b4e-a82f-4956-a547-37bdd35a57f4.jpg",
-      "https://www.nordicchill.co.nz/cdn/shop/products/IMG-20221207-WA0002.jpg?v=1691445323&width=1946"
-    ],
-    "picture": "https://cdn11.bigcommerce.com/s-g62km8uew2/product_images/uploaded_images/c0431b4e-a82f-4956-a547-37bdd35a57f4.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-21T23:46:34.346Z",
-    "updatedAt": "2024-02-21T23:46:34.346Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d68dc6f0414bff11ef0fdb",
-    "name": "The Art of Making Memories",
-    "category": "Books & Journals",
-    "description": "\"Happy memories are essential to our mental health. They strengthen our identity, sense of purpose and relationships. Meik's new book will teach you how to create and remember happy moments and will change how you think about happy memories.\" Dr Rangan Chatterjee, Number One bestselling author of The 4 Pillar Plan and BBC Breakfast GP",
-    "aboutProduct": "The third book from the CEO of the Happiness Research Institute and internationally bestselling author of The Little Book of Hygge, Meik Wiking.\n\nWhy is it that a piece of music, a smell, a taste can take us back to something we had forgotten? How is it that we remember our first kiss in detail, but barely remember anything of a fortnight's holiday from five years ago? Memories are the cornerstones of our identity, shaping who we are, how we act, and how we feel. But how do we make and keep the memories that bring us lasting joy?\n\nHappiness expert Meik Wiking has the answers. In The Art of Making Memories he brings together his extensive research drawn from the world's biggest study on happy memories (which involved 1000 people from 75 countries), conducted at the Happiness Research Institute, along with data and diaries, interviews, global surveys and studies, and real-life behavioural science and happiness experiments, to explain the nuances of nostalgia, the different ways we form memories around our experiences, and how we can become better at recalling them.\n\nWritten in Meik's warm and funny trademark style, filled with infographics, illustrations, and photographs, and featuring \"Happy Memory Tips\", The Art of Making Memories a life-affirming read which show you it's easier than you think to make your life unforgettable.",
-    "color": "Blue",
-    "quantity": "23",
-    "price": 14,
-    "image": [
-      "https://www.nordicchill.co.nz/cdn/shop/products/Book.jpg?v=1679611959&width=1445",
-      "https://m.media-amazon.com/images/I/61R5j1430kL._AC_UF894,1000_QL80_.jpg",
-      "https://willowinwinter.files.wordpress.com/2022/05/wp-1653144960667.jpg?w=1200"
-    ],
-    "picture": "https://m.media-amazon.com/images/I/61R5j1430kL._AC_UF894,1000_QL80_.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-21T23:56:54.401Z",
-    "updatedAt": "2024-02-21T23:56:54.401Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d6914d46f0bc27f2b2b784",
-    "name": "The Little Book of Lykke",
-    "category": "Books & Journals",
-    "description": "A practical guide to what makes us happy, from the CEO of the Happiness Research Institute in Copenhagen and bestselling author of The Little Book of Hygge.",
-    "aboutProduct": "We all know Denmark is the happiest country in the world—but this doesn't make it pe﻿rfect. Happiness isn't exclusively Danish. Nor is it just eating pastries, lighting candles, and practising hygge. Happiness is something available to all, wherever you are, and whatever your means. Starting from the Happiness Research Institute in Copenhagen, Meik Wiking, probably the happiest man in the world, travels across the globe on a quest to uncover the secrets of the very happiest people from Dubai to Rio de Janeiro, taking back to his native country their tips, tricks, and unique approaches to a fulfilled life.\n\nExploring the happiness gap for parents, how much money you really need to buy happiness, and why—luckily for us—the expectation of kissing Rachel Weiss is better than the real thing, Meik brings together a global roadmap for happiness with his trademark wit. Weaving together original research and personal anecdotes, The Little Book of Lykke gives us a new approach to achieving everyday happiness.",
-    "color": "Blue",
-    "quantity": "18",
-    "price": 19,
-    "image": [
-      "https://cphagen.com/cdn/shop/products/Lykke_book_800px_2048x_9f6a56cf-3158-43c5-b2d2-edbfd8dd82ff_800x.jpg?v=1538695898",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Screenshot%202024-02-22%20at%2001.05.16.png?raw=true",
-      "https://www.coffeeandbooks.co.uk/wp-content/uploads/2021/01/The-Little-Book-of-LYKKE-by-Meik-Wiking.jpg"
-    ],
-    "picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Screenshot%202024-02-22%20at%2001.05.16.png?raw=true",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T00:11:57.251Z",
-    "updatedAt": "2024-02-22T00:11:57.251Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d6955661287b52ac116b25",
-    "name": "My Hygge Journal",
-    "category": "Books & Journals",
-    "description": "You can evoke hygge simply by enjoying life’s great simple pleasures, but you can also infuse your life and routine with hyggeligt things.",
-    "aboutProduct": "Embracing hygge is casual, joyful, and often spontaneous…it’s the Danish way!\n\nIt’s about savoring people and moments more than anything else.If you’re ready to embrace the Danish way of hygge, try cozying up with your journal, or create your own hygge ideas page.\n\nWhile the Danes are the happiest people on the planet, happiness isn't exclusively Danish; cultures around the world have their own unique approaches to leading a contented, fulfilled life. For his work at the Happiness Research Institute in Copenhagen, Meik Wiking travels the globe from Dubai to Finland, Rio de Janeiro to Bhutan, South Korea to the United States, to discover the secrets of the very happiest people.",
-    "color": "Blue",
-    "quantity": "22",
-    "price": 22,
-    "image": [
-      "https://pageflutter.com/wp-content/uploads/2017/10/HyggeOctober-19-2017-3.jpg",
-      "https://jebra.com/wp-content/uploads/2019/01/hygge-self-care.jpg",
-      "https://pageflutter.com/wp-content/uploads/2017/10/Hygge-feature.jpg"
-    ],
-    "picture": "https://jebra.com/wp-content/uploads/2019/01/hygge-self-care.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T00:29:10.137Z",
-    "updatedAt": "2024-02-22T00:29:10.137Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d69792cb7ed583d3ff9635",
-    "name": "Hygge Cups 4 Piece Set",
-    "category": "Gift Sets",
-    "description": "Make your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n",
-    "aboutProduct": "Welcome to our online cozy hygge shop, where warmth and comfort await at every click. Elevate your everyday moments and spread joy with our curated gift sets designed to bring hygge into your life and the lives of your loved ones.\n\nIndulge in the art of coziness with our thoughtfully crafted collections, each item carefully selected to inspire relaxation, connection, and tranquility. From soft blankets to flickering candles, from aromatic teas to snugly socks, our gift sets are curated to create moments of pure hygge bliss.\n\nMake your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n\nEmbrace the Danish concept of hygge and transform your space into a sanctuary of serenity. Browse our collection today and discover the perfect gift set to enhance the cozy moments in your life.",
-    "color": "Blue",
-    "quantity": "20",
-    "price": 10,
-    "image": [
-      "https://media.home-you.com/catalog/product/6/5/65708bca8695275365-MIX-KPLKUMORWENAKOMPLETKUBK_W.jpg?store=pl&image-type=image&width=920&height=920"
-    ],
-    "picture": "https://media.home-you.com/catalog/product/6/5/65708bca8695275365-MIX-KPLKUMORWENAKOMPLETKUBK_W.jpg?store=pl&image-type=image&width=920&height=920",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T00:38:42.828Z",
-    "updatedAt": "2024-02-22T00:38:42.828Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d698cb24141af8c5850be5",
-    "name": "Hygge night in gift basket for two",
-    "category": "Gift Sets",
-    "description": "Make your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.",
-    "aboutProduct": "Welcome to our online cozy hygge shop, where warmth and comfort await at every click. Elevate your everyday moments and spread joy with our curated gift sets designed to bring hygge into your life and the lives of your loved ones.\n\nIndulge in the art of coziness with our thoughtfully crafted collections, each item carefully selected to inspire relaxation, connection, and tranquility. From soft blankets to flickering candles, from aromatic teas to snugly socks, our gift sets are curated to create moments of pure hygge bliss.\n\nMake your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n\nEmbrace the Danish concept of hygge and transform your space into a sanctuary of serenity. Browse our collection today and discover the perfect gift set to enhance the cozy moments in your life.",
-    "color": "Blue",
-    "quantity": "40",
-    "price": 45,
-    "image": [
-      "https://happyhyggegifts.com/cdn/shop/products/il_fullxfull.4317845460_3y9o.jpg?v=1667705299&width=2200",
-      "https://happyhyggegifts.com/cdn/shop/products/il_fullxfull.4365211315_ckao.jpg?v=1667707276",
-      "https://happyhyggegifts.com/cdn/shop/products/il_fullxfull.4365211311_8ri8.jpg?v=1667707298"
-    ],
-    "picture": "https://happyhyggegifts.com/cdn/shop/products/il_fullxfull.4365211311_8ri8.jpg?v=1667707298",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T00:43:55.777Z",
-    "updatedAt": "2024-02-22T00:43:55.777Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d699e524141af8c5850be7",
-    "name": "Hygge Box",
-    "category": "Gift Sets",
-    "description": "Our Hygge box makes a perfect Winter gift. It also makes a perfect Christmas, winter birthday, new home or thank you gift.\n\nHygge is about shutting the world out and enjoying quality time with family or alone. It’s about slippers, blankets, a roaring fire, candles, hot chocolate, ……. It’s about creating as relaxing an environment as possible and forgetting life’s worries.",
-    "aboutProduct": "Our box includes the Little Book of Hygge. This is written by Meik Wiking who is the CEO of the Happiness Research Institute in Copenhagen. He is committed to finding out what makes people happy and has concluded that Hygge is the magic ingredient that makes Danes the happiest nation in the world. The book extra gives you little tips on how to add more Hygge to your life.\n\nWhat makes this book extra special is that it has a beautiful blue and gold hardback cover with gorgeous illustrations which will make an attractive addition to any coffee table or bookshelf.  It is an uplifting book – the photos in the book are inviting and comforting and it is full of ideas and recipes for living in the moment and making that moment special.\n\nOur box also includes some beautiful candles by the St Eval candle company.  A bundle of Inspiritus candles and a beautiful ceramic candle inspired by snowy landscapes and the magic of Christmas, these elegant white tealights with brushed gold detail. Each twinkling tealight has a burn time of up to 8 hours. These little ceramic tealights can be upcycled once burnt through by simply dropping in another tealight candle.",
-    "color": "Blue",
-    "quantity": "15",
-    "price": 30,
-    "image": [
-      "https://friendinabox.co.uk/wp-content/uploads/2020/10/FIAB_Oct20_029web.jpg",
-      "https://friendinabox.co.uk/wp-content/uploads/2017/11/FIABXmas17_09Web.jpg",
-      "https://friendinabox.co.uk/wp-content/uploads/2020/10/FIAB_Oct20_022web.jpg"
-    ],
-    "picture": "https://friendinabox.co.uk/wp-content/uploads/2020/10/FIAB_Oct20_022web.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T00:48:37.956Z",
-    "updatedAt": "2024-02-22T00:48:37.956Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d69bee2f7d1e5238d67809",
-    "name": "Bestie Candle Set",
-    "category": "Candles",
-    "description": "Bestie Candle Set features 2 limited-edition scents inspired by our favourite sweet treats! Gift a candle to your bestie, or keep them both for yourself.. (we won’t judge). These Candles pair beautifully together for a “Chocolate Covered Strawberry” scent.",
-    "aboutProduct": "this Collection includes:\n\nSweet Strawberry 9oz Candle - This sweet scent, smells like fresh strawberries right from the patch. Sweet and delectable.\n\nDark Chocolate 9oz Candle - Rich and sweet, gourmet chocolate. Pair this with Sweet Strawberry for a delectable treat we all love.\n\nMake your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n\nEmbrace the Danish concept of hygge and transform your space into a sanctuary of serenity. Browse our collection today and discover the perfect gift set to enhance the cozy moments in your life.",
-    "color": "Pink",
-    "quantity": "49",
-    "price": 40,
-    "image": [
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Bestie%20Candle%20Set.png?raw=true",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Bestie%20Candle%20Set1.jpg?raw=true",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Bestie%20Candle%20Set.jpg?raw=true",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1674395988597-2NIKJIBVRASZUISSIIKZ/DSC05645.jpg"
-    ],
-    "picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Bestie%20Candle%20Set.jpg?raw=true",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T00:57:18.592Z",
-    "updatedAt": "2024-02-22T00:57:18.592Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d69e983fcddda67f0c08f7",
-    "name": "Ceramic Cup",
-    "category": "Get Warm",
-    "description": "Make your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.",
-    "aboutProduct": "Welcome to our online cozy hygge shop, where warmth and comfort await at every click. Elevate your everyday moments and spread joy with our curated gift sets designed to bring hygge into your life and the lives of your loved ones.\n\nIndulge in the art of coziness with our thoughtfully crafted collections, each item carefully selected to inspire relaxation, connection, and tranquility. From soft blankets to flickering candles, from aromatic teas to snugly socks, our gift sets are curated to create moments of pure hygge bliss.\n\nMake your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n\nEmbrace the Danish concept of hygge and transform your space into a sanctuary of serenity. Browse our collection today and discover the perfect gift set to enhance the cozy moments in your life.",
-    "color": "Blue",
-    "quantity": "10",
-    "price": 19,
-    "image": [
-      "https://raw.githubusercontent.com/DanyloFrolov/HyggeHomeP/main/Ceramic%20Cup.webp",
-      "https://raw.githubusercontent.com/DanyloFrolov/HyggeHomeP/main/Ceramic%20Cup11.webp"
-    ],
-    "picture": "https://raw.githubusercontent.com/DanyloFrolov/HyggeHomeP/main/Ceramic%20Cup11.webp",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T01:08:40.560Z",
-    "updatedAt": "2024-02-22T01:08:40.560Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d69f903fcddda67f0c08f9",
-    "name": "\"Let's HYGGE\" Mug",
-    "category": "Get Warm",
-    "description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
-    "aboutProduct": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!",
-    "color": "Blue",
-    "quantity": "20",
-    "price": 20,
-    "image": [
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/_Let_s%20HYGGE_%20Mug.jpg?raw=true",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/_Let_s%20HYGGE_%20Mug1.jpg?raw=true"
-    ],
-    "picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/_Let_s%20HYGGE_%20Mug1.jpg?raw=true",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T01:12:48.065Z",
-    "updatedAt": "2024-02-22T01:12:48.065Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d6a02b3fcddda67f0c08fc",
-    "name": "Cozy Queen Mug",
-    "category": "Get Warm",
-    "description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
-    "aboutProduct": "\"Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!\"",
-    "color": "Blue",
-    "quantity": "20",
-    "price": 40,
-    "image": [
-      "https://i.ebayimg.com/images/g/4kUAAOSwyvldI4ea/s-l1600.jpg"
-    ],
-    "picture": "https://i.ebayimg.com/images/g/4kUAAOSwyvldI4ea/s-l1600.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T01:15:23.711Z",
-    "updatedAt": "2024-02-22T01:15:23.711Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d6a02b3fcddda67f0c08fe",
-    "name": "Cozy Queen Mug",
-    "category": "Get Warm",
-    "description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
-    "aboutProduct": "\"Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!\"",
-    "color": "Blue",
-    "quantity": "20",
-    "price": 40,
-    "image": [
-      "https://i.ebayimg.com/images/g/4kUAAOSwyvldI4ea/s-l1600.jpg"
-    ],
-    "picture": "https://i.ebayimg.com/images/g/4kUAAOSwyvldI4ea/s-l1600.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T01:15:23.844Z",
-    "updatedAt": "2024-02-22T01:15:23.844Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d6a2243fcddda67f0c0902",
-    "name": "\"LOVE\" Led Lamp",
-    "category": "Lighting Decor",
-    "description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
-    "aboutProduct": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!",
-    "color": "Yellow",
-    "quantity": "20",
-    "price": 20,
-    "image": [
-      "https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/56/5608720/MANTA-SNL42WH-Love-Bialy-front-wersja-2.jpg",
-      "https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608720/storage_app_opisy2_manta_548633/3.jpg"
-    ],
-    "picture": "https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608720/storage_app_opisy2_manta_548633/3.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T01:23:48.867Z",
-    "updatedAt": "2024-02-22T01:23:48.867Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d6a2cec2f14485a6ac668f",
-    "name": "Musical note Led Lamp",
-    "category": "Lighting Decor",
-    "description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
-    "aboutProduct": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.",
-    "color": "Yellow",
-    "quantity": "21",
-    "price": 21,
-    "image": [
-      "https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/56/5608808/MANTA-Nutka-SNL12WH-front-wersia-2.jpg",
-      "https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608808/storage_app_opisy2_manta_548540/3.jpg"
-    ],
-    "picture": "https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608808/storage_app_opisy2_manta_548540/3.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T01:26:38.997Z",
-    "updatedAt": "2024-02-22T01:26:38.997Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d6a380c2f14485a6ac6691",
-    "name": "Angel Led Lamp",
-    "category": "Lighting Decor",
-    "description": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n",
-    "aboutProduct": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!",
-    "color": "Yellow",
-    "quantity": "20",
-    "price": 18,
-    "image": [
-      "https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/56/5608896/MANTA-Aniol-SNL39WH-front.jpg",
-      "https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608896/storage_app_opisy2_manta_548625/3.jpg"
-    ],
-    "picture": "https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608896/storage_app_opisy2_manta_548625/3.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T01:29:36.933Z",
-    "updatedAt": "2024-02-22T01:29:36.933Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d6a6a98c12679ef124ba76",
-    "name": "Sweater Weather",
-    "category": "Candles",
-    "description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\nSweater Weather embodies crisp fall nights spent in your favourite knit sweater. Sweater Weather is warm and musky with scent notes of birch, amber, cashmere and fig.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\nSweater Weather embodies crisp fall nights spent in your favourite knit sweater. Sweater Weather is warm and musky with scent notes of birch, amber, cashmere and fig.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!",
-    "color": "Red",
-    "quantity": "40",
-    "price": 19,
-    "image": [
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704923530004-LFAQSK9VLV2KAAS6QC4Z/Hygge_23_Jar+MockUp-Sweater+Weather.png",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1631109204722-5X4RTOCFWFGYOP1GUH6J/5E7C7894-32AA-4D6E-990A-D2E13351E48F"
-    ],
-    "picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1631109204722-5X4RTOCFWFGYOP1GUH6J/5E7C7894-32AA-4D6E-990A-D2E13351E48F",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T01:43:05.449Z",
-    "updatedAt": "2024-02-22T01:43:05.449Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d7564f8fa19a51b2f4b178",
-    "name": "Frasier Fir",
-    "category": "Candles",
-    "description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nOur Frasier Fir Candle evokes the crisp air of the Winter season. Stay cozy and warm indoors with the scent notes of freshly cut Siberian Fir, Cedar and Musk.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": " Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
-    "color": "Green",
-    "quantity": "50",
-    "price": 25,
-    "image": [
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Frasier%20Fir.png?raw=true",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Frasier%20Fir1.JPG?raw=true",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Frasier%20Fir.jpg?raw=true"
-    ],
-    "picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Frasier%20Fir1.JPG?raw=true",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T14:12:31.101Z",
-    "updatedAt": "2024-02-22T14:12:31.101Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d757368fa19a51b2f4b17a",
-    "name": "Honey Bourbon",
-    "category": "Candles",
-    "description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nHoney bourbon is an inviting combination of sweet and spice. This candle embodies a nightcap in front of the fire. Oh-so-cozy.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
-    "color": "White",
-    "quantity": "40",
-    "price": 28,
-    "image": [
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Honey%20Bourbon.png?raw=true",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1625014073021-CQY9BNJHI7FYD8ZI6J23/IMG_0967.jpg",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Honey%20Bourbon.jpeg?raw=true"
-    ],
-    "picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1625014073021-CQY9BNJHI7FYD8ZI6J23/IMG_0967.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T14:16:22.685Z",
-    "updatedAt": "2024-02-22T14:16:22.685Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d758468fa19a51b2f4b17c",
-    "name": "Sweet Citrus",
-    "category": "Candles",
-    "description": "Essential Oil | Coconut Soy Candle\n\nHygge’s essential oil candles are made with natural, clean-burning, plant-based oils which can be therapeutic and promote the relief of stress and anxiety.\nSweet Citrus is fresh and energizing. With the combination of lemongrass and sweet orange essential oils, Sweet Citrus provides a clean and inviting aroma.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
-    "color": "White",
-    "quantity": "40",
-    "price": 23,
-    "image": [
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Sweet%20Citrus.png?raw=true",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1625143606129-HERCTTV3P1HRWLTFYMRH/IMG_1133.jpg?format=1500w",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Sweet%20Citrus.jpg?raw=true"
-    ],
-    "picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1625143606129-HERCTTV3P1HRWLTFYMRH/IMG_1133.jpg?format=1500w",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T14:20:54.604Z",
-    "updatedAt": "2024-02-22T14:20:54.604Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d75aaeb07339f70d9d1ace",
-    "name": "Vanilla Cashmere",
-    "category": "Candles",
-    "description": "Fragrance Oil | Coconut Soy Candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nVanilla Cashmere is warm, musky, and oh-so-cozy. This sweet aroma wraps around you like a fuzzy blanket. Think me-time. \n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
-    "color": "White",
-    "quantity": "40",
-    "price": 24,
-    "image": [
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Vanilla+Cashmere.png?raw=true",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Vanilla+Cashmere(1).jpg?raw=true",
-      "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Vanilla+Cashmere.jpg?raw=true"
-    ],
-    "picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Vanilla+Cashmere(1).jpg?raw=true",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T14:31:10.348Z",
-    "updatedAt": "2024-02-22T14:31:10.348Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d75ebe3d2c0315a0527604",
-    "name": "Sunday Morning",
-    "category": "Candles",
-    "description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nOur Sunday Morning candle is reminiscent of slow mornings and spring time air, featuring scent notes of citrus, gardenia, lilac and amber. This clean scent will help you refresh & reset with ease.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": "Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
-    "color": "Green",
-    "quantity": "40",
-    "price": 26,
-    "image": [
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1706644559704-8D4GENY3WSDKBZZOZJKI/Hygge_23_Jar%2BMockUp-Sunday%2BMorning.jpg?format=1500w",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1647547433134-CGOXN7YX2MLNJV9WTILS/high_res.jpeg",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704993971771-IA113BP51RNN87AVRBLY/SUNDAY-MORNING.jpg?format=1500w"
-    ],
-    "picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1647547433134-CGOXN7YX2MLNJV9WTILS/high_res.jpeg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T14:48:30.126Z",
-    "updatedAt": "2024-02-22T14:48:30.126Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d75f8e3d2c0315a0527606",
-    "name": "Amber Sandalwood",
-    "category": "Candles",
-    "description": "Fragrance Oil | Coconut Soy Candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nWith comforting fragrance notes of sandalwood, amber, musk, rose and cedar. Wrap yourself in a blanket and take in the comforting sent.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
-    "color": "Grey",
-    "quantity": "40",
-    "price": 20,
-    "image": [
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704923918646-77HEB137R6LSOVNW00WY/Hygge_23_Jar+MockUp-Amber+Sandalwood.png?format=1500w",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1696354891534-V27G045234MPX2IUV9NS/Hygge%2BInstagram%2BPosts%2BOctober.jpg?format=1500w"
-    ],
-    "picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1696354891534-V27G045234MPX2IUV9NS/Hygge%2BInstagram%2BPosts%2BOctober.jpg?format=1500w",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T14:51:58.981Z",
-    "updatedAt": "2024-02-22T14:51:58.981Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d761696d3c976d6193fdfb",
-    "name": "Milk & Honey",
-    "category": "Candles",
-    "description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nWarm and comforting like fresh baked oatmeal cookies, our Milk & Honey candle features scent notes of sweet honey, milk, rolled oats, and just a hint of cherry.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
-    "color": "Pink",
-    "quantity": "40",
-    "price": 23,
-    "image": [
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704924093841-9OV3ODVYUGCSWO2KNBZJ/Hygge_23_Jar+MockUp-Milk+Honey.png?format=750w",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1647547605861-W9IFM8PAK2KTXIH576K4/high_res.jpeg?format=750w",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704994080170-MO0KFE42V6ME5KLOSB2W/MILK_HONEY.jpg?format=750w"
-    ],
-    "picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704994080170-MO0KFE42V6ME5KLOSB2W/MILK_HONEY.jpg?format=750w",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T14:59:53.605Z",
-    "updatedAt": "2024-02-22T14:59:53.605Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d762816d3c976d6193fdfe",
-    "name": "Eucalyptus Lavender",
-    "category": "Candles",
-    "description": "Eucalyptus Lavender is grounding and calming. Eucalyptus, with it’s minty aroma can help you breathe a little deeper. Lavender is said to promote relaxation and aid insomnia.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": "Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.\n\n",
-    "color": "Green",
-    "quantity": "40",
-    "price": 21,
-    "image": [
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704923116876-P2JPUSIRZT48HFTPPZSC/Hygge_23_Jar+MockUp-Eucalyptus+Lavender.png?format=750w",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704994148369-QOMBNPQ5NRNB22N8JRS3/EUCALYPTUS-LAVENDER.jpg?format=750w"
-    ],
-    "picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704994148369-QOMBNPQ5NRNB22N8JRS3/EUCALYPTUS-LAVENDER.jpg?format=750w",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T15:04:33.245Z",
-    "updatedAt": "2024-02-22T15:04:33.245Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d770e9f7f3a812efcc2c91",
-    "name": "Peppermint Mocha",
-    "category": "Candles",
-    "description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nA delectable twist on a classic favourite. With scent notes of freshly shaved dark chocolate, espresso, frothy milk, and a hint of peppermint, our Peppermint Mocha Candle will take you back to simpler times.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
-    "aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
-    "color": "Green",
-    "quantity": "40",
-    "price": 22,
-    "image": [
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704923774523-N8OSMWMLBSTQ5AQ1X8PP/Hygge_23_Jar+MockUp-Peppermint+Mocha.png?format=750w",
-      "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1699582758487-RO487WMIDUNPUXIYVW2U/6768.JPG?format=750w"
-    ],
-    "picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1699582758487-RO487WMIDUNPUXIYVW2U/6768.JPG?format=750w",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T16:06:01.560Z",
-    "updatedAt": "2024-02-22T16:06:01.560Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d77614e9577c4c80ba266a",
-    "name": "Dixit Classic",
-    "category": "Table Games",
-    "description": "Cozy up with friends and family for an evening of laughter and friendly competition with our selection of hygge-inspired board games. \n\nFrom classic favorites to modern gems, our collection offers something for everyone to enjoy. \n\nBring warmth and joy to your gatherings as you bond over strategic moves, shared stories, and unforgettable moments. Let the games begin and let the hygge vibes flow!",
-    "aboutProduct": "Every picture tells a story - but what story will your picture tell? Dixit is the lovingly illustrated game of creative guesswork, where your imagination unlocks the tale. \n\nIn this award-winning board game, players will use the beautiful imagery on their cards to bluff their opponents and guess which image matches the story. Guessing right is only half the battle - to really succeed, you'll have to get your friends to decide that your card tells the story! Every turn, the storyteller will call out a short phrase or word to match the image on his card. Then each player will choose the card that most closely matches that phrase, and then everyone must guess which card the storyteller saw when he invented his brief tale. Correctly guess the storyteller's card, and you'll move ahead. Convince everyone else that your card is best, and you'll do even better. \n\nDixit is a wonderfully simple game, playable by nearly anyone with whom you share a common language. With a fantastic range of beautiful illustrations and rules that can be understood by children and adults alike, Dixit will appeal to anyone with an imagination. It's no surprise that Dixit won the Spiel de Jahres award for game design in 2010. It is brilliant and simple, beautiful and imaginative, and fun for all.",
-    "color": "Blue",
-    "quantity": "20",
-    "price": 30,
-    "image": [
-      "https://m.media-amazon.com/images/I/81KNlhEz06L.jpg",
-      "https://www.tradeinn.com/f/13834/138341185_2/asmodee-dixit-classic-gra-planszowa.jpg"
-    ],
-    "picture": "https://www.tradeinn.com/f/13834/138341185_2/asmodee-dixit-classic-gra-planszowa.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T16:28:04.830Z",
-    "updatedAt": "2024-02-22T16:28:04.830Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d77723e9577c4c80ba266c",
-    "name": "Patchwork",
-    "category": "Table Games",
-    "description": "Patchwork is a light, two-player board game where players are each attempting to piece together a quilt using oddly shaped, tetris-like tiles.\n\nPlayers use buttons to purchase new tiles to add to their quilt, but they must be picky in which tiles to select as buttons also count as victory points at the end of the game.",
-    "aboutProduct": "Embark on a journey of cozy camaraderie with our delightful collection of board games, perfectly suited for embracing the hygge spirit.\n\nGather 'round with friends and family, snuggle up with a warm blanket, and let the laughter and friendly competition begin. From classic favorites like Scrabble and Monopoly to charming indie gems and modern classics, our selection offers something for everyone.\n\nImmerse yourself in the joy of shared moments, as you roll the dice, strategize your next move, and bond over shared victories and defeats. Whether you're seeking a leisurely game night with loved ones or a quiet evening of solo play, our board games are sure to infuse your space with warmth and togetherness.\n\nRediscover the simple pleasures of face-to-face interaction and quality time spent with those who matter most. With our handpicked assortment of board games, you'll create cherished memories and foster deeper connections, all while basking in the cozy ambiance of hygge.\n\nSo light a candle, pour yourself a cup of tea, and let the hygge games begin. Explore our selection today and add a touch of warmth and whimsy to your hygge-inspired gatherings.",
-    "color": "Blue",
-    "quantity": "40",
-    "price": 15,
-    "image": [
-      "https://i.ebayimg.com/images/g/dx8AAOSwmZBgJAyZ/s-l1200.webp",
-      "https://thedicetroyers.com/wp-content/uploads/2019/12/TheDicetroyers_Patchwork-01.jpg"
-    ],
-    "picture": "https://thedicetroyers.com/wp-content/uploads/2019/12/TheDicetroyers_Patchwork-01.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T16:32:35.787Z",
-    "updatedAt": "2024-02-22T16:32:35.787Z",
-    "__v": 0
-  },
-  {
-    "_id": "65d77848e9577c4c80ba266e",
-    "name": "The Hygge Game",
-    "category": "Table Games",
-    "description": "Unplug, unwind, and gather 'round for cozy moments with our selection of board games perfect for hygge nights in. From classic favorites to modern gems, these games are sure to spark laughter, friendly competition, and cherished memories. Let the good times roll with our hygge-approved board games.",
-    "aboutProduct": "Hygge (pronounced hoo-guh) is a “Scandinavian” (or Danish, really) word for enjoying the good things in life. It evokes an atmosphere of coziness accompanied by a feeling of contentment and well-being, and there’s nothing more hygge than spending quality time with the people you love.The Hygge Game is all about bringing people together by encouraging friends and family to share their stories and discuss the big and small things in life.\n\nThe game has more than 300 thought-provoking questions designed to spark meaningful conversation and create the right atmosphere for a hygge evening. Perfect for a night in, a small party, or a dinner with friends or family, the Hygge Game also makes a great gift.Why not be inspired by the Scandinavians and bring a little more hygge into your life?\n\n\nGather 'round with friends and family, snuggle up with a warm blanket, and let the laughter and friendly competition begin. From classic favorites like Scrabble and Monopoly to charming indie gems and modern classics, our selection offers something for everyone.\n\nImmerse yourself in the joy of shared moments, as you roll the dice, strategize your next move, and bond over shared victories and defeats. Whether you're seeking a leisurely game night with loved ones or a quiet evening of solo play, our board games are sure to infuse your space with warmth and togetherness.\n\n",
-    "color": "Blue",
-    "quantity": "40",
-    "price": 21,
-    "image": [
-      "https://m.media-amazon.com/images/I/81LCtPWi7OL._AC_SL1500_.jpg",
-      "https://m.media-amazon.com/images/I/81IRkJAPJpL._AC_SL1500_.jpg",
-      "https://m.media-amazon.com/images/I/81VjoPb2aUL._AC_SL1500_.jpg",
-      "https://m.media-amazon.com/images/I/81hDhWv4HYL._AC_SL1500_.jpg"
-    ],
-    "picture": "https://m.media-amazon.com/images/I/81hDhWv4HYL._AC_SL1500_.jpg",
-    "reviews": [
-      
-    ],
-    "questions": [
-      
-    ],
-    "createdAt": "2024-02-22T16:37:28.486Z",
-    "updatedAt": "2024-02-22T16:37:28.486Z",
-    "__v": 0
-  }
+	{
+		"_id": "65d689e04df5ea3cd77bb295",
+		"name": "The Little Book of Hygge",
+		"category": "Books & Journals",
+		"article": "BJ000",
+		"description": "The New York Times Bestseller The Little Book of Hygge introduces you to hygge, the cornerstone of Danish life, and offers advice and ideas on incorporating it into your own life. ",
+		"aboutProduct": "Embrace Hygge and become happier with this definitive guide to the Danish philosophy of comfort, togetherness, and well-being.\n\nMeik Wiking (yes that's his real name) is CEO of The Happiness Research Institute. He has written several books and reports on happiness, subjective well-being and quality of life and is often used as a public speaker around the world.",
+		"color": "Blue",
+		"quantity": "20",
+		"price": 20,
+		"image": [
+			"https://cphagen.com/cdn/shop/products/9780241283912_800x.jpg?v=1527204508",
+			"https://www.oliverbonas.com/static/media/catalog/product/1/0/1083163_1_.jpg",
+			"https://www.armatuer.com/cdn/shop/products/hyggehome.jpg?v=1670250637"
+		],
+		"picture": "https://www.armatuer.com/cdn/shop/products/hyggehome.jpg?v=1670250637",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-21T23:40:16.773Z",
+		"updatedAt": "2024-02-21T23:40:16.773Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d68b5a6f369042f3425b1d",
+		"name": "My Hygge Home",
+		"category": "Books & Journals",
+		"article": "BJ001",
+		"description": "A gorgeous guide to the Danish art of creating a cosy, happy home from the internationally bestselling author, Meik Wiking.",
+		"aboutProduct": "\"We can utilize the idea of hygge to transform our living and working spaces into spaces where we count our wealth by the depth of our bonds and the absence of our wants. And, most importantly, to create a space that encourages us to find time to do what matters most.\" - Meik Wiking (Author of My Hygge Home)\nOur homes should be a place of comfort, a place to feel safe when we shut the door. Somewhere to be ourselves, to unwind and create special memories. Inspired by Danish design and traditions, this beautiful new book from Meik Wiking shares how to turn your home into a sanctuary and live like the happiest people in the world.\n\nWith simple tips based on new research from The Happiness Institute in Copenhagen, this book reveals what makes a happy home tick. No matter how much space you have or what your budget is, Meik shows how you can use colour, light and space to create your happy place and celebrate cosiness the Danish way.",
+		"color": "Blue",
+		"quantity": "19",
+		"price": 25,
+		"image": [
+			"https://www.illumsbolighus.com/dw/image/v2/BGKQ_PRD/on/demandware.static/-/Sites-sfcc-master-catalogue/default/dw4495ec57/images/hi-res/902519410.jpg?sw=600&sh=600",
+			"https://cdn11.bigcommerce.com/s-g62km8uew2/product_images/uploaded_images/c0431b4e-a82f-4956-a547-37bdd35a57f4.jpg",
+			"https://www.nordicchill.co.nz/cdn/shop/products/IMG-20221207-WA0002.jpg?v=1691445323&width=1946"
+		],
+		"picture": "https://cdn11.bigcommerce.com/s-g62km8uew2/product_images/uploaded_images/c0431b4e-a82f-4956-a547-37bdd35a57f4.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-21T23:46:34.346Z",
+		"updatedAt": "2024-02-21T23:46:34.346Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d68dc6f0414bff11ef0fdb",
+		"name": "The Art of Making Memories",
+		"category": "Books & Journals",
+		"article": "BJ002",
+		"description": "\"Happy memories are essential to our mental health. They strengthen our identity, sense of purpose and relationships. Meik's new book will teach you how to create and remember happy moments and will change how you think about happy memories.\" Dr Rangan Chatterjee, Number One bestselling author of The 4 Pillar Plan and BBC Breakfast GP",
+		"aboutProduct": "The third book from the CEO of the Happiness Research Institute and internationally bestselling author of The Little Book of Hygge, Meik Wiking.\n\nWhy is it that a piece of music, a smell, a taste can take us back to something we had forgotten? How is it that we remember our first kiss in detail, but barely remember anything of a fortnight's holiday from five years ago? Memories are the cornerstones of our identity, shaping who we are, how we act, and how we feel. But how do we make and keep the memories that bring us lasting joy?\n\nHappiness expert Meik Wiking has the answers. In The Art of Making Memories he brings together his extensive research drawn from the world's biggest study on happy memories (which involved 1000 people from 75 countries), conducted at the Happiness Research Institute, along with data and diaries, interviews, global surveys and studies, and real-life behavioural science and happiness experiments, to explain the nuances of nostalgia, the different ways we form memories around our experiences, and how we can become better at recalling them.\n\nWritten in Meik's warm and funny trademark style, filled with infographics, illustrations, and photographs, and featuring \"Happy Memory Tips\", The Art of Making Memories a life-affirming read which show you it's easier than you think to make your life unforgettable.",
+		"color": "Blue",
+		"quantity": "23",
+		"price": 14,
+		"image": [
+			"https://www.nordicchill.co.nz/cdn/shop/products/Book.jpg?v=1679611959&width=1445",
+			"https://m.media-amazon.com/images/I/61R5j1430kL._AC_UF894,1000_QL80_.jpg",
+			"https://willowinwinter.files.wordpress.com/2022/05/wp-1653144960667.jpg?w=1200"
+		],
+		"picture": "https://m.media-amazon.com/images/I/61R5j1430kL._AC_UF894,1000_QL80_.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-21T23:56:54.401Z",
+		"updatedAt": "2024-02-21T23:56:54.401Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d6914d46f0bc27f2b2b784",
+		"name": "The Little Book of Lykke",
+		"category": "Books & Journals",
+		"article": "BJ003",
+		"description": "A practical guide to what makes us happy, from the CEO of the Happiness Research Institute in Copenhagen and bestselling author of The Little Book of Hygge.",
+		"aboutProduct": "We all know Denmark is the happiest country in the world—but this doesn't make it pe﻿rfect. Happiness isn't exclusively Danish. Nor is it just eating pastries, lighting candles, and practising hygge. Happiness is something available to all, wherever you are, and whatever your means. Starting from the Happiness Research Institute in Copenhagen, Meik Wiking, probably the happiest man in the world, travels across the globe on a quest to uncover the secrets of the very happiest people from Dubai to Rio de Janeiro, taking back to his native country their tips, tricks, and unique approaches to a fulfilled life.\n\nExploring the happiness gap for parents, how much money you really need to buy happiness, and why—luckily for us—the expectation of kissing Rachel Weiss is better than the real thing, Meik brings together a global roadmap for happiness with his trademark wit. Weaving together original research and personal anecdotes, The Little Book of Lykke gives us a new approach to achieving everyday happiness.",
+		"color": "Blue",
+		"quantity": "18",
+		"price": 19,
+		"image": [
+			"https://cphagen.com/cdn/shop/products/Lykke_book_800px_2048x_9f6a56cf-3158-43c5-b2d2-edbfd8dd82ff_800x.jpg?v=1538695898",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Screenshot%202024-02-22%20at%2001.05.16.png?raw=true",
+			"https://www.coffeeandbooks.co.uk/wp-content/uploads/2021/01/The-Little-Book-of-LYKKE-by-Meik-Wiking.jpg"
+		],
+		"picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Screenshot%202024-02-22%20at%2001.05.16.png?raw=true",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T00:11:57.251Z",
+		"updatedAt": "2024-02-22T00:11:57.251Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d6955661287b52ac116b25",
+		"name": "My Hygge Journal",
+		"category": "Books & Journals",
+		"article": "BJ004",
+		"description": "You can evoke hygge simply by enjoying life’s great simple pleasures, but you can also infuse your life and routine with hyggeligt things.",
+		"aboutProduct": "Embracing hygge is casual, joyful, and often spontaneous…it’s the Danish way!\n\nIt’s about savoring people and moments more than anything else.If you’re ready to embrace the Danish way of hygge, try cozying up with your journal, or create your own hygge ideas page.\n\nWhile the Danes are the happiest people on the planet, happiness isn't exclusively Danish; cultures around the world have their own unique approaches to leading a contented, fulfilled life. For his work at the Happiness Research Institute in Copenhagen, Meik Wiking travels the globe from Dubai to Finland, Rio de Janeiro to Bhutan, South Korea to the United States, to discover the secrets of the very happiest people.",
+		"color": "Blue",
+		"quantity": "22",
+		"price": 22,
+		"image": [
+			"https://pageflutter.com/wp-content/uploads/2017/10/HyggeOctober-19-2017-3.jpg",
+			"https://jebra.com/wp-content/uploads/2019/01/hygge-self-care.jpg",
+			"https://pageflutter.com/wp-content/uploads/2017/10/Hygge-feature.jpg"
+		],
+		"picture": "https://jebra.com/wp-content/uploads/2019/01/hygge-self-care.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T00:29:10.137Z",
+		"updatedAt": "2024-02-22T00:29:10.137Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d69792cb7ed583d3ff9635",
+		"name": "Hygge Cups 4 Piece Set",
+		"category": "Gift Sets",
+		"article": "GS000",
+		"description": "Make your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n",
+		"aboutProduct": "Welcome to our online cozy hygge shop, where warmth and comfort await at every click. Elevate your everyday moments and spread joy with our curated gift sets designed to bring hygge into your life and the lives of your loved ones.\n\nIndulge in the art of coziness with our thoughtfully crafted collections, each item carefully selected to inspire relaxation, connection, and tranquility. From soft blankets to flickering candles, from aromatic teas to snugly socks, our gift sets are curated to create moments of pure hygge bliss.\n\nMake your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n\nEmbrace the Danish concept of hygge and transform your space into a sanctuary of serenity. Browse our collection today and discover the perfect gift set to enhance the cozy moments in your life.",
+		"color": "Blue",
+		"quantity": "20",
+		"price": 10,
+		"image": [
+			"https://media.home-you.com/catalog/product/6/5/65708bca8695275365-MIX-KPLKUMORWENAKOMPLETKUBK_W.jpg?store=pl&image-type=image&width=920&height=920"
+		],
+		"picture": "https://media.home-you.com/catalog/product/6/5/65708bca8695275365-MIX-KPLKUMORWENAKOMPLETKUBK_W.jpg?store=pl&image-type=image&width=920&height=920",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T00:38:42.828Z",
+		"updatedAt": "2024-02-22T00:38:42.828Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d698cb24141af8c5850be5",
+		"name": "Hygge night in gift basket for two",
+		"category": "Gift Sets",
+		"article": "GS001",
+		"description": "Make your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.",
+		"aboutProduct": "Welcome to our online cozy hygge shop, where warmth and comfort await at every click. Elevate your everyday moments and spread joy with our curated gift sets designed to bring hygge into your life and the lives of your loved ones.\n\nIndulge in the art of coziness with our thoughtfully crafted collections, each item carefully selected to inspire relaxation, connection, and tranquility. From soft blankets to flickering candles, from aromatic teas to snugly socks, our gift sets are curated to create moments of pure hygge bliss.\n\nMake your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n\nEmbrace the Danish concept of hygge and transform your space into a sanctuary of serenity. Browse our collection today and discover the perfect gift set to enhance the cozy moments in your life.",
+		"color": "Blue",
+		"quantity": "40",
+		"price": 45,
+		"image": [
+			"https://happyhyggegifts.com/cdn/shop/products/il_fullxfull.4317845460_3y9o.jpg?v=1667705299&width=2200",
+			"https://happyhyggegifts.com/cdn/shop/products/il_fullxfull.4365211315_ckao.jpg?v=1667707276",
+			"https://happyhyggegifts.com/cdn/shop/products/il_fullxfull.4365211311_8ri8.jpg?v=1667707298"
+		],
+		"picture": "https://happyhyggegifts.com/cdn/shop/products/il_fullxfull.4365211311_8ri8.jpg?v=1667707298",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T00:43:55.777Z",
+		"updatedAt": "2024-02-22T00:43:55.777Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d699e524141af8c5850be7",
+		"name": "Hygge Box",
+		"category": "Gift Sets",
+		"article": "GS002",
+		"description": "Our Hygge box makes a perfect Winter gift. It also makes a perfect Christmas, winter birthday, new home or thank you gift.\n\nHygge is about shutting the world out and enjoying quality time with family or alone. It’s about slippers, blankets, a roaring fire, candles, hot chocolate, ……. It’s about creating as relaxing an environment as possible and forgetting life’s worries.",
+		"aboutProduct": "Our box includes the Little Book of Hygge. This is written by Meik Wiking who is the CEO of the Happiness Research Institute in Copenhagen. He is committed to finding out what makes people happy and has concluded that Hygge is the magic ingredient that makes Danes the happiest nation in the world. The book extra gives you little tips on how to add more Hygge to your life.\n\nWhat makes this book extra special is that it has a beautiful blue and gold hardback cover with gorgeous illustrations which will make an attractive addition to any coffee table or bookshelf.  It is an uplifting book – the photos in the book are inviting and comforting and it is full of ideas and recipes for living in the moment and making that moment special.\n\nOur box also includes some beautiful candles by the St Eval candle company.  A bundle of Inspiritus candles and a beautiful ceramic candle inspired by snowy landscapes and the magic of Christmas, these elegant white tealights with brushed gold detail. Each twinkling tealight has a burn time of up to 8 hours. These little ceramic tealights can be upcycled once burnt through by simply dropping in another tealight candle.",
+		"color": "Blue",
+		"quantity": "15",
+		"price": 30,
+		"image": [
+			"https://friendinabox.co.uk/wp-content/uploads/2020/10/FIAB_Oct20_029web.jpg",
+			"https://friendinabox.co.uk/wp-content/uploads/2017/11/FIABXmas17_09Web.jpg",
+			"https://friendinabox.co.uk/wp-content/uploads/2020/10/FIAB_Oct20_022web.jpg"
+		],
+		"picture": "https://friendinabox.co.uk/wp-content/uploads/2020/10/FIAB_Oct20_022web.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T00:48:37.956Z",
+		"updatedAt": "2024-02-22T00:48:37.956Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d69bee2f7d1e5238d67809",
+		"name": "Bestie Candle Set",
+		"category": "Candles",
+		"article": "CA000",
+		"description": "Bestie Candle Set features 2 limited-edition scents inspired by our favourite sweet treats! Gift a candle to your bestie, or keep them both for yourself.. (we won’t judge). These Candles pair beautifully together for a “Chocolate Covered Strawberry” scent.",
+		"aboutProduct": "this Collection includes:\n\nSweet Strawberry 9oz Candle - This sweet scent, smells like fresh strawberries right from the patch. Sweet and delectable.\n\nDark Chocolate 9oz Candle - Rich and sweet, gourmet chocolate. Pair this with Sweet Strawberry for a delectable treat we all love.\n\nMake your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n\nEmbrace the Danish concept of hygge and transform your space into a sanctuary of serenity. Browse our collection today and discover the perfect gift set to enhance the cozy moments in your life.",
+		"color": "Pink",
+		"quantity": "49",
+		"price": 40,
+		"image": [
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Bestie%20Candle%20Set.png?raw=true",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Bestie%20Candle%20Set1.jpg?raw=true",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Bestie%20Candle%20Set.jpg?raw=true",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1674395988597-2NIKJIBVRASZUISSIIKZ/DSC05645.jpg"
+		],
+		"picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Bestie%20Candle%20Set.jpg?raw=true",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T00:57:18.592Z",
+		"updatedAt": "2024-02-22T00:57:18.592Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d69e983fcddda67f0c08f7",
+		"name": "Ceramic Cup",
+		"category": "Get Warm",
+		"article": "GW000",
+		"description": "Make your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.",
+		"aboutProduct": "Welcome to our online cozy hygge shop, where warmth and comfort await at every click. Elevate your everyday moments and spread joy with our curated gift sets designed to bring hygge into your life and the lives of your loved ones.\n\nIndulge in the art of coziness with our thoughtfully crafted collections, each item carefully selected to inspire relaxation, connection, and tranquility. From soft blankets to flickering candles, from aromatic teas to snugly socks, our gift sets are curated to create moments of pure hygge bliss.\n\nMake your friends' and your life more hyggier with these goods that evoke feelings of contentment and well-being. Whether you're treating yourself or surprising someone special, our hygge-inspired gifts are sure to delight and comfort.\n\nEmbrace the Danish concept of hygge and transform your space into a sanctuary of serenity. Browse our collection today and discover the perfect gift set to enhance the cozy moments in your life.",
+		"color": "Blue",
+		"quantity": "10",
+		"price": 19,
+		"image": [
+			"https://raw.githubusercontent.com/DanyloFrolov/HyggeHomeP/main/Ceramic%20Cup.webp",
+			"https://raw.githubusercontent.com/DanyloFrolov/HyggeHomeP/main/Ceramic%20Cup11.webp"
+		],
+		"picture": "https://raw.githubusercontent.com/DanyloFrolov/HyggeHomeP/main/Ceramic%20Cup11.webp",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T01:08:40.560Z",
+		"updatedAt": "2024-02-22T01:08:40.560Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d69f903fcddda67f0c08f9",
+		"name": "\"Let's HYGGE\" Mug",
+		"category": "Get Warm",
+		"article": "GW001",
+		"description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
+		"aboutProduct": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!",
+		"color": "Blue",
+		"quantity": "20",
+		"price": 20,
+		"image": [
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/_Let_s%20HYGGE_%20Mug.jpg?raw=true",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/_Let_s%20HYGGE_%20Mug1.jpg?raw=true"
+		],
+		"picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/_Let_s%20HYGGE_%20Mug1.jpg?raw=true",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T01:12:48.065Z",
+		"updatedAt": "2024-02-22T01:12:48.065Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d6a02b3fcddda67f0c08fc",
+		"name": "Cozy Queen Mug",
+		"category": "Get Warm",
+		"article": "GW002",
+		"description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
+		"aboutProduct": "\"Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!\"",
+		"color": "Blue",
+		"quantity": "20",
+		"price": 40,
+		"image": [
+			"https://i.ebayimg.com/images/g/4kUAAOSwyvldI4ea/s-l1600.jpg"
+		],
+		"picture": "https://i.ebayimg.com/images/g/4kUAAOSwyvldI4ea/s-l1600.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T01:15:23.711Z",
+		"updatedAt": "2024-02-22T01:15:23.711Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d6a02b3fcddda67f0c08fe",
+		"name": "Cozy Queen Mug",
+		"category": "Get Warm",
+		"article": "GW003",
+		"description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
+		"aboutProduct": "\"Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!\"",
+		"color": "Blue",
+		"quantity": "20",
+		"price": 40,
+		"image": [
+			"https://i.ebayimg.com/images/g/4kUAAOSwyvldI4ea/s-l1600.jpg"
+		],
+		"picture": "https://i.ebayimg.com/images/g/4kUAAOSwyvldI4ea/s-l1600.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T01:15:23.844Z",
+		"updatedAt": "2024-02-22T01:15:23.844Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d6a2243fcddda67f0c0902",
+		"name": "\"LOVE\" Led Lamp",
+		"category": "Lighting Decor",
+		"article": "LD000",
+		"description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
+		"aboutProduct": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!",
+		"color": "Yellow",
+		"quantity": "20",
+		"price": 20,
+		"image": [
+			"https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/56/5608720/MANTA-SNL42WH-Love-Bialy-front-wersja-2.jpg",
+			"https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608720/storage_app_opisy2_manta_548633/3.jpg"
+		],
+		"picture": "https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608720/storage_app_opisy2_manta_548633/3.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T01:23:48.867Z",
+		"updatedAt": "2024-02-22T01:23:48.867Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d6a2cec2f14485a6ac668f",
+		"name": "Musical note Led Lamp",
+		"category": "Lighting Decor",
+		"article": "LD001",
+		"description": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.",
+		"aboutProduct": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.",
+		"color": "Yellow",
+		"quantity": "21",
+		"price": 21,
+		"image": [
+			"https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/56/5608808/MANTA-Nutka-SNL12WH-front-wersia-2.jpg",
+			"https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608808/storage_app_opisy2_manta_548540/3.jpg"
+		],
+		"picture": "https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608808/storage_app_opisy2_manta_548540/3.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T01:26:38.997Z",
+		"updatedAt": "2024-02-22T01:26:38.997Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d6a380c2f14485a6ac6691",
+		"name": "Angel Led Lamp",
+		"category": "Lighting Decor",
+		"article": "LD002",
+		"description": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n",
+		"aboutProduct": "Welcome to our cozy corner of comfort and warmth! Embrace the essence of hygge with our handpicked selection of goods designed to enhance your moments of bliss and tranquility.\n\nIndulge in the art of hygge living with our curated collection, carefully crafted to inspire relaxation and connection. From soft blankets and flickering candles to aromatic teas and snug knitwear, we have everything you need to create your own cozy haven.\n\nTransform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!",
+		"color": "Yellow",
+		"quantity": "20",
+		"price": 18,
+		"image": [
+			"https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/56/5608896/MANTA-Aniol-SNL39WH-front.jpg",
+			"https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608896/storage_app_opisy2_manta_548625/3.jpg"
+		],
+		"picture": "https://www.mediaexpert.pl/media/cache/resolve/filemanager_original/images/descriptions/images/56/5608896/storage_app_opisy2_manta_548625/3.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T01:29:36.933Z",
+		"updatedAt": "2024-02-22T01:29:36.933Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d6a6a98c12679ef124ba76",
+		"name": "Sweater Weather",
+		"category": "Candles",
+		"article": "CA001",
+		"description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\nSweater Weather embodies crisp fall nights spent in your favourite knit sweater. Sweater Weather is warm and musky with scent notes of birch, amber, cashmere and fig.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": "Transform your home into a sanctuary of serenity and invite moments of joy into your everyday life. Whether you're unwinding with a good book, sharing laughter with loved ones, or simply enjoying a quiet evening by the fire, our products are here to accompany you on your hygge journey.\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\nSweater Weather embodies crisp fall nights spent in your favourite knit sweater. Sweater Weather is warm and musky with scent notes of birch, amber, cashmere and fig.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time\nEmbrace the warmth of hygge and spread its magic to those around you. Make your friends and your life more hyggier with our thoughtfully selected goods, each one a celebration of comfort, contentment, and connection. Shop now and let the coziness begin!",
+		"color": "Red",
+		"quantity": "40",
+		"price": 19,
+		"image": [
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704923530004-LFAQSK9VLV2KAAS6QC4Z/Hygge_23_Jar+MockUp-Sweater+Weather.png",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1631109204722-5X4RTOCFWFGYOP1GUH6J/5E7C7894-32AA-4D6E-990A-D2E13351E48F"
+		],
+		"picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1631109204722-5X4RTOCFWFGYOP1GUH6J/5E7C7894-32AA-4D6E-990A-D2E13351E48F",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T01:43:05.449Z",
+		"updatedAt": "2024-02-22T01:43:05.449Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d7564f8fa19a51b2f4b178",
+		"name": "Frasier Fir",
+		"category": "Candles",
+		"article": "CA002",
+		"description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nOur Frasier Fir Candle evokes the crisp air of the Winter season. Stay cozy and warm indoors with the scent notes of freshly cut Siberian Fir, Cedar and Musk.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": " Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
+		"color": "Green",
+		"quantity": "50",
+		"price": 25,
+		"image": [
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Frasier%20Fir.png?raw=true",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Frasier%20Fir1.JPG?raw=true",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Frasier%20Fir.jpg?raw=true"
+		],
+		"picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Frasier%20Fir1.JPG?raw=true",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T14:12:31.101Z",
+		"updatedAt": "2024-02-22T14:12:31.101Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d757368fa19a51b2f4b17a",
+		"name": "Honey Bourbon",
+		"category": "Candles",
+		"article": "CA003",
+		"description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nHoney bourbon is an inviting combination of sweet and spice. This candle embodies a nightcap in front of the fire. Oh-so-cozy.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
+		"color": "White",
+		"quantity": "40",
+		"price": 28,
+		"image": [
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Honey%20Bourbon.png?raw=true",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1625014073021-CQY9BNJHI7FYD8ZI6J23/IMG_0967.jpg",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Honey%20Bourbon.jpeg?raw=true"
+		],
+		"picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1625014073021-CQY9BNJHI7FYD8ZI6J23/IMG_0967.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T14:16:22.685Z",
+		"updatedAt": "2024-02-22T14:16:22.685Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d758468fa19a51b2f4b17c",
+		"name": "Sweet Citrus",
+		"category": "Candles",
+		"article": "CA004",
+		"description": "Essential Oil | Coconut Soy Candle\n\nHygge’s essential oil candles are made with natural, clean-burning, plant-based oils which can be therapeutic and promote the relief of stress and anxiety.\nSweet Citrus is fresh and energizing. With the combination of lemongrass and sweet orange essential oils, Sweet Citrus provides a clean and inviting aroma.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
+		"color": "White",
+		"quantity": "40",
+		"price": 23,
+		"image": [
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Sweet%20Citrus.png?raw=true",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1625143606129-HERCTTV3P1HRWLTFYMRH/IMG_1133.jpg?format=1500w",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Sweet%20Citrus.jpg?raw=true"
+		],
+		"picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1625143606129-HERCTTV3P1HRWLTFYMRH/IMG_1133.jpg?format=1500w",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T14:20:54.604Z",
+		"updatedAt": "2024-02-22T14:20:54.604Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d75aaeb07339f70d9d1ace",
+		"name": "Vanilla Cashmere",
+		"category": "Candles",
+		"article": "CA005",
+		"description": "Fragrance Oil | Coconut Soy Candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nVanilla Cashmere is warm, musky, and oh-so-cozy. This sweet aroma wraps around you like a fuzzy blanket. Think me-time. \n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
+		"color": "White",
+		"quantity": "40",
+		"price": 24,
+		"image": [
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Vanilla+Cashmere.png?raw=true",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Vanilla+Cashmere(1).jpg?raw=true",
+			"https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Vanilla+Cashmere.jpg?raw=true"
+		],
+		"picture": "https://github.com/DanyloFrolov/HyggeHomeP/blob/main/Vanilla+Cashmere(1).jpg?raw=true",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T14:31:10.348Z",
+		"updatedAt": "2024-02-22T14:31:10.348Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d75ebe3d2c0315a0527604",
+		"name": "Sunday Morning",
+		"category": "Candles",
+		"article": "CA006",
+		"description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nOur Sunday Morning candle is reminiscent of slow mornings and spring time air, featuring scent notes of citrus, gardenia, lilac and amber. This clean scent will help you refresh & reset with ease.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": "Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
+		"color": "Green",
+		"quantity": "40",
+		"price": 26,
+		"image": [
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1706644559704-8D4GENY3WSDKBZZOZJKI/Hygge_23_Jar%2BMockUp-Sunday%2BMorning.jpg?format=1500w",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1647547433134-CGOXN7YX2MLNJV9WTILS/high_res.jpeg",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704993971771-IA113BP51RNN87AVRBLY/SUNDAY-MORNING.jpg?format=1500w"
+		],
+		"picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1647547433134-CGOXN7YX2MLNJV9WTILS/high_res.jpeg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T14:48:30.126Z",
+		"updatedAt": "2024-02-22T14:48:30.126Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d75f8e3d2c0315a0527606",
+		"name": "Amber Sandalwood",
+		"category": "Candles",
+		"article": "CA007",
+		"description": "Fragrance Oil | Coconut Soy Candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nWith comforting fragrance notes of sandalwood, amber, musk, rose and cedar. Wrap yourself in a blanket and take in the comforting sent.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
+		"color": "Grey",
+		"quantity": "40",
+		"price": 20,
+		"image": [
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704923918646-77HEB137R6LSOVNW00WY/Hygge_23_Jar+MockUp-Amber+Sandalwood.png?format=1500w",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1696354891534-V27G045234MPX2IUV9NS/Hygge%2BInstagram%2BPosts%2BOctober.jpg?format=1500w"
+		],
+		"picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1696354891534-V27G045234MPX2IUV9NS/Hygge%2BInstagram%2BPosts%2BOctober.jpg?format=1500w",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T14:51:58.981Z",
+		"updatedAt": "2024-02-22T14:51:58.981Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d761696d3c976d6193fdfb",
+		"name": "Milk & Honey",
+		"category": "Candles",
+		"article": "CA008",
+		"description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nWarm and comforting like fresh baked oatmeal cookies, our Milk & Honey candle features scent notes of sweet honey, milk, rolled oats, and just a hint of cherry.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
+		"color": "Pink",
+		"quantity": "40",
+		"price": 23,
+		"image": [
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704924093841-9OV3ODVYUGCSWO2KNBZJ/Hygge_23_Jar+MockUp-Milk+Honey.png?format=750w",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1647547605861-W9IFM8PAK2KTXIH576K4/high_res.jpeg?format=750w",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704994080170-MO0KFE42V6ME5KLOSB2W/MILK_HONEY.jpg?format=750w"
+		],
+		"picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704994080170-MO0KFE42V6ME5KLOSB2W/MILK_HONEY.jpg?format=750w",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T14:59:53.605Z",
+		"updatedAt": "2024-02-22T14:59:53.605Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d762816d3c976d6193fdfe",
+		"name": "Eucalyptus Lavender",
+		"category": "Candles",
+		"article": "CA009",
+		"description": "Eucalyptus Lavender is grounding and calming. Eucalyptus, with it’s minty aroma can help you breathe a little deeper. Lavender is said to promote relaxation and aid insomnia.\n\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": "Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.\n\n",
+		"color": "Green",
+		"quantity": "40",
+		"price": 21,
+		"image": [
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704923116876-P2JPUSIRZT48HFTPPZSC/Hygge_23_Jar+MockUp-Eucalyptus+Lavender.png?format=750w",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704994148369-QOMBNPQ5NRNB22N8JRS3/EUCALYPTUS-LAVENDER.jpg?format=750w"
+		],
+		"picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704994148369-QOMBNPQ5NRNB22N8JRS3/EUCALYPTUS-LAVENDER.jpg?format=750w",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T15:04:33.245Z",
+		"updatedAt": "2024-02-22T15:04:33.245Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d770e9f7f3a812efcc2c91",
+		"name": "Peppermint Mocha",
+		"category": "Candles",
+		"article": "CA010",
+		"description": "Fragrance Oil | Coconut soy candle\n\nHygge’s fragrance oil candles provide a clean long-lasting scent.\n\nA delectable twist on a classic favourite. With scent notes of freshly shaved dark chocolate, espresso, frothy milk, and a hint of peppermint, our Peppermint Mocha Candle will take you back to simpler times.\n9oz Glass Tumbler | 45-55 Hour Burn Time",
+		"aboutProduct": "Embrace the gentle glow of hygge with our exquisite collection of candles. Infuse your space with warmth and serenity as the flickering flames dance to create an ambiance of cozy tranquility.\n\n Crafted with care and attention to detail, our candles are more than just sources of light; they're vessels of comfort, bringing a sense of calmness and relaxation to any room. Choose from a variety of scents, from soothing lavender and earthy sandalwood to comforting vanilla and invigorating citrus, each one carefully selected to enhance your hygge experience.\n\n Illuminate your evenings with the soft, inviting glow of our candles, whether you're unwinding after a long day or hosting a gathering of loved ones. Let their comforting light envelop you in a cocoon of coziness, creating moments of intimacy and connection that linger long after the flame has been extinguished.\n\n Transform your home into a sanctuary of hygge with our candles, and let their subtle charm envelop you in a world of comfort and contentment. Shop now and discover the magic of hygge living.",
+		"color": "Green",
+		"quantity": "40",
+		"price": 22,
+		"image": [
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704923774523-N8OSMWMLBSTQ5AQ1X8PP/Hygge_23_Jar+MockUp-Peppermint+Mocha.png?format=750w",
+			"https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1699582758487-RO487WMIDUNPUXIYVW2U/6768.JPG?format=750w"
+		],
+		"picture": "https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1699582758487-RO487WMIDUNPUXIYVW2U/6768.JPG?format=750w",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T16:06:01.560Z",
+		"updatedAt": "2024-02-22T16:06:01.560Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d77614e9577c4c80ba266a",
+		"name": "Dixit Classic",
+		"category": "Table Games",
+		"article": "TG000",
+		"description": "Cozy up with friends and family for an evening of laughter and friendly competition with our selection of hygge-inspired board games. \n\nFrom classic favorites to modern gems, our collection offers something for everyone to enjoy. \n\nBring warmth and joy to your gatherings as you bond over strategic moves, shared stories, and unforgettable moments. Let the games begin and let the hygge vibes flow!",
+		"aboutProduct": "Every picture tells a story - but what story will your picture tell? Dixit is the lovingly illustrated game of creative guesswork, where your imagination unlocks the tale. \n\nIn this award-winning board game, players will use the beautiful imagery on their cards to bluff their opponents and guess which image matches the story. Guessing right is only half the battle - to really succeed, you'll have to get your friends to decide that your card tells the story! Every turn, the storyteller will call out a short phrase or word to match the image on his card. Then each player will choose the card that most closely matches that phrase, and then everyone must guess which card the storyteller saw when he invented his brief tale. Correctly guess the storyteller's card, and you'll move ahead. Convince everyone else that your card is best, and you'll do even better. \n\nDixit is a wonderfully simple game, playable by nearly anyone with whom you share a common language. With a fantastic range of beautiful illustrations and rules that can be understood by children and adults alike, Dixit will appeal to anyone with an imagination. It's no surprise that Dixit won the Spiel de Jahres award for game design in 2010. It is brilliant and simple, beautiful and imaginative, and fun for all.",
+		"color": "Blue",
+		"quantity": "20",
+		"price": 30,
+		"image": [
+			"https://m.media-amazon.com/images/I/81KNlhEz06L.jpg",
+			"https://www.tradeinn.com/f/13834/138341185_2/asmodee-dixit-classic-gra-planszowa.jpg"
+		],
+		"picture": "https://www.tradeinn.com/f/13834/138341185_2/asmodee-dixit-classic-gra-planszowa.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T16:28:04.830Z",
+		"updatedAt": "2024-02-22T16:28:04.830Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d77723e9577c4c80ba266c",
+		"name": "Patchwork",
+		"category": "Table Games",
+		"article": "TG001",
+		"description": "Patchwork is a light, two-player board game where players are each attempting to piece together a quilt using oddly shaped, tetris-like tiles.\n\nPlayers use buttons to purchase new tiles to add to their quilt, but they must be picky in which tiles to select as buttons also count as victory points at the end of the game.",
+		"aboutProduct": "Embark on a journey of cozy camaraderie with our delightful collection of board games, perfectly suited for embracing the hygge spirit.\n\nGather 'round with friends and family, snuggle up with a warm blanket, and let the laughter and friendly competition begin. From classic favorites like Scrabble and Monopoly to charming indie gems and modern classics, our selection offers something for everyone.\n\nImmerse yourself in the joy of shared moments, as you roll the dice, strategize your next move, and bond over shared victories and defeats. Whether you're seeking a leisurely game night with loved ones or a quiet evening of solo play, our board games are sure to infuse your space with warmth and togetherness.\n\nRediscover the simple pleasures of face-to-face interaction and quality time spent with those who matter most. With our handpicked assortment of board games, you'll create cherished memories and foster deeper connections, all while basking in the cozy ambiance of hygge.\n\nSo light a candle, pour yourself a cup of tea, and let the hygge games begin. Explore our selection today and add a touch of warmth and whimsy to your hygge-inspired gatherings.",
+		"color": "Blue",
+		"quantity": "40",
+		"price": 15,
+		"image": [
+			"https://i.ebayimg.com/images/g/dx8AAOSwmZBgJAyZ/s-l1200.webp",
+			"https://thedicetroyers.com/wp-content/uploads/2019/12/TheDicetroyers_Patchwork-01.jpg"
+		],
+		"picture": "https://thedicetroyers.com/wp-content/uploads/2019/12/TheDicetroyers_Patchwork-01.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T16:32:35.787Z",
+		"updatedAt": "2024-02-22T16:32:35.787Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d77848e9577c4c80ba266e",
+		"name": "The Hygge Game",
+		"category": "Table Games",
+		"article": "TG002",
+		"description": "Unplug, unwind, and gather 'round for cozy moments with our selection of board games perfect for hygge nights in. From classic favorites to modern gems, these games are sure to spark laughter, friendly competition, and cherished memories. Let the good times roll with our hygge-approved board games.",
+		"aboutProduct": "Hygge (pronounced hoo-guh) is a “Scandinavian” (or Danish, really) word for enjoying the good things in life. It evokes an atmosphere of coziness accompanied by a feeling of contentment and well-being, and there’s nothing more hygge than spending quality time with the people you love.The Hygge Game is all about bringing people together by encouraging friends and family to share their stories and discuss the big and small things in life.\n\nThe game has more than 300 thought-provoking questions designed to spark meaningful conversation and create the right atmosphere for a hygge evening. Perfect for a night in, a small party, or a dinner with friends or family, the Hygge Game also makes a great gift.Why not be inspired by the Scandinavians and bring a little more hygge into your life?\n\n\nGather 'round with friends and family, snuggle up with a warm blanket, and let the laughter and friendly competition begin. From classic favorites like Scrabble and Monopoly to charming indie gems and modern classics, our selection offers something for everyone.\n\nImmerse yourself in the joy of shared moments, as you roll the dice, strategize your next move, and bond over shared victories and defeats. Whether you're seeking a leisurely game night with loved ones or a quiet evening of solo play, our board games are sure to infuse your space with warmth and togetherness.\n\n",
+		"color": "Blue",
+		"quantity": "40",
+		"price": 21,
+		"image": [
+			"https://m.media-amazon.com/images/I/81LCtPWi7OL._AC_SL1500_.jpg",
+			"https://m.media-amazon.com/images/I/81IRkJAPJpL._AC_SL1500_.jpg",
+			"https://m.media-amazon.com/images/I/81VjoPb2aUL._AC_SL1500_.jpg",
+			"https://m.media-amazon.com/images/I/81hDhWv4HYL._AC_SL1500_.jpg"
+		],
+		"picture": "https://m.media-amazon.com/images/I/81hDhWv4HYL._AC_SL1500_.jpg",
+		"reviews": [],
+		"questions": [],
+		"createdAt": "2024-02-22T16:37:28.486Z",
+		"updatedAt": "2024-02-22T16:37:28.486Z",
+		"__v": 0
+	}
 ]

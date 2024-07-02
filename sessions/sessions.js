@@ -83,6 +83,42 @@ async function updateSession(req, res, article) {
   }
 }
 
+// Используем при входе (логине) пользователя
+async function updateUserData(email, user, payload) {
+  const { wishList, inCart } = user
+  const newWishList = payload.wishList
+  const newInCart = payload.inCart
+
+  const unicWL = newWishList.map(item => !wishList.includes(item))
+  const unicInCart = newInCart.map(({ article }) => !inCart.includes({ article }))
+
+  if (!unicWL.length && !unicInCart.length) return
+
+  wishList.push(...unicWL)
+  inCart.push(...unicInCart)
+
+
+  try {
+    await db.collection('users').updateOne(
+      { email },
+      {
+        $push: {
+          wishList: {
+            $each: unicWL,
+            $addToSet: true
+          },
+          inCart: {
+            $each: unicInCart,
+            $addToSet: true
+          }
+        }
+      }
+    )
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // Используем для регистрации пользователя
 async function upgradeSession(req, email) {
 
@@ -108,7 +144,7 @@ async function upgradeSession(req, email) {
     console.log(error)
   }
 
-  
+
 
 
 
@@ -288,4 +324,4 @@ async function updateCart(res, session, token, article) {
 }
 
 
-module.exports = { sessions, ensureSession, loadSessions, updateSession, upgradeSession }
+module.exports = { sessions, ensureSession, loadSessions, updateSession, upgradeSession, updateUserData }

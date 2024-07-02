@@ -6,7 +6,7 @@ const { checkSession } = require('./check-session.js')
 const { hash, verify } = require('./encrypt-password.js')
 const { isAdmin } = require('./check-admin.js')
 // const { setNewSession } = require('./set-new-session.js')
-const { ensureSession, updateSession, upgradeSession } = require('./sessions/sessions.js')
+const { ensureSession, updateSession, upgradeSession, updateUserData } = require('./sessions/sessions.js')
 
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
@@ -199,12 +199,12 @@ const endpoints = {
 
     if (regType === 'google') {
       const { id } = payload
-      const user = await db.collection('users').findOne({ email, id }).catch(err => {
+      const user = await db.collection('users').findOne({ email, _id: id }, { projection: { _id: 0 } }).catch(err => {
         if (err.code == 11000) return { insertedId: null }
       })
 
       if (user) {
-        mergeUserData(user, payload)
+        updateUserData(email, user, payload)
         upgradeSession(req, email)
         res.end(JSON.stringify(user))
       } else {
@@ -219,10 +219,13 @@ const endpoints = {
         return
       }
 
-      const user = await db.collection('users').findOne({ email, hash }, { projection: { _id: 0 } })
+      const user = await db.collection('users').findOne({ email }, { projection: { _id: 0 } }).catch(err => {
+        if (err.code == 11000) return { insertedId: null }
+      })
 
       if (user && await verify(password, user.hash).catch(_ => false)) {
-        upgradeSession(req, res, email)
+        updateUserData(email, user, payload)
+        upgradeSession(req, email)
         delete user.hash
         res.end(JSON.stringify(user))
       } else {

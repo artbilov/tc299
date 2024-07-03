@@ -88,6 +88,8 @@ async function updateUserData(email, user, payload) {
   const newWishList = payload.wishList
   const newInCart = payload.inCart
 
+  console.log(newWishList, newInCart)
+
   if (!newWishList.length && !newInCart.length) return
 
   const { wishList, inCart } = user

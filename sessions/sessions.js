@@ -94,29 +94,20 @@ async function updateUserData(email, user, payload) {
 
   const { wishList, inCart } = user
 
-  const unicWL = wishList.length ? newWishList.map(item => !wishList.includes(item)) : newWishList
-  
-  const unicInCart = inCart.length ? newInCart.map(({ article }) => !inCart.includes({ article })) : newInCart
+  const uniqueWL = [...new Set([...wishList, ...newWishList])]
 
-  if (!unicWL.length && !unicInCart.length) return
+  const uniqueInCart = !inCart.length ? newInCart
+    : newInCart.filter(({ article }) => !inCart.some(item => item.article == article))
 
-  wishList.push(...unicWL)
-  inCart.push(...unicInCart)
-
+  inCart.push(...uniqueInCart)
 
   try {
     await db.collection('users').updateOne(
       { email },
       {
-        $push: {
-          wishList: {
-            $each: unicWL,
-            $addToSet: true
-          },
-          inCart: {
-            $each: unicInCart,
-            $addToSet: true
-          }
+        $set: {
+          wishList: uniqueWL,
+          inCart: uniqueInCart
         }
       }
     )

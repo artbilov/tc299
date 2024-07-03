@@ -209,8 +209,8 @@ const endpoints = {
       })
 
       if (user) {
-        updateUserData(email, user, payload)
-        upgradeSession(req, email)
+        await updateUserData(email, user, payload)
+        await upgradeSession(req, email)
         res.end(JSON.stringify(user))
       } else {
         res.writeHead(400).end(JSON.stringify({ error: "User with this email not found" }))
@@ -229,8 +229,8 @@ const endpoints = {
       })
 
       if (user && await verify(password, user.hash).catch(_ => false)) {
-        updateUserData(email, user, payload)
-        upgradeSession(req, email)
+        await updateUserData(email, user, payload)
+        await upgradeSession(req, email)
         delete user.hash
         res.end(JSON.stringify(user))
       } else {

@@ -130,7 +130,7 @@ const endpoints = {
 
         if (result.upsertedId) {
           res.statusCode = 201
-          upgradeSession(req, email)
+          await upgradeSession(req, email)
           console.log('User created')
           delete user._id
           res.end(JSON.stringify({ user }))
@@ -171,7 +171,7 @@ const endpoints = {
 
         if (result.upsertedId) {
           res.statusCode = 201
-          upgradeSession(req, email)
+          await upgradeSession(req, email)
           console.log('User created')
           delete user.hash
           res.end(JSON.stringify({ user }))
@@ -239,16 +239,18 @@ const endpoints = {
     }
   },
 
-  'PUT:to-wish-list'({ req, res, payload }) {
+  async 'PUT:to-wish-list'({ req, res, payload }) {
     const { article } = payload
 
-    updateSession(req, res, article)
+    await updateSession(req, res, article)
+
+    
   },
 
-  'PUT:to-cart'({ req, res, payload }) {
+  async 'PUT:to-cart'({ req, res, payload }) {
     const { article } = payload
 
-    updateSession(req, res, article)
+    await updateSession(req, res, article)
   }
 
 }

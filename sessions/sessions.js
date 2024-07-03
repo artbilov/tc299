@@ -12,11 +12,7 @@ async function loadSessions(dbConnection) {
 }
 
 async function ensureSession(req, res) {
-  const { cookie } = req.headers
-
-  // console.log("Cookie: " + cookie)
-
-  const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
+  const token = getToken(req)
 
   await deleteExpiredSessions()
 
@@ -39,12 +35,10 @@ function createSession(res) {
 
   res.setHeader('Set-Cookie', cookie)
 
-
   const session = { token, email, wishList, inCart, start, end }
   sessions.push(session)
 
   db.collection('sessions').insertOne(session)
-
 
   return cookie
 }
@@ -67,8 +61,7 @@ async function deleteExpiredSessions() {
 // ...
 async function updateSession(req, res, article) {
   // Get session (token).
-  const { cookie } = req.headers
-  const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
+  const token = getToken(req)
 
   if (!token) return
 
@@ -81,6 +74,12 @@ async function updateSession(req, res, article) {
   } else if (req.url === '/to-cart') {
     updateCart(res, session, token, article)
   }
+
+  function getToken(req) {
+    const { cookie } = req.headers
+    const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
+    return token
+  }
 }
 
 // Используем при входе (логине) пользователя
@@ -92,9 +91,11 @@ async function updateUserData(email, user, payload) {
 
   if (!newWishList.length && !newInCart.length) return
 
-  const { wishList, inCart } = user
+  let { wishList, inCart } = user
 
   const uniqueWL = [...new Set([...wishList, ...newWishList])]
+
+  // wishList = uniqueWL
 
   const uniqueInCart = !inCart.length ? newInCart
     : newInCart.filter(({ article }) => !inCart.some(item => item.article == article))
@@ -196,8 +197,12 @@ async function upgradeSession(req, email) {
   // }
 }
 
-async function updateWishlist(res, session, token, article) {
-  // Check if email is in session
+// Используем для добавления и удаления продуктов из wishList
+async function updateWishlist(req, res, article) {
+  // Check if email is in a session
+  const token = getToken(req)
+  const session = sessions.find(session => session.token === token)
+
   if (session.email) {
     const email = session.email
 
@@ -221,7 +226,7 @@ async function updateWishlist(res, session, token, article) {
       )
 
       if (result.modifiedCount > 0) {
-        res.writeHead(200).end(JSON.stringify({ result: 'Product added to wishlist' }))
+        res.writeHead(200).end(JSON.stringify({ result: 'Product added or removed to wishlist' }))
       } else {
         res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
       }
@@ -230,95 +235,53 @@ async function updateWishlist(res, session, token, article) {
       res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
     }
   } else {
-    // Add article to session without email
-
-    try {
-      const result = await db.collection('sessions').updateOne(
-        { token },
-        [
-          {
-            $set: {
-              wishList: {
-                $cond: {
-                  if: { $in: [article, "$wishList"] },
-                  then: { $setDifference: ["$wishList", [article]] },
-                  else: { $concatArrays: ["$wishList", [article]] }
-                }
-              }
-            }
-          }
-        ],
-        { multi: false, upsert: false }
-      )
-
-      if (result.modifiedCount > 0) {
-        res.writeHead(200).end(JSON.stringify({ result: 'Product added to wishlist' }))
-      } else {
-        res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
-      }
-    } catch (err) {
-      console.error(err);
-      res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
-    }
+    console.log('Please login or register first')
+    res.writeHead(401).end(JSON.stringify({ error: 'Please login or register first' }))
   }
 }
 
-async function updateCart(res, session, token, article) {
-  // Check if email is in session
+// Используем для добавления продуктов в inCart
+async function updateCart(req, res, article) {
+  // Check if email is in a session
+  const token = getToken(req)
+  const session = sessions.find(session => session.token === token)
+
   if (session.email) {
     const email = session.email
+    const quantity = 1
+
+    const user = await db.collection('users').findOne({ email })
+
+    const { inCart } = user
+    const newItemInCart = [{ article, quantity }]
+
+
+    const uniqueInCart = !inCart.length ? newItemInCart
+      : newItemInCart.filter(({ article }) => !inCart.some(item => item.article == article))
 
     try {
-      const result = await db.collection('users').updateOne(
-        { email, 'inCart.article': { $ne: article } }, // Проверяем, что объекта с таким article еще нет
-        { $push: { inCart: { article, quantity: 1 } } }, // Добавляем новый объект в массив inCart
-        { upsert: false } // Не создаем новый документ
+      await db.collection('users').updateOne(
+        { email },
+        {
+          $set: {
+            inCart: uniqueInCart
+          }
+        }
       )
 
       if (result.modifiedCount > 0) {
-        res.statusCode = 201
-        res.end(JSON.stringify({ result: 'Product added to cart' }))
-        console.log('Product added to cart')
-      } else if (result.modifiedCount === 0) {
-        res.statusCode = 204
-        res.end(JSON.stringify({ error: 'Product already in cart' }))
-        console.log('Product already in cart')
+        res.writeHead(200).end(JSON.stringify({ result: 'Product added or removed to wishlist' }))
       } else {
-        res.statusCode = 404
-        res.end('Something went wrong, maybe session not found or ...')
-        console.log('Something went wrong, maybe session not found or ...')
+        res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
       }
     } catch (err) {
-      res.statusCode = 500
-      res.end(JSON.stringify({ error: 'Internal server error' }))
-      console.log(err)
+      console.error(err);
+      res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
     }
-
   } else {
-    // Add article to session without email
-    try {
-      const result = await db.collection('sessions').updateOne(
-        { token, 'inCart.article': { $ne: article } },
-        { $push: { inCart: { article, quantity: 1 } } },
-        { upsert: false }
-      )
-
-      if (result.modifiedCount > 0) {
-        res.statusCode = 201
-        res.end(JSON.stringify({ result: 'Product added to cart' }))
-      } else if (result.modifiedCount === 0) {
-        res.statusCode = 204
-        res.end(JSON.stringify({ error: 'Product already in cart' }))
-      } else {
-        res.end('Something went wrong, maybe session not found or ...')
-        console.log('Something went wrong, maybe session not found or ...')
-      }
-    } catch (err) {
-      res.statusCode = 500
-      res.end(JSON.stringify({ error: 'Internal server error' }))
-    }
+    console.log('Please login or register first')
+    res.writeHead(401).end(JSON.stringify({ error: 'Please login or register first' }))
   }
 }
-
 
 module.exports = { sessions, ensureSession, loadSessions, updateSession, upgradeSession, updateUserData }

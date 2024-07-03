@@ -242,15 +242,13 @@ const endpoints = {
   async 'PUT:to-wish-list'({ req, res, payload }) {
     const { article } = payload
 
-    await updateSession(req, res, article)
-
-    
+    await updateWishlist(req, res, article)
   },
 
   async 'PUT:to-cart'({ req, res, payload }) {
     const { article } = payload
 
-    await updateSession(req, res, article)
+    await updateCart(req, res, article)
   }
 
 }

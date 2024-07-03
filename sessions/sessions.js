@@ -85,8 +85,8 @@ async function updateSession(req, res, article) {
 
 // Используем при входе (логине) пользователя
 async function updateUserData(email, user, payload) {
-  const newWishList = payload.wishList
-  const newInCart = payload.inCart
+  const newWishList = payload.wishList || []
+  const newInCart = payload.inCart || []
 
   console.log(newWishList, newInCart)
 

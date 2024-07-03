@@ -85,12 +85,16 @@ async function updateSession(req, res, article) {
 
 // Используем при входе (логине) пользователя
 async function updateUserData(email, user, payload) {
-  const { wishList, inCart } = user
   const newWishList = payload.wishList
   const newInCart = payload.inCart
 
-  const unicWL = newWishList.map(item => !wishList.includes(item))
-  const unicInCart = newInCart.map(({ article }) => !inCart.includes({ article }))
+  if (!newWishList.length && !newInCart.length) return
+
+  const { wishList, inCart } = user
+
+  const unicWL = wishList.length ? newWishList.map(item => !wishList.includes(item)) : newWishList
+  
+  const unicInCart = inCart.length ? newInCart.map(({ article }) => !inCart.includes({ article })) : newInCart
 
   if (!unicWL.length && !unicInCart.length) return
 

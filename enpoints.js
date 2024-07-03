@@ -197,8 +197,13 @@ const endpoints = {
 
     const { regType, email } = payload
 
+    console.log(`regType: ${regType}, email: ${email}`)
+
     if (regType === 'google') {
       const { id } = payload
+
+      console.log(`id: ${id}`)
+      
       const user = await db.collection('users').findOne({ email, _id: id }, { projection: { _id: 0 } }).catch(err => {
         if (err.code == 11000) return { insertedId: null }
       })

@@ -74,13 +74,15 @@ async function updateSession(req, res, article) {
   } else if (req.url === '/to-cart') {
     updateCart(res, session, token, article)
   }
-
-  function getToken(req) {
-    const { cookie } = req.headers
-    const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
-    return token
-  }
 }
+
+
+function getToken(req) {
+  const { cookie } = req.headers
+  const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
+  return token
+}
+
 
 // Используем при входе (логине) пользователя
 async function updateUserData(email, user, payload) {
@@ -120,8 +122,7 @@ async function updateUserData(email, user, payload) {
 // Используем для регистрации пользователя
 async function upgradeSession(req, email) {
 
-  const { cookie } = req.headers
-  const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
+  const token = getToken(req)
 
   if (!token) return
 

@@ -235,47 +235,92 @@ async function updateWishlist(req, res, article) {
   }
 }
 
-// Используем для добавления продуктов в inCart
+// Используем для добавления продуктов в inCart (ЗАКОМЕНЧЕНО --- УДАЛИТЬ!!!)
+// async function updateCart(req, res, article) {
+//   // Check if email is in a session
+//   const token = getToken(req)
+//   const session = sessions.find(session => session.token === token)
+
+//   if (session.email) {
+//     const email = session.email
+//     const quantity = 1
+
+//     const user = await db.collection('users').findOne({ email })
+
+//     let { inCart } = user
+//     let newInCart = []
+//     const newItemInCart = [{ article, quantity }]
+
+//     !inCart.length ? newInCart.push(newItemInCart) : newInCart = !inCart.some(item => item.article == article) ? [...inCart, ...newItemInCart] : [...inCart]
+
+
+//     try {
+//       const result = await db.collection('users').updateOne(
+//         { email },
+//         {
+//           $set: {
+//             inCart: newInCart
+//           }
+//         }
+//       )
+
+
+//       if (result.modifiedCount > 0) {
+//         res.writeHead(200).end(JSON.stringify({ result: 'Product added to Cart' }))
+//       } else {
+//         res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
+//       }
+//     } catch (err) {
+//       console.error(err);
+//       res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
+//     }
+//   } else {
+//     console.log('Please login or register first')
+//     res.writeHead(401).end(JSON.stringify({ error: 'Please login or register first' }))
+//   }
+// }
+
+// FROM PERPLEXITY FOR TEST (РАБОТАЕТ - ОСТАВЛЯЕМ!!!!)
 async function updateCart(req, res, article) {
   // Check if email is in a session
-  const token = getToken(req)
-  const session = sessions.find(session => session.token === token)
+  const token = getToken(req);
+  const session = sessions.find(session => session.token === token);
 
-  if (session.email) {
-    const email = session.email
-    const quantity = 1
+  if (!session || !session.email) {
+    console.log('Please login or register first');
+    return res.writeHead(401).end(JSON.stringify({ error: 'Please login or register first' }));
+  }
 
-    const user = await db.collection('users').findOne({ email })
+  const email = session.email;
+  const quantity = 1;
 
-    const { inCart } = user
-    const newItemInCart = [{ article, quantity }]
+  try {
+    const user = await db.collection('users').findOne({ email });
 
-
-    const uniqueInCart = !inCart.length ? newItemInCart
-      : newItemInCart.filter(({ article }) => !inCart.some(item => item.article == article))
-
-    try {
-      const result = await db.collection('users').updateOne(
-        { email },
-        {
-          $push: {
-            inCart: uniqueInCart
-          }
-        }
-      )
-
-      if (result.modifiedCount > 0) {
-        res.writeHead(200).end(JSON.stringify({ result: 'Product added to Cart' }))
-      } else {
-        res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
-      }
-    } catch (err) {
-      console.error(err);
-      res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
+    if (!user) {
+      return res.writeHead(404).end(JSON.stringify({ error: 'User not found' }));
     }
-  } else {
-    console.log('Please login or register first')
-    res.writeHead(401).end(JSON.stringify({ error: 'Please login or register first' }))
+
+    const { inCart = [] } = user;
+    const itemIndex = inCart.findIndex(item => item.article === article);
+
+    if (itemIndex === -1) {
+      inCart.push({ article, quantity });
+    }
+
+    const result = await db.collection('users').updateOne(
+      { email },
+      { $set: { inCart } }
+    );
+
+    if (result.modifiedCount > 0) {
+      res.writeHead(200).end(JSON.stringify({ result: 'Product added to Cart' }));
+    } else {
+      res.writeHead(404).end(JSON.stringify({ error: 'Failed to update cart' }));
+    }
+  } catch (err) {
+    console.error(err);
+    res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }));
   }
 }
 

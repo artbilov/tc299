@@ -6,7 +6,7 @@ const { checkSession } = require('./check-session.js')
 const { hash, verify } = require('./encrypt-password.js')
 const { isAdmin } = require('./check-admin.js')
 // const { setNewSession } = require('./set-new-session.js')
-const { ensureSession, updateSession, upgradeSession, updateUserData } = require('./sessions/sessions.js')
+const { ensureSession, updateSession, upgradeSession, updateUserData, updateWishlist, updateCart } = require('./sessions/sessions.js')
 
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 

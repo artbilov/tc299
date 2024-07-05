@@ -13,19 +13,12 @@ async function loadSessions(dbConnection) {
 
 async function ensureSession(req, res) {
   const token = getToken(req)
-
   await deleteExpiredSessions()
 
-  if (!token) {
-    createSession(res)
-  }
-  else {
-    const session = checkSession(token)
-    if (!session) createSession(res)
-  }
+  checkSession(token) || await createSession(res)
 }
 
-function createSession(res) {
+async function createSession(res) {
   const token = genToken()
   const { cookie, expire: end } = genCookie('__Host-hh-user-session', token, 0, 0, 60)
   const email = ''
@@ -38,7 +31,7 @@ function createSession(res) {
   const session = { token, email, wishList, inCart, start, end }
   sessions.push(session)
 
-  db.collection('sessions').insertOne(session)
+  await db.collection('sessions').insertOne(session)
 
   return cookie
 }
@@ -204,7 +197,7 @@ async function updateWishlist(req, res, article) {
   const token = getToken(req)
   const session = sessions.find(session => session.token === token)
 
-  if (session.email) {
+  if (session?.email) {
     const email = session.email
 
     try {
@@ -237,6 +230,7 @@ async function updateWishlist(req, res, article) {
     }
   } else {
     console.log('Please login or register first')
+    // not authorized
     res.writeHead(401).end(JSON.stringify({ error: 'Please login or register first' }))
   }
 }
@@ -261,17 +255,17 @@ async function updateCart(req, res, article) {
       : newItemInCart.filter(({ article }) => !inCart.some(item => item.article == article))
 
     try {
-      await db.collection('users').updateOne(
+      const result = await db.collection('users').updateOne(
         { email },
         {
-          $set: {
+          $push: {
             inCart: uniqueInCart
           }
         }
       )
 
       if (result.modifiedCount > 0) {
-        res.writeHead(200).end(JSON.stringify({ result: 'Product added or removed to wishlist' }))
+        res.writeHead(200).end(JSON.stringify({ result: 'Product added to Cart' }))
       } else {
         res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
       }
@@ -285,4 +279,4 @@ async function updateCart(req, res, article) {
   }
 }
 
-module.exports = { sessions, ensureSession, loadSessions, updateSession, upgradeSession, updateUserData }
+module.exports = { sessions, ensureSession, loadSessions, updateSession, upgradeSession, updateUserData, updateWishlist, updateCart }

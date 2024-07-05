@@ -49,7 +49,6 @@ function makeApiHandler(db) {
   }
 }
 
-
 const { decode } = require('querystring');
 const { endpoints } = require('./enpoints.js')
 const { getBody } = require('./get-body.js')

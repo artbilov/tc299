@@ -1,6 +1,5 @@
 module.exports = { makeApiHandler }
 
-const { ensureSession } = require('./sessions/sessions.js')
 
 function makeApiHandler(db) {
   return async function handleApi(req, res) {
@@ -16,7 +15,6 @@ function makeApiHandler(db) {
 
     // console.log("Origin-before: " + req.headers.origin)
 
-
     const origin = req.headers.origin || "*"
 
     // console.log("Origin-after: " + origin)
@@ -26,7 +24,7 @@ function makeApiHandler(db) {
     // db.collection('products').insertMany(JSON.parse(fs.readFileSync('products.json', 'utf-8'))) // put products from the file into a db
     // db.collection('users').createIndex({ email: 1 }, { unique: true })
     // db.collection('users').createIndex({ login: 1 }, { unique: true })
-        
+
     console.log("Cookie-in: " + req.headers.cookie)
 
     setupCORS(req, res, origin)
@@ -49,10 +47,11 @@ function makeApiHandler(db) {
   }
 }
 
+const { ensureSession } = require('./sessions/sessions.js')
 const { decode } = require('querystring');
 const { endpoints } = require('./enpoints.js')
 const { getBody } = require('./get-body.js')
 const { setupCORS } = require('./setup-cors.js')
-const fs = require('fs')
+const fs = require('fs') //не удалять (нужно при загрузке данных с файла)
 
 

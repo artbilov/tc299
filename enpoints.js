@@ -1,12 +1,9 @@
 const fs = require('fs')
 const { getUsers } = require('./get-users.js')
 const { getProducts } = require('./get-products.js')
-const { getUserData } = require('./get-user-data.js')
-const { checkSession } = require('./check-session.js')
 const { hash, verify } = require('./encrypt-password.js')
 const { isAdmin } = require('./check-admin.js')
-// const { setNewSession } = require('./set-new-session.js')
-const { ensureSession, updateSession, upgradeSession, updateUserData, updateWishlist, updateCart } = require('./sessions/sessions.js')
+const { upgradeSession, updateUserData, updateWishlist, updateCart, updateViews, getToken, sessions, getWishListProducts } = require('./sessions/sessions.js')
 
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
@@ -66,23 +63,61 @@ const endpoints = {
     }
   },
 
+  async 'GET:wish-list'({ req, res }) {
+    const token = getToken(req)
+    if (!token) return
+
+    const session = sessions.find(session => session.token === token)
+
+    if (!session) {
+      res.end(JSON.stringify({ error: 'No session found' }))
+      return
+    }
+
+    if (!session.email) {
+      res.end(JSON.stringify({ error: 'Please login or register first' }))
+      return
+    }
+
+    const email = session.email
+
+    const products = await getWishListProducts(email)
+
+    res.end(JSON.stringify(products))
+  },
+
+  async 'GET:cart'({ db, req, res }) {
+    const token = getToken(req)
+
+    if (!token) {
+      res.statusCode = 401
+      res.end(JSON.stringify({ error: 'No session found' }))
+      return
+    }
+
+    const session = sessions.find(session => session.token === token)
+
+    if (!session) {
+      res.statusCode = 403
+      res.end(JSON.stringify({ error: 'No session found' }))
+      return
+    }
+
+    if (!session.email) {
+      res.statusCode = 404
+      res.end(JSON.stringify({ error: 'Please login or register first' }))
+      return
+    }
+
+    const email = session.email
+    const user = await db.collection('users').findOne({ email })
+    res.end(JSON.stringify(user.inCart))
+  },
+
   'GET:art-page.html'({ res }) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8')
     res.end(fs.readFileSync('art-page.html', 'utf-8'))
   },
-
-  // async 'GET:session'({ db, req, res }) {
-  //   const { cookie } = req.headers
-  //   const isValidSession = cookie && await checkSession(db, cookie)
-
-  //   if (isValidSession) {
-  //     const userData = await getUserData(db, cookie)
-  //     res.setHeader('Content-Type', 'application/json; charset=utf-8')
-  //     res.end(JSON.stringify(userData, null, 2))
-  //   } else {
-  //     setNewSession(db, res)
-  //   }
-  // },
 
   async 'POST:product'({ db, req, res, payload }) {
     if (isAdmin(req)) {
@@ -132,8 +167,116 @@ const endpoints = {
           res.statusCode = 201
           await upgradeSession(req, email)
           console.log('User created')
-          delete user._id
-          res.end(JSON.stringify({ user }))
+          // delete user._id
+
+          const pipeline = [
+            // Находим пользователя по email
+            { $match: { email } },
+
+            // Преобразуем wishList
+            {
+              $lookup: {
+                from: 'products',
+                localField: 'wishList',
+                foreignField: 'article',
+                as: 'populatedWishList'
+              }
+            },
+
+            // Преобразуем inCart
+            {
+              $lookup: {
+                from: 'products',
+                localField: 'inCart.article',
+                foreignField: 'article',
+                as: 'productDetails'
+              }
+            },
+
+            // Объединяем inCart с данными о продуктах
+            {
+              $addFields: {
+                inCart: {
+                  $map: {
+                    input: '$inCart',
+                    as: 'cartItem',
+                    in: {
+                      $mergeObjects: [
+                        '$$cartItem',
+                        {
+                          product: {
+                            $arrayElemAt: [
+                              {
+                                $filter: {
+                                  input: '$productDetails',
+                                  cond: { $eq: ['$$this.article', '$$cartItem.article'] }
+                                }
+                              },
+                              0
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+
+            // Финальная проекция для формирования нужной структуры
+            {
+              $project: {
+                _id: 0,
+                fullName: 1,
+                email: 1,
+                wishList: {
+                  $map: {
+                    input: '$populatedWishList',
+                    as: 'product',
+                    in: {
+                      name: '$$product.name',
+                      category: '$$product.category',
+                      article: '$$product.article',
+                      description: '$$product.description',
+                      aboutProduct: '$$product.aboutProduct',
+                      color: '$$product.color',
+                      quantity: '$$product.quantity',
+                      price: '$$product.price',
+                      image: '$$product.image',
+                      picture: '$$product.picture'
+                    }
+                  }
+                },
+                inCart: {
+                  $map: {
+                    input: '$inCart',
+                    as: 'cartItem',
+                    in: {
+                      article: '$$cartItem.article',
+                      quantity: '$$cartItem.quantity',
+                      product: {
+                        name: '$$cartItem.product.name',
+                        category: '$$cartItem.product.category',
+                        article: '$$cartItem.product.article',
+                        description: '$$cartItem.product.description',
+                        aboutProduct: '$$cartItem.product.aboutProduct',
+                        color: '$$cartItem.product.color',
+                        quantity: '$$cartItem.product.quantity',
+                        price: '$$cartItem.product.price',
+                        image: '$$cartItem.product.image',
+                        picture: '$$cartItem.product.picture'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ];
+
+          const [enrichedUser] = await db.collection('users').aggregate(pipeline).toArray();
+
+          res.end(JSON.stringify(enrichedUser))
+
         } else if (result.modifiedCount === 0) {
           res.statusCode = 204
           res.end(JSON.stringify({ result: 'User already exists' }))
@@ -173,8 +316,117 @@ const endpoints = {
           res.statusCode = 201
           await upgradeSession(req, email)
           console.log('User created')
+
           delete user.hash
-          res.end(JSON.stringify({ user }))
+
+          const pipeline = [
+            // Находим пользователя по email
+            { $match: { email } },
+
+            // Преобразуем wishList
+            {
+              $lookup: {
+                from: 'products',
+                localField: 'wishList',
+                foreignField: 'article',
+                as: 'populatedWishList'
+              }
+            },
+
+            // Преобразуем inCart
+            {
+              $lookup: {
+                from: 'products',
+                localField: 'inCart.article',
+                foreignField: 'article',
+                as: 'productDetails'
+              }
+            },
+
+            // Объединяем inCart с данными о продуктах
+            {
+              $addFields: {
+                inCart: {
+                  $map: {
+                    input: '$inCart',
+                    as: 'cartItem',
+                    in: {
+                      $mergeObjects: [
+                        '$$cartItem',
+                        {
+                          product: {
+                            $arrayElemAt: [
+                              {
+                                $filter: {
+                                  input: '$productDetails',
+                                  cond: { $eq: ['$$this.article', '$$cartItem.article'] }
+                                }
+                              },
+                              0
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+
+            // Финальная проекция для формирования нужной структуры
+            {
+              $project: {
+                _id: 0,
+                fullName: 1,
+                email: 1,
+                wishList: {
+                  $map: {
+                    input: '$populatedWishList',
+                    as: 'product',
+                    in: {
+                      name: '$$product.name',
+                      category: '$$product.category',
+                      article: '$$product.article',
+                      description: '$$product.description',
+                      aboutProduct: '$$product.aboutProduct',
+                      color: '$$product.color',
+                      quantity: '$$product.quantity',
+                      price: '$$product.price',
+                      image: '$$product.image',
+                      picture: '$$product.picture'
+                    }
+                  }
+                },
+                inCart: {
+                  $map: {
+                    input: '$inCart',
+                    as: 'cartItem',
+                    in: {
+                      article: '$$cartItem.article',
+                      quantity: '$$cartItem.quantity',
+                      product: {
+                        name: '$$cartItem.product.name',
+                        category: '$$cartItem.product.category',
+                        article: '$$cartItem.product.article',
+                        description: '$$cartItem.product.description',
+                        aboutProduct: '$$cartItem.product.aboutProduct',
+                        color: '$$cartItem.product.color',
+                        quantity: '$$cartItem.product.quantity',
+                        price: '$$cartItem.product.price',
+                        image: '$$cartItem.product.image',
+                        picture: '$$cartItem.product.picture'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ];
+
+          const [enrichedUser] = await db.collection('users').aggregate(pipeline).toArray();
+
+          res.end(JSON.stringify(enrichedUser))
+
         } else if (result.modifiedCount === 0) {
           res.statusCode = 204
           res.end(JSON.stringify('User already exists'))
@@ -211,7 +463,114 @@ const endpoints = {
       if (user) {
         await updateUserData(email, user, payload)
         await upgradeSession(req, email)
-        res.end(JSON.stringify(user))
+
+        const pipeline = [
+          // Находим пользователя по email
+          { $match: { email } },
+
+          // Преобразуем wishList
+          {
+            $lookup: {
+              from: 'products',
+              localField: 'wishList',
+              foreignField: 'article',
+              as: 'populatedWishList'
+            }
+          },
+
+          // Преобразуем inCart
+          {
+            $lookup: {
+              from: 'products',
+              localField: 'inCart.article',
+              foreignField: 'article',
+              as: 'productDetails'
+            }
+          },
+
+          // Объединяем inCart с данными о продуктах
+          {
+            $addFields: {
+              inCart: {
+                $map: {
+                  input: '$inCart',
+                  as: 'cartItem',
+                  in: {
+                    $mergeObjects: [
+                      '$$cartItem',
+                      {
+                        product: {
+                          $arrayElemAt: [
+                            {
+                              $filter: {
+                                input: '$productDetails',
+                                cond: { $eq: ['$$this.article', '$$cartItem.article'] }
+                              }
+                            },
+                            0
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+
+          // Финальная проекция для формирования нужной структуры
+          {
+            $project: {
+              _id: 0,
+              fullName: 1,
+              email: 1,
+              wishList: {
+                $map: {
+                  input: '$populatedWishList',
+                  as: 'product',
+                  in: {
+                    name: '$$product.name',
+                    category: '$$product.category',
+                    article: '$$product.article',
+                    description: '$$product.description',
+                    aboutProduct: '$$product.aboutProduct',
+                    color: '$$product.color',
+                    quantity: '$$product.quantity',
+                    price: '$$product.price',
+                    image: '$$product.image',
+                    picture: '$$product.picture'
+                  }
+                }
+              },
+              inCart: {
+                $map: {
+                  input: '$inCart',
+                  as: 'cartItem',
+                  in: {
+                    article: '$$cartItem.article',
+                    quantity: '$$cartItem.quantity',
+                    product: {
+                      name: '$$cartItem.product.name',
+                      category: '$$cartItem.product.category',
+                      article: '$$cartItem.product.article',
+                      description: '$$cartItem.product.description',
+                      aboutProduct: '$$cartItem.product.aboutProduct',
+                      color: '$$cartItem.product.color',
+                      quantity: '$$cartItem.product.quantity',
+                      price: '$$cartItem.product.price',
+                      image: '$$cartItem.product.image',
+                      picture: '$$cartItem.product.picture'
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ];
+
+        const [enrichedUser] = await db.collection('users').aggregate(pipeline).toArray()
+
+        res.end(JSON.stringify(enrichedUser))
       } else {
         res.writeHead(400).end(JSON.stringify({ error: "User with this email not found" }))
       }
@@ -231,8 +590,116 @@ const endpoints = {
       if (user && await verify(password, user.hash).catch(_ => false)) {
         await updateUserData(email, user, payload)
         await upgradeSession(req, email)
-        delete user.hash
-        res.end(JSON.stringify(user))
+        // delete user.hash
+
+        const pipeline = [
+          // Находим пользователя по email
+          { $match: { email } },
+
+          // Преобразуем wishList
+          {
+            $lookup: {
+              from: 'products',
+              localField: 'wishList',
+              foreignField: 'article',
+              as: 'populatedWishList'
+            }
+          },
+
+          // Преобразуем inCart
+          {
+            $lookup: {
+              from: 'products',
+              localField: 'inCart.article',
+              foreignField: 'article',
+              as: 'productDetails'
+            }
+          },
+
+          // Объединяем inCart с данными о продуктах
+          {
+            $addFields: {
+              inCart: {
+                $map: {
+                  input: '$inCart',
+                  as: 'cartItem',
+                  in: {
+                    $mergeObjects: [
+                      '$$cartItem',
+                      {
+                        product: {
+                          $arrayElemAt: [
+                            {
+                              $filter: {
+                                input: '$productDetails',
+                                cond: { $eq: ['$$this.article', '$$cartItem.article'] }
+                              }
+                            },
+                            0
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+
+          // Финальная проекция для формирования нужной структуры
+          {
+            $project: {
+              _id: 0,
+              fullName: 1,
+              email: 1,
+              wishList: {
+                $map: {
+                  input: '$populatedWishList',
+                  as: 'product',
+                  in: {
+                    name: '$$product.name',
+                    category: '$$product.category',
+                    article: '$$product.article',
+                    description: '$$product.description',
+                    aboutProduct: '$$product.aboutProduct',
+                    color: '$$product.color',
+                    quantity: '$$product.quantity',
+                    price: '$$product.price',
+                    image: '$$product.image',
+                    picture: '$$product.picture'
+                  }
+                }
+              },
+              inCart: {
+                $map: {
+                  input: '$inCart',
+                  as: 'cartItem',
+                  in: {
+                    article: '$$cartItem.article',
+                    quantity: '$$cartItem.quantity',
+                    product: {
+                      name: '$$cartItem.product.name',
+                      category: '$$cartItem.product.category',
+                      article: '$$cartItem.product.article',
+                      description: '$$cartItem.product.description',
+                      aboutProduct: '$$cartItem.product.aboutProduct',
+                      color: '$$cartItem.product.color',
+                      quantity: '$$cartItem.product.quantity',
+                      price: '$$cartItem.product.price',
+                      image: '$$cartItem.product.image',
+                      picture: '$$cartItem.product.picture'
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ];
+
+        const [enrichedUser] = await db.collection('users').aggregate(pipeline).toArray()
+
+
+        res.end(JSON.stringify(enrichedUser))
       } else {
         res.writeHead(400).end(JSON.stringify({ error: "Login or password is incorrect" }))
       }
@@ -249,9 +716,16 @@ const endpoints = {
     const { article } = payload
 
     await updateCart(req, res, article)
-  }
+  },
+
+  async 'PUT:view'(req, res, payload) {
+    const { article } = payload
+    await updateViews(req, res, article)
+  },
 
 }
+
+
 
 for (const cat in categoryEndpoints) endpoints['GET:' + cat] = category
 

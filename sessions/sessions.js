@@ -50,32 +50,29 @@ async function deleteExpiredSessions() {
   await db.collection('sessions').deleteMany(filter)
 }
 
+// Не используется - УДАЛИТЬ!
+// async function updateSession(req, res, article) {
+//   // Get session (token).
+//   const token = getToken(req)
 
-// ...
-async function updateSession(req, res, article) {
-  // Get session (token).
-  const token = getToken(req)
+//   if (!token) return
 
-  if (!token) return
+//   const session = sessions.find(session => session.token === token)
 
-  const session = sessions.find(session => session.token === token)
+//   if (!session) return
 
-  if (!session) return
-
-  if (req.url === '/to-wish-list') {
-    updateWishlist(res, session, token, article)
-  } else if (req.url === '/to-cart') {
-    updateCart(res, session, token, article)
-  }
-}
-
+//   if (req.url === '/to-wish-list') {
+//     updateWishlist(res, session, token, article)
+//   } else if (req.url === '/to-cart') {
+//     updateCart(res, session, token, article)
+//   }
+// }
 
 function getToken(req) {
   const { cookie } = req.headers
   const token = cookie?.split('; ').find(token => token.startsWith('__Host-hh-user-session='))?.split('=')[1]
   return token
 }
-
 
 // Используем при входе (логине) пользователя
 async function updateUserData(email, user, payload) {
@@ -135,10 +132,6 @@ async function upgradeSession(req, email) {
   } catch (error) {
     console.log(error)
   }
-
-
-
-
 
   // старая версия (когда сессия хранилась в базе данных, а не на фронте)
   // try {
@@ -280,6 +273,7 @@ async function updateWishlist(req, res, article) {
 //   }
 // }
 
+
 // FROM PERPLEXITY FOR TEST (РАБОТАЕТ - ОСТАВЛЯЕМ!!!!)
 async function updateCart(req, res, article) {
   // Check if email is in a session
@@ -324,4 +318,137 @@ async function updateCart(req, res, article) {
   }
 }
 
-module.exports = { sessions, ensureSession, loadSessions, updateSession, upgradeSession, updateUserData, updateWishlist, updateCart }
+async function updateViews(req, res, article) {
+  // Check if email is in a session
+  const token = getToken(req)
+  const session = sessions.find(session => session.token === token)
+
+  if (!session) return
+
+  const { email = "noEmail" } = session
+  const view = { email, sessions: [token] }
+
+  const { views } = await db.collection('products').findOne({ article })
+
+  // views = [
+  //   {
+  //     email: "noEmail",
+  //     sessions: [token1, token2]
+  //   }
+  // ]
+
+  if (views.some(view => view.email === email && view.sessions.includes(token))) {
+    return
+  } else if (email !== "noEmail") {
+    views.push(view)
+  } else {
+
+  }
+
+
+
+
+  if (!session || !session.email) {
+
+    try {
+      const result = await db.collection('products').updateOne(
+        { article },
+        { $inc: { views: 1 } }
+      )
+      if (result.modifiedCount > 0) {
+        res.writeHead(200).end(JSON.stringify({ result: 'Views updated' }))
+      } else {
+        res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
+      }
+    } catch (err) {
+      console.error(err)
+      res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
+    }
+  }
+}
+
+async function getWishListProducts(email) {
+  try {
+    const pipeline = [
+      // Находим пользователя по email
+      { $match: { email: email } },
+      
+      // Разворачиваем массив wishList
+      { $unwind: '$wishList' },
+      
+      // Выполняем поиск товаров по article из wishList
+      {
+        $lookup: {
+          from: 'products',
+          localField: 'wishList',
+          foreignField: 'article',
+          as: 'productArray'
+        }
+      },
+      
+      // Разворачиваем результат lookup (должен быть один товар)
+      { $unwind: '$productArray' },
+      
+      // Формируем структуру документа, исключая _id и __v из товара
+      {
+        $project: {
+          product: {
+            $objectToArray: {
+              $mergeObjects: [
+                { $arrayToObject: { 
+                  $filter: { 
+                    input: { $objectToArray: '$productArray' }, 
+                    cond: { $and: [
+                      { $ne: ['$$this.k', '_id'] },
+                      { $ne: ['$$this.k', '__v'] },
+                      { $ne: ['$$this.k', 'createdAt'] },
+                      { $ne: ['$$this.k', 'updatedAt'] },
+                      { $ne: ['$$this.k', 'reviews'] },
+                      { $ne: ['$$this.k', 'questions'] },
+                    ]}
+                  } 
+                } }
+              ]
+            }
+          }
+        }
+      },
+      
+      // Преобразуем обратно в объект
+      {
+        $project: {
+          product: { $arrayToObject: '$product' }
+        }
+      },
+      
+      // Группируем результаты обратно в массив
+      {
+        $group: {
+          _id: null,
+          wishListProducts: { $push: '$product' }
+        }
+      },
+      
+      // Финальная проекция для получения только массива товаров
+      {
+        $project: {
+          _id: 0,
+          wishListProducts: 1
+        }
+      }
+    ];
+
+    const result = await db.collection('users').aggregate(pipeline).toArray();
+
+    if (result.length > 0) {
+      return result[0].wishListProducts;
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error('Error in getWishListProducts:', error);
+    throw error;
+  }
+}
+
+module.exports = { sessions, ensureSession, loadSessions, upgradeSession, updateUserData, updateWishlist, updateCart, getToken, getWishListProducts }

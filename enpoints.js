@@ -63,6 +63,124 @@ const endpoints = {
     }
   },
 
+  async 'GET:user-onload'({ db, req, res }) {
+    const token = await getToken(req)
+    const session = sessions.find(session => session.token === token)
+    const email = session?.email
+
+    if (email) {
+      const pipeline = [
+        // Находим пользователя по email
+        { $match: { email } },
+
+        // Преобразуем wishList
+        {
+          $lookup: {
+            from: 'products',
+            localField: 'wishList',
+            foreignField: 'article',
+            as: 'populatedWishList'
+          }
+        },
+
+        // Преобразуем inCart
+        {
+          $lookup: {
+            from: 'products',
+            localField: 'inCart.article',
+            foreignField: 'article',
+            as: 'productDetails'
+          }
+        },
+
+        // Объединяем inCart с данными о продуктах
+        {
+          $addFields: {
+            inCart: {
+              $map: {
+                input: '$inCart',
+                as: 'cartItem',
+                in: {
+                  $mergeObjects: [
+                    '$$cartItem',
+                    {
+                      product: {
+                        $arrayElemAt: [
+                          {
+                            $filter: {
+                              input: '$productDetails',
+                              cond: { $eq: ['$$this.article', '$$cartItem.article'] }
+                            }
+                          },
+                          0
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+
+        // Финальная проекция для формирования нужной структуры
+        {
+          $project: {
+            _id: 0,
+            fullName: 1,
+            email: 1,
+            wishList: {
+              $map: {
+                input: '$populatedWishList',
+                as: 'product',
+                in: {
+                  name: '$$product.name',
+                  category: '$$product.category',
+                  article: '$$product.article',
+                  description: '$$product.description',
+                  aboutProduct: '$$product.aboutProduct',
+                  color: '$$product.color',
+                  quantity: '$$product.quantity',
+                  price: '$$product.price',
+                  image: '$$product.image',
+                  picture: '$$product.picture'
+                }
+              }
+            },
+            inCart: {
+              $map: {
+                input: '$inCart',
+                as: 'cartItem',
+                in: {
+                  article: '$$cartItem.article',
+                  quantity: '$$cartItem.quantity',
+                  product: {
+                    name: '$$cartItem.product.name',
+                    category: '$$cartItem.product.category',
+                    article: '$$cartItem.product.article',
+                    description: '$$cartItem.product.description',
+                    aboutProduct: '$$cartItem.product.aboutProduct',
+                    color: '$$cartItem.product.color',
+                    quantity: '$$cartItem.product.quantity',
+                    price: '$$cartItem.product.price',
+                    image: '$$cartItem.product.image',
+                    picture: '$$cartItem.product.picture'
+                  }
+                }
+              }
+            }
+          }
+        }
+      ];
+
+      const [enrichedUser] = await db.collection('users').aggregate(pipeline).toArray();
+
+      res.end(JSON.stringify({ enrichedUser, cookie: { token: session.token, expire: session.end } })) //new Date(session.end).toUTCString()
+    } else {
+      res.end(JSON.stringify({ noUser: 'Please login or register first', cookie: { token: session.token, expire: session.end } })) //new Date(session.end).toUTCString()
+    }
+  },
+
   async 'GET:wish-list'({ req, res }) {
     const token = getToken(req)
     if (!token) return
@@ -294,6 +412,9 @@ const endpoints = {
 
     } else if (regType === 'email') {
       const { fullName, email, password, wishList = [], inCart = [] } = payload
+
+      // Костыль для обработки входящих данных в формате ['article1', 'article2', ...] - удалить за ненадобностью!
+      // if (inCart.length) inCart = inCart.map(product => typeof product === 'string' ? { article: product, quantity: 1 } : product)
 
       if (!fullName || !email || !password) {
         res.writeHead(400).end(JSON.stringify({ error: "All fields are required!" }))

@@ -11,14 +11,14 @@ const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting De
 
 const endpoints = {
   async 'GET:products'({ db, params, pageSize, res }) {
-
+    const query = params.query
     const page = +params.page || 1
     const color = params.color || ''
     const min = +params.min || 0
     const max = +params.max || Infinity
     const sort = params.sort
     const dir = params.dir
-    const data = await getProducts(db, pageSize, page, '', color, min, max, sort, dir)
+    const data = await getProducts(db, query, pageSize, page, '', color, min, max, sort, dir)
     res.end(JSON.stringify(data))
   },
 
@@ -27,26 +27,78 @@ const endpoints = {
     res.end(JSON.stringify(product))
   },
 
-  async 'GET:search'({ db, params, res }) {
-    const { query, min, max, ...props } = params
-    const $regex = new RegExp(query?.replace(/([^a-zA-Z0-9])/g, "\\$1"))
-    let filter = query ?
-      // { $or: [
-      { name: { $regex, $options: "i" } }
-      // { category: { $regex, $options: "i" }},
-      // { color: { $regex, $options: "i" } }
-      // ] }
-      : props
-    if (min && max) {
-      filter = {
-        $and: [
-          filter,
-          { price: { $gte: +min, $lte: +max } }
-        ]
-      }
-    }
-    const products = await db.collection('products').find(filter).toArray()
-    res.end(JSON.stringify(products))
+  async 'GET:search'({ db, params, pageSize, res }) {
+    // const { query, min, max, ...props } = params
+    const query = params.query
+    const page = +params.page || 1
+    const color = params.color || ''
+    const min = +params.min || 0
+    const max = +params.max || Infinity
+    const sort = params.sort
+    const dir = params.dir
+
+    // let filter = query ?
+    //   // { $or: [
+    //   { name: { $regex, $options: "i" } }
+    //   // { category: { $regex, $options: "i" }},
+    //   // { color: { $regex, $options: "i" } }
+    //   // ] }
+    //   : props
+    // if (min && max) {
+    //   filter = {
+    //     $and: [
+    //       filter,
+    //       { price: { $gte: +min, $lte: +max } }
+    //     ]
+    //   }
+    // }
+
+    // let pipeline = [
+    //   {
+    //     $match: query
+    //       ? { name: { $regex, $options: "i" } }
+    //       : props
+    //   },
+    //   ...sort ? [{ $sort: { [sort]: dir == 'desc' ? -1 : 1 } }] : [],
+    //   {
+    //     $facet: {
+    //       totalProducts: [
+    //         { $count: 'amount' },
+    //       ],
+    //       prices: [
+    //         {
+    //           $group: {
+    //             _id: null,
+    //             minPrice: { $min: '$price' },
+    //             maxPrice: { $max: '$price' }
+    //           }
+    //         },
+    //       ],
+    //       products: [
+    //         { $skip: skip },
+    //         { $limit: pageSize }
+    //       ]
+    //     }
+    //   }
+    // ]
+
+    // if (min && max) {
+    //   pipeline = [
+    //     {
+    //       $match: {
+    //         $and: [
+    //           pipeline[0].$match,
+    //           { price: { $gte: +min, $lte: +max } }
+    //         ]
+    //       }
+    //     }
+    //   ]
+    // }
+
+    // const products = await db.collection('products').find(filter).toArray()
+    
+    const data = await getProducts(db, query, pageSize, page, '', color, min, max, sort, dir)
+    res.end(JSON.stringify(data))
   },
 
   async 'GET:user'({ db, params, pageSize, res }) {
@@ -852,13 +904,14 @@ for (const cat in categoryEndpoints) endpoints['GET:' + cat] = category
 
 async function category({ db, params, pageSize, endpoint, res }) {
   const category = categoryEndpoints[endpoint.replace('GET:', '')]
+  const query = { category }
   const page = +params.page || 1
   const color = params.color || ''
   const min = +params.min || 0
   const max = +params.max || Infinity
   const sort = params.sort
   const dir = params.dir
-  const data = await getProducts(db, pageSize, page, category, color, min, max, sort, dir)
+  const data = await getProducts(db, query, pageSize, page, category, color, min, max, sort, dir)
   res.end(JSON.stringify(data))
 }
 

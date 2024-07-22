@@ -904,7 +904,8 @@ for (const cat in categoryEndpoints) endpoints['GET:' + cat] = category
 
 async function category({ db, params, pageSize, endpoint, res }) {
   const category = categoryEndpoints[endpoint.replace('GET:', '')]
-  const query = { category }
+  const query = params.query
+  // const query = { category }
   const page = +params.page || 1
   const color = params.color || ''
   const min = +params.min || 0

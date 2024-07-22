@@ -13,6 +13,13 @@ function makeApiHandler(db) {
     const payload = JSON.parse(body || '{}')
     const pageSize = 9
 
+    if (!endpoints[endpoint]) {
+      res.statusCode = 404
+      res.end(JSON.stringify("Don't bother BackEnd! It has no such endpoint: " + endpoint)) 
+      return
+    }
+
+
     // console.log("Origin-before: " + req.headers.origin)
 
     const origin = req.headers.origin || "*"
@@ -33,6 +40,8 @@ function makeApiHandler(db) {
     if (method === 'OPTIONS') return
 
     await ensureSession(req, res)
+
+
 
     try {
       // if (endpoint.startsWith('OPTIONS:')) res.writeHead(200, { 'Allow': 'GET, POST, PUT, DELETE' }).end()

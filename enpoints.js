@@ -10,7 +10,7 @@ const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting De
 
 
 const endpoints = {
-  
+
   async 'GET:products'({ db, params, pageSize, res }) {
     const query = params.query
     const page = +params.page || 1
@@ -906,7 +906,6 @@ for (const cat in categoryEndpoints) endpoints['GET:' + cat] = category
 async function category({ db, res, params, pageSize, endpoint }) {
   const category = categoryEndpoints[endpoint.replace('GET:', '')]
   const query = params.query
-  // const query = { category }
   const page = +params.page || 1
   const color = params.color || ''
   const min = +params.min || 0

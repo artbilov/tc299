@@ -38,7 +38,8 @@ function makeApiHandler(db) {
       // if (endpoint.startsWith('OPTIONS:')) res.writeHead(200, { 'Allow': 'GET, POST, PUT, DELETE' }).end()
       // else endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
 
-      endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
+      await endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
+
     } catch (error) {
       console.log(endpoint)
       res.statusCode = 404

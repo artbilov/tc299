@@ -18,7 +18,7 @@ const endpoints = {
     const max = +params.max || Infinity
     const sort = params.sort
     const dir = params.dir
-    const data = await getProducts(db, query, pageSize, page, '', color, min, max, sort, dir)
+    const data = await getProducts({ db, query, pageSize, page, color, min, max, sort, dir })
     res.end(JSON.stringify(data))
   },
 
@@ -96,8 +96,8 @@ const endpoints = {
     // }
 
     // const products = await db.collection('products').find(filter).toArray()
-    
-    const data = await getProducts(db, query, pageSize, page, '', color, min, max, sort, dir)
+
+    const data = await getProducts({ db, query, pageSize, page, color, min, max, sort, dir })
     res.end(JSON.stringify(data))
   },
 
@@ -911,7 +911,7 @@ async function category({ db, params, pageSize, endpoint, res }) {
   const max = +params.max || Infinity
   const sort = params.sort
   const dir = params.dir
-  const data = await getProducts(db, query, pageSize, page, category, color, min, max, sort, dir)
+  const data = await getProducts({db, query, pageSize, page, category, color, min, max, sort, dir})
   res.end(JSON.stringify(data))
 }
 

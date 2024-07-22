@@ -5,8 +5,8 @@ function makeApiHandler(db) {
   return async function handleApi(req, res) {
 
     const path = req.url.slice(1) || 'art-page.html'
-    const [route, query] = path.split('?')
-    const params = decode(query)
+    const [route, queryStr] = path.split('?')
+    const params = decode(queryStr)
     const method = req.method
     const endpoint = method + ':' + route
     const body = await getBody(req)
@@ -19,7 +19,7 @@ function makeApiHandler(db) {
 
     // console.log("Origin-after: " + origin)
 
-    console.log({ path, method, endpoint, params })
+    // console.log({ path, method, endpoint, params })
 
     // db.collection('products').insertMany(JSON.parse(fs.readFileSync('products.json', 'utf-8'))) // put products from the file into a db
     // db.collection('users').createIndex({ email: 1 }, { unique: true })

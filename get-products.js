@@ -1,5 +1,5 @@
 
-async function getProducts(db, query, pageSize, page, category, color, min, max, sort, dir) {
+async function getProducts({db, query, pageSize, page, category, color, min, max, sort, dir}) {
   const skip = (page - 1) * pageSize;
 
   const $regex = new RegExp(query?.replace(/([^a-zA-Z0-9])/g, "\\$1"))

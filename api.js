@@ -19,7 +19,6 @@ function makeApiHandler(db) {
       return
     }
 
-
     // console.log("Origin-before: " + req.headers.origin)
 
     const origin = req.headers.origin || "*"

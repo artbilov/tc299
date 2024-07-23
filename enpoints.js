@@ -892,9 +892,15 @@ const endpoints = {
     await updateCart(req, res, article)
   },
 
-  async 'PUT:view'(req, res, payload) {
+  async 'PUT:view'({req, res, payload}) {
     const { article } = payload
     await updateViews(req, res, article)
+  },
+
+  async 'POST:quantity-in-cart'({db, res, payload}) {
+    const { article, quantity } = payload
+    
+    await updateQuantityInCart(db, res, article, quantity)
   },
 
 }

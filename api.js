@@ -27,6 +27,7 @@ function makeApiHandler(db) {
 
     // console.log({ path, method, endpoint, params })
 
+    // Технический блок
     // db.collection('products').insertMany(JSON.parse(fs.readFileSync('products.json', 'utf-8'))) // put products from the file into a db
     // db.collection('users').createIndex({ email: 1 }, { unique: true })
     // db.collection('products').createIndex({ article: 1 }, { unique: true })
@@ -40,8 +41,6 @@ function makeApiHandler(db) {
 
     await ensureSession(req, res)
 
-
-
     try {
       // if (endpoint.startsWith('OPTIONS:')) res.writeHead(200, { 'Allow': 'GET, POST, PUT, DELETE' }).end()
       // else endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
@@ -49,10 +48,10 @@ function makeApiHandler(db) {
       await endpoints[endpoint]({ db, params, pageSize, endpoint, req, res, payload })
 
     } catch (error) {
-      console.log(endpoint)
-      res.statusCode = 404
-      res.end(JSON.stringify({ error: 'unsupported method' }))
+      console.log('Endpoint: ' + endpoint)
       console.log(error)
+      res.statusCode = 404
+      res.end(JSON.stringify(error))
     }
   }
 }

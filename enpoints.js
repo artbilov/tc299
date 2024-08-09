@@ -906,7 +906,6 @@ const endpoints = {
 }
 
 
-
 for (const cat in categoryEndpoints) endpoints['GET:' + cat] = category
 
 async function category({ db, res, params, pageSize, endpoint }) {

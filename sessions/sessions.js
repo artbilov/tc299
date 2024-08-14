@@ -323,8 +323,6 @@ async function updateViews(req, res, article) {
   const token = getToken(req)
   const session = sessions.find(session => session.token === token)
 
-  if (!session) return
-
   const { email = "noEmail" } = session
   const view = { email, sessions: [token] }
 

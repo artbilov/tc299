@@ -8,7 +8,6 @@ const { upgradeSession, updateUserData, updateWishlist, updateCart, updateViews,
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
 
-
 const endpoints = {
 
   async 'GET:products'({ db, params, pageSize, res }) {
@@ -904,7 +903,6 @@ const endpoints = {
   },
 
 }
-
 
 for (const cat in categoryEndpoints) endpoints['GET:' + cat] = category
 

@@ -39,6 +39,7 @@ async function getProducts({db, query, pageSize, page, category, color, min, max
             $project: {
               _id: 0,
               __v: 0,
+              views: 0,
             }
           }
         ],

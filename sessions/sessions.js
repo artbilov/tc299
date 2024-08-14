@@ -323,57 +323,166 @@ async function updateViews(req, res, article) {
   const token = getToken(req)
   const session = sessions.find(session => session.token === token)
 
-  const { email = "noEmail" } = session
-  const view = { email, sessions: [token] }
+  let { email } = session
 
-  const { views } = await db.collection('products').findOne({ article })
+  if (!email) email = "noEmail"
 
-  // views = [
-  //   {
-  //     email: "noEmail",
-  //     sessions: [token1, token2]
-  //   }
-  // ]
+  try {
+    const { viewsCount } = await db.collection('products').findOneAndUpdate(
+      { article },
+      [
+        {
+          $set: {
+            views: {
+              $let: {
+                vars: {
+                  updatedViews: {
+                    $map: {
+                      input: "$views",
+                      as: "view",
+                      in: {
+                        $cond: {
+                          if: { $eq: ["$$view.email", email] },
+                          then: {
+                            email: "$$view.email",
+                            sessions: {
+                              $cond: {
+                                if: { $in: [token, "$$view.sessions"] },
+                                then: "$$view.sessions",
+                                else: { $concatArrays: ["$$view.sessions", [token]] }
+                              }
+                            }
+                          },
+                          else: {
+                            $cond: {
+                              if: { $eq: ["$$view.email", "noEmail"] },
+                              then: {
+                                email: "$$view.email",
+                                sessions: {
+                                  $cond: {
+                                    if: { $in: [token, "$$view.sessions"] },
+                                    then: {
+                                      $cond: {
+                                        if: { $eq: [email, "noEmail"] },
+                                        then: "$$view.sessions",
+                                        else: {
+                                          $filter: {
+                                            input: "$$view.sessions",
+                                            as: "session",
+                                            cond: { $ne: ["$$session", token] }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    else: {
+                                      $cond: {
+                                        if: { $eq: [email, "noEmail"] },
+                                        then: { $concatArrays: ["$$view.sessions", [token]] },
+                                        else: "$$view.sessions"
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              else: "$$view"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                in: {
+                  $cond: {
+                    if: {
+                      $eq: [
+                        0,
+                        {
+                          $size: {
+                            $filter: {
+                              input: "$$updatedViews",
+                              as: "view",
+                              cond: { $eq: ["$$view.email", email] }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    then: {
+                      $concatArrays: [
+                        "$$updatedViews",
+                        [{ email: email, sessions: [token] }]
+                      ]
+                    },
+                    else: "$$updatedViews"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          $set: {
+            viewsCount: {
+              $add: [
+                {
+                  $size: {
+                    $filter: {
+                      input: "$views",
+                      as: "view",
+                      cond: { $ne: ["$$view.email", "noEmail"] }
+                    }
+                  }
+                },
+                {
+                  $reduce: {
+                    input: "$views",
+                    initialValue: 0,
+                    in: {
+                      $cond: {
+                        if: { $eq: ["$$this.email", "noEmail"] },
+                        then: { $add: ["$$value", { $size: "$$this.sessions" }] },
+                        else: "$$value"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      { returnDocument: 'after' } // Возвращает обновленный документ
+    )
 
-  if (views.some(view => view.email === email && view.sessions.includes(token))) {
-    return
-  } else if (email !== "noEmail") {
-    views.push(view)
-  } else {
+    // views = [
+    //   {
+    //     email: "noEmail",
+    //     sessions: [token1, token2]
+    //   }
+    // ]
 
-  }
-
-
-
-
-  if (!session || !session.email) {
-
-    try {
-      const result = await db.collection('products').updateOne(
-        { article },
-        { $inc: { views: 1 } }
-      )
-      if (result.modifiedCount > 0) {
-        res.writeHead(200).end(JSON.stringify({ result: 'Views updated' }))
-      } else {
-        res.writeHead(404).end(JSON.stringify({ error: 'Session not found' }))
-      }
-    } catch (err) {
-      console.error(err)
-      res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
+    if (!viewsCount) {
+      return res.writeHead(404).end(JSON.stringify({ error: 'Product not found' }))
+    } else {
+      res.writeHead(200).end(JSON.stringify(viewsCount))
     }
+  } catch (err) {
+    console.error(err)
+    res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
   }
 }
+
 
 async function getWishListProducts(email) {
   try {
     const pipeline = [
       // Находим пользователя по email
       { $match: { email: email } },
-      
+
       // Разворачиваем массив wishList
       { $unwind: '$wishList' },
-      
+
       // Выполняем поиск товаров по article из wishList
       {
         $lookup: {
@@ -383,42 +492,46 @@ async function getWishListProducts(email) {
           as: 'productArray'
         }
       },
-      
+
       // Разворачиваем результат lookup (должен быть один товар)
       { $unwind: '$productArray' },
-      
+
       // Формируем структуру документа, исключая _id и __v из товара
       {
         $project: {
           product: {
             $objectToArray: {
               $mergeObjects: [
-                { $arrayToObject: { 
-                  $filter: { 
-                    input: { $objectToArray: '$productArray' }, 
-                    cond: { $and: [
-                      { $ne: ['$$this.k', '_id'] },
-                      { $ne: ['$$this.k', '__v'] },
-                      { $ne: ['$$this.k', 'createdAt'] },
-                      { $ne: ['$$this.k', 'updatedAt'] },
-                      { $ne: ['$$this.k', 'reviews'] },
-                      { $ne: ['$$this.k', 'questions'] },
-                    ]}
-                  } 
-                } }
+                {
+                  $arrayToObject: {
+                    $filter: {
+                      input: { $objectToArray: '$productArray' },
+                      cond: {
+                        $and: [
+                          { $ne: ['$$this.k', '_id'] },
+                          { $ne: ['$$this.k', '__v'] },
+                          { $ne: ['$$this.k', 'createdAt'] },
+                          { $ne: ['$$this.k', 'updatedAt'] },
+                          { $ne: ['$$this.k', 'reviews'] },
+                          { $ne: ['$$this.k', 'questions'] },
+                        ]
+                      }
+                    }
+                  }
+                }
               ]
             }
           }
         }
       },
-      
+
       // Преобразуем обратно в объект
       {
         $project: {
           product: { $arrayToObject: '$product' }
         }
       },
-      
+
       // Группируем результаты обратно в массив
       {
         $group: {
@@ -426,7 +539,7 @@ async function getWishListProducts(email) {
           wishListProducts: { $push: '$product' }
         }
       },
-      
+
       // Финальная проекция для получения только массива товаров
       {
         $project: {
@@ -449,4 +562,4 @@ async function getWishListProducts(email) {
   }
 }
 
-module.exports = { sessions, ensureSession, loadSessions, upgradeSession, updateUserData, updateWishlist, updateCart, getToken, getWishListProducts }
+module.exports = { sessions, ensureSession, loadSessions, upgradeSession, updateUserData, updateWishlist, updateCart, getToken, getWishListProducts, updateViews }

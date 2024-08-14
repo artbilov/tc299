@@ -291,12 +291,12 @@ const endpoints = {
 
   async 'POST:product'({ db, req, res, payload }) {
     if (isAdmin(req)) {
-      const { _id, name, category, description = '', aboutProduct = '', color = '', quantity = 0, price = null, image = [], picture = '', reviews = [], questions = [], createdAt = '', updatedAt = '' } = payload
+      const { _id, name, category, description = '', aboutProduct = '', color = '', quantity = 0, price = null, image = [], picture = '', views = [], viewsCount = 0, questions = [], createdAt = '', updatedAt = '' } = payload
       if (!name || !category) {
         res.writeHead(400).end(JSON.stringify({ error: "name, category and article are required" }))
         return
       }
-      const product = { ..._id && { _id }, name, category, description, aboutProduct, color, quantity, price, image, picture, reviews, questions, createdAt, updatedAt }
+      const product = { ..._id && { _id }, name, category, description, aboutProduct, color, quantity, price, image, picture, views, viewsCount, questions, createdAt, updatedAt }
       const result = await db.collection('products').insertOne(product).catch(err => {
         if (err.code == 11000) return { insertedId: null }
       })

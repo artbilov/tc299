@@ -473,6 +473,35 @@ async function updateViews(req, res, article) {
   }
 }
 
+async function updateQuantityInCart(db, res, token, article, quantity) {
+  // Check if email is in a session
+  const session = sessions.find(session => session.token === token)
+  if (!session?.email) return res.writeHead(401).end(JSON.stringify({ error: 'Unauthorized' }))
+
+  const email = session.email
+
+  
+
+  try {
+    const result = await db.collection('users').updateOne(
+      // Находим пользователя по email
+      { email },
+      // Устанавливаем значение свойства quantity товару(объекту) с article в массиве inCart
+      {
+        $set: {
+          'inCart.$[inCart].quantity': quantity
+        }
+      },
+      {
+        arrayFilters: [{ 'inCart.article': article }]
+      }
+    )
+    res.writeHead(200).end('Quantity updated')
+  } catch (err) {
+    console.error(err)
+    res.writeHead(500).end(JSON.stringify({ error: 'Internal server error' }))
+  }
+}
 
 async function getWishListProducts(email) {
   try {
@@ -562,4 +591,4 @@ async function getWishListProducts(email) {
   }
 }
 
-module.exports = { sessions, ensureSession, loadSessions, upgradeSession, updateUserData, updateWishlist, updateCart, getToken, getWishListProducts, updateViews }
+module.exports = { sessions, ensureSession, loadSessions, upgradeSession, updateUserData, updateWishlist, updateCart, getToken, getWishListProducts, updateViews, updateQuantityInCart }

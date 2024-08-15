@@ -3,7 +3,7 @@ const { getUsers } = require('./get-users.js')
 const { getProducts } = require('./get-products.js')
 const { hash, verify } = require('./encrypt-password.js')
 const { isAdmin } = require('./check-admin.js')
-const { upgradeSession, updateUserData, updateWishlist, updateCart, updateViews, getToken, sessions, getWishListProducts } = require('./sessions/sessions.js')
+const { upgradeSession, updateUserData, updateWishlist, updateCart, updateViews, updateQuantityInCart, getToken, sessions, getWishListProducts } = require('./sessions/sessions.js')
 
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
@@ -896,10 +896,11 @@ const endpoints = {
     await updateViews(req, res, article)
   },
 
-  async 'POST:quantity-in-cart'({db, res, payload}) {
+  async 'POST:quantity-in-cart'({db, req, res, payload}) {
     const { article, quantity } = payload
-    
-    await updateQuantityInCart(db, res, article, quantity)
+
+    const token = getToken(req)
+    await updateQuantityInCart(db, res, token, article, quantity)
   },
 
 }

@@ -629,7 +629,7 @@ const endpoints = {
 
     const { regType, email } = payload
 
-    console.log(`payload: ${JSON.stringify(payload, null, 2)}`)
+    // console.log(`payload: ${JSON.stringify(payload, null, 2)}`)
 
     if (regType === 'google') {
       const { id } = payload

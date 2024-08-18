@@ -3,7 +3,7 @@ const { getUsers } = require('./get-users.js')
 const { getProducts } = require('./get-products.js')
 const { hash, verify } = require('./encrypt-password.js')
 const { isAdmin } = require('./check-admin.js')
-const { upgradeSession, updateUserData, updateWishlist, updateCart, updateViews, updateQuantityInCart, getToken, sessions, getWishListProducts } = require('./sessions/sessions.js')
+const { upgradeSession, updateUserData, updateWishlist, updateCart, updateViews, updateQuantityInCart, getToken, sessions, getWishListProducts, createSession } = require('./sessions/sessions.js')
 
 const categoryEndpoints = { 'candles': 'Candles', 'lighting-decor': 'Lighting Decor', 'gift-sets': 'Gift Sets', 'get-warm': 'Get Warm', 'table-games': 'Table Games', 'books-and-journals': 'Books & Journals' }
 
@@ -282,6 +282,13 @@ const endpoints = {
     const email = session.email
     const user = await db.collection('users').findOne({ email })
     res.end(JSON.stringify(user.inCart))
+  },
+
+  async 'GET:logout'({ res }) {
+
+    await createSession(res)
+    res.end(JSON.stringify({ success: 'Logout successful' }))
+
   },
 
   'GET:art-page.html'({ res }) {
@@ -879,6 +886,13 @@ const endpoints = {
     }
   },
 
+  async 'POST:quantity-in-cart'({ db, req, res, payload }) {
+    const { article, quantity } = payload
+
+    const token = getToken(req)
+    await updateQuantityInCart(db, res, token, article, quantity)
+  },
+
   async 'PUT:to-wish-list'({ req, res, payload }) {
     const { article } = payload
 
@@ -891,16 +905,9 @@ const endpoints = {
     await updateCart(req, res, article)
   },
 
-  async 'PUT:view'({req, res, payload}) {
+  async 'PUT:view'({ req, res, payload }) {
     const { article } = payload
     await updateViews(req, res, article)
-  },
-
-  async 'POST:quantity-in-cart'({db, req, res, payload}) {
-    const { article, quantity } = payload
-
-    const token = getToken(req)
-    await updateQuantityInCart(db, res, token, article, quantity)
   },
 
 }

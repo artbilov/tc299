@@ -591,4 +591,4 @@ async function getWishListProducts(email) {
   }
 }
 
-module.exports = { sessions, ensureSession, loadSessions, upgradeSession, updateUserData, updateWishlist, updateCart, getToken, getWishListProducts, updateViews, updateQuantityInCart }
+module.exports = { sessions, ensureSession, loadSessions, createSession, upgradeSession, updateUserData, updateWishlist, updateCart, getToken, getWishListProducts, updateViews, updateQuantityInCart }
